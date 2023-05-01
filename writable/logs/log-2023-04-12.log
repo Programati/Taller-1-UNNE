@@ -1,0 +1,65 @@
+CRITICAL - 2023-04-12 14:10:54 --> Invalid file: "head.html"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('head.html')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('head.html', [], true)
+ 3 APPPATH\Controllers\QuienesSomosController.php(11): view('head.html', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\QuienesSomosController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\QuienesSomosController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-12 14:10:59 --> Invalid file: "head.html"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('head.html')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('head.html', [], true)
+ 3 APPPATH\Controllers\ContactoController.php(11): view('head.html', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ContactoController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ContactoController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-12 14:13:13 --> syntax error, unexpected token "return"
+in APPPATH\Controllers\QuienesSomosController.php on line 14.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\proyecto_martinez\\app\\Controllers\\QuienesSomosController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\QuienesSomosController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\QuienesSomosController')
+ 4 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\Controllers\\QuienesSomosController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-12 14:13:38 --> Invalid file: "QuienesSomos/bodyQuienesSomos.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('QuienesSomos/bodyQuienesSomos.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('QuienesSomos/bodyQuienesSomos', [], true)
+ 3 APPPATH\Controllers\QuienesSomosController.php(12): view('QuienesSomos/bodyQuienesSomos')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\QuienesSomosController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\QuienesSomosController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-12 14:14:13 --> Invalid file: "QuienesSomos/bodyQuienesSomos.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('QuienesSomos/bodyQuienesSomos.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('QuienesSomos/bodyQuienesSomos', [], true)
+ 3 APPPATH\Controllers\QuienesSomosController.php(12): view('QuienesSomos/bodyQuienesSomos')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\QuienesSomosController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\QuienesSomosController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-12 22:26:22 --> Undefined variable $titulo
+in APPPATH\Views\estructura\head.php on line 12.
+ 1 APPPATH\Views\estructura\head.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $titulo', 'C:\\xampp\\htdocs\\proyecto_martinez\\app\\Views\\estructura\\head.php', 12)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\proyecto_martinez\\app\\Views\\estructura\\head.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('estructura/head', [], true)
+ 5 APPPATH\Controllers\ComercializacionController.php(11): view('estructura/head')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ComercializacionController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ComercializacionController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-12 22:33:18 --> syntax error, unexpected token "return"
+in APPPATH\Controllers\ContactoController.php on line 14.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\proyecto_martinez\\app\\Controllers\\ContactoController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ContactoController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ContactoController')
+ 4 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\Controllers\\ContactoController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
