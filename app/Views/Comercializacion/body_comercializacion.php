@@ -1,3 +1,12 @@
+<?=$this->extend('layouts/main')?>
+
+
+<?=$this->section('title')?>
+Comercializacion
+<?=$this->endSection()?>
+
+<?=$this->section('content')?>
+
 <section class="container">
 
   <!-- CABECERA -->
@@ -183,3 +192,5 @@
   </div>
   <br>
 </section>
+
+<?=$this->endSection()?>

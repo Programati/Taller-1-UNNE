@@ -1,3 +1,12 @@
+<?=$this->extend('layouts/main')?>
+
+
+<?=$this->section('title')?>
+Contacto
+<?=$this->endSection()?>
+
+<?=$this->section('content')?>
+
 <div class="container">
     <!-- CABECERA -->
     <div class="row m-5 align-items-center text-wrap">
@@ -171,3 +180,5 @@
     </div>
 
 </div>
+
+<?=$this->endSection()?>

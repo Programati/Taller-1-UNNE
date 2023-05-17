@@ -1,3 +1,12 @@
+<?=$this->extend('layouts/main')?>
+
+
+<?=$this->section('title')?>
+Términos y usos
+<?=$this->endSection()?>
+
+<?=$this->section('content')?>
+
 <section class="terminos container p-5">
 
         <p class="display-4 text-center">
@@ -36,4 +45,6 @@
         <p>
             <span class="magic">Magic</span><span class="shop">Shop</span> se reserva el derecho de modificar en forma unilateral, sin mediar previo aviso, ni comunicación los usuarios, estos Términos y Condiciones de Uso, como así el diseño, la presentación o configuración del Sitio Web, sin que ello genere derecho a reclamo o indemnización alguna en favor de los usuarios. En consecuencia, el usuario debe leer atentamente los Términos y Condiciones de Uso cada vez que pretenda utilizar el Sitio Web.
         </p>
-    </section>
+</section>
+
+<?=$this->endSection()?>
