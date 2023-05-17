@@ -1,5 +1,4 @@
-<?php $numero = 0;
-?>
+
 <section class="container mt-1">
 
     <!-- CARRUSEL -->
@@ -131,10 +130,7 @@
       </div>
     </div>
     <!-- SECCION PRODUCTOS DESTACADOS -->
-    <?php
-      if ($numero == 0) {
-    ?>
-      <div class="container mt-3 bg-primary">
+      <div class="container mt-3">
           <div class="tarjeta-presentacion d-inline-flex bg-white bg-opacity-50 border rounded m-2 shadow-lg text-break">
               <p class="mb-0 p-2 fw-bolder text-wrap"><i>PRODUCTOS DESTACADOS</i></p>
           </div>
@@ -188,121 +184,4 @@
           </div>
 
       </div>
-    <?php
-      } elseif ($numero == 1) {      
-    ?>
-    <div class="container mt-3 bg-danger">
-          <div class="tarjeta-presentacion d-inline-flex bg-white bg-opacity-50 border rounded m-2 shadow-lg text-break">
-              <p class="mb-0 p-2 fw-bolder text-wrap"><i>PRODUCTOS DESTACADOS</i></p>
-          </div>
-          <!-- SECCION PRODUCTOS DE LA TIENDA -->
-          <div class="productos container mt-2">
-              <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4">
-
-                  <div class="container g-col text-center mb-2 text-break">
-                      <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/1_Portada_Stickers.png" alt="BTS1">
-                      <hr>
-                      <h5 class="title-prod text-wrap">FIESTA</h5>
-                      <p class="des-prod text-wrap">Sticker de BTS</p>
-                  </div>
-
-                  <div class="container col text-center mb-2 text-break">
-                      <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/2_Portada_Stickers.png" alt="Sticker-Fiesta">
-                      <hr>
-                      <h5 class="title-prod text-wrap">FIESTA</h5>
-                      <p class="des-prod text-wrap">Sticker de BTS</p>
-                  </div>
-
-                  <div class="container col text-center mb-2 text-break">
-                      <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/3_Portada_Stickers.png" alt="Sticker-Fiesta">
-                      <hr>
-                      <h5 class="title-prod text-wrap">FIESTA</h5>
-                      <p class="des-prod text-wrap">Sticker de BTS</p>
-                  </div>
-
-                  <div class="container col text-center mb-2 text-break">
-                      <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/4_Portada_Stickers.png" alt="Sticker-Fiesta">
-                      <hr>
-                      <h5 class="title-prod text-wrap">FIESTA</h5>
-                      <p class="des-prod text-wrap">Sticker de BTS</p>
-                  </div>
-
-                  <div class="container col text-center mb-2 text-break">
-                      <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/5_Portada_Stickers.png" alt="Sticker-Fiesta">
-                      <hr>
-                      <h5 class="title-prod text-wrap">FIESTA</h5>
-                      <p class="des-prod text-wrap">Sticker de BTS</p>
-                  </div>
-
-                  <div class="container col text-center mb-2 text-break">
-                      <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/1_Portada_Stickers.png" alt="Sticker-Fiesta">
-                      <hr>
-                      <h5 class="title-prod text-wrap">FIESTA</h5>
-                      <p class="des-prod text-wrap">Sticker de BTS</p>
-                  </div>
-
-              </div>
-          </div>
-
-    </div>
-    <?php
-    }else{
-    ?>
-    <div class="container mt-3">
-          <div class="tarjeta-presentacion d-inline-flex bg-white bg-opacity-50 border rounded m-2 shadow-lg text-break">
-              <p class="mb-0 p-2 fw-bolder text-wrap"><i>PRODUCTOS DESTACADOS</i></p>
-          </div>
-          <!-- SECCION PRODUCTOS DE LA TIENDA -->
-          <div class="productos container mt-2">
-              <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4">
-
-                  <div class="container g-col text-center mb-2 text-break">
-                      <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/1_Portada_Stickers.png" alt="BTS1">
-                      <hr>
-                      <h5 class="title-prod text-wrap">FIESTA</h5>
-                      <p class="des-prod text-wrap">Sticker de BTS</p>
-                  </div>
-
-                  <div class="container col text-center mb-2 text-break">
-                      <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/2_Portada_Stickers.png" alt="Sticker-Fiesta">
-                      <hr>
-                      <h5 class="title-prod text-wrap">FIESTA</h5>
-                      <p class="des-prod text-wrap">Sticker de BTS</p>
-                  </div>
-
-                  <div class="container col text-center mb-2 text-break">
-                      <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/3_Portada_Stickers.png" alt="Sticker-Fiesta">
-                      <hr>
-                      <h5 class="title-prod text-wrap">FIESTA</h5>
-                      <p class="des-prod text-wrap">Sticker de BTS</p>
-                  </div>
-
-                  <div class="container col text-center mb-2 text-break">
-                      <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/4_Portada_Stickers.png" alt="Sticker-Fiesta">
-                      <hr>
-                      <h5 class="title-prod text-wrap">FIESTA</h5>
-                      <p class="des-prod text-wrap">Sticker de BTS</p>
-                  </div>
-
-                  <div class="container col text-center mb-2 text-break">
-                      <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/5_Portada_Stickers.png" alt="Sticker-Fiesta">
-                      <hr>
-                      <h5 class="title-prod text-wrap">FIESTA</h5>
-                      <p class="des-prod text-wrap">Sticker de BTS</p>
-                  </div>
-
-                  <div class="container col text-center mb-2 text-break">
-                      <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/1_Portada_Stickers.png" alt="Sticker-Fiesta">
-                      <hr>
-                      <h5 class="title-prod text-wrap">FIESTA</h5>
-                      <p class="des-prod text-wrap">Sticker de BTS</p>
-                  </div>
-
-              </div>
-          </div>
-
-      </div>
-    <?php
-    }
-    ?>
   </section>
