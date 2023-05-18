@@ -11,27 +11,22 @@
       </button>
       <!-- Inicio de los elementos de la barra -->
       <div class="collapse navbar-collapse" id="navbar-Toggler">
-        <!-- Enlace a la página principal -->
-        <!-- <a class="navbar-brand text-white" href="<?php echo base_url() ?>">
-            <img src="assets/img/magicshopctes/logo/logo.png" width="50" alt="Logo de la página web">
-            <span class="magic">Magic</span><span class="shop">Shop</span>
-        </a> -->
         <!-- Elementos del texto parte de UL -->
         <ul class="navbar-nav d-flex justify-content-center align-item-center ms-auto">
           <li class="nav-item">
             <a class="nav-link"  href="<?php echo base_url(); ?>">principal</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url().route_to('quienes_somos')?>">quienes somos</a>
+            <a class="nav-link" href="<?= base_url(route_to('quienes_somos'))?>">quienes somos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url().route_to('comercializacion') ?>">comercialización</a>
+            <a class="nav-link" href="<?= base_url(route_to('comercializacion')) ?>">comercialización</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url().route_to('contacto')?>">contacto</a>
+            <a class="nav-link" href="<?= base_url(route_to('contacto'))?>">contacto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url().route_to('terminos_y_usos')?>" >términos y usos</a>
+            <a class="nav-link" href="<?= base_url(route_to('terminos_y_usos'))?>" >términos y usos</a>
           </li>
         </ul>
       </div>

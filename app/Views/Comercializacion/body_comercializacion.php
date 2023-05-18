@@ -154,7 +154,7 @@ Comercializacion
             </button>
           </h2>
           <div id="Pregunta-5" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">A nuestro WhatsApp! Tienen un boton de acceso directo desde la web o la solicitan por DM en nuestras redes sociales. En la seccion <a href="<?= base_url().route_to('contacto')?>">Contacto</a> tienen toda la información para lograr contactarnos a través de diferentes medios</div>
+            <div class="accordion-body">A nuestro WhatsApp! Tienen un boton de acceso directo desde la web o la solicitan por DM en nuestras redes sociales. En la seccion <a href="<?= base_url(route_to('contacto'))?>">Contacto</a> tienen toda la información para lograr contactarnos a través de diferentes medios</div>
           </div>
         </div>
         <div class="accordion-item">
@@ -183,7 +183,7 @@ Comercializacion
           <p class="m-0">No encontraste lo que necesitabas?</p>
         </div>
         <div class="col-md-4 mt-2 mt-md-0">
-          <a class="btn btn-primary" href="<?= base_url().route_to('contacto')?>" role="button">CONTACTANOS</a>
+          <a class="btn btn-primary" href="<?= base_url(route_to('contacto'))?>" role="button">CONTACTANOS</a>
         </div>
 
       </div>

@@ -10,10 +10,10 @@
             <hr class="m-0">
             <div class="row ms-1">
                 <a href="<?php echo base_url(); ?>" class="nav-link mt-1 p-1 text-uppercase">Principal</a>
-                <a href="<?= base_url().route_to('quienes_somos') ?>" class="nav-link mt-1 p-1 text-uppercase">Quienes Somos</a>
-                <a href="<?= base_url().route_to('comercializacion') ?>" class="nav-link mt-1 p-1 text-uppercase">Comercialización</a>
-                <a href="<?= base_url().route_to('contacto') ?>" class="nav-link mt-1 p-1 text-uppercase">Contacto</a>
-                <a href="<?= base_url().route_to('terminos_y_usos')?>" class="nav-link mt-1 p-1 text-uppercase">Términos y usos</a>
+                <a href="<?= base_url(route_to('quienes_somos')) ?>" class="nav-link mt-1 p-1 text-uppercase">Quienes Somos</a>
+                <a href="<?= base_url(route_to('comercializacion')) ?>" class="nav-link mt-1 p-1 text-uppercase">Comercialización</a>
+                <a href="<?= base_url(route_to('contacto')) ?>" class="nav-link mt-1 p-1 text-uppercase">Contacto</a>
+                <a href="<?= base_url(route_to('terminos_y_usos'))?>" class="nav-link mt-1 p-1 text-uppercase">Términos y usos</a>
             </div>
         </div>
         <!-- PARTE DEL MEDIO -->
@@ -23,7 +23,7 @@
         <!-- PARTE DERECHA -->
         <div class="col-md-3 seccion-derecha mt-4 mt-md-0">
             <div class="row">
-                <p class="text-uppercase fw-bold fs-5">contacto</p>
+                <p class="text-uppercase fw-bold fs-5">REDES SOCIALES</p>
             </div>
             <hr class="m-0">
             <div class="row iconos-redes-sociales d-flex flex-wrap justify-content-center">
