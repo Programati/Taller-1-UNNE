@@ -1,4 +1,13 @@
-<section class="container quienes_somos">
+<?=$this->extend('layouts/main')?>
+
+
+<?=$this->section('title')?>
+Inicio | Magic Shop
+<?=$this->endSection()?>
+
+<?=$this->section('content')?>
+
+    <section class="container quienes_somos">
     <!-- HISTORIA -->
     <div class="row historia">
         <!-- TITULO -->
@@ -101,4 +110,6 @@
         </div>
     </div>
 
-</section>
+    </section>
+
+<?=$this->endSection()?>

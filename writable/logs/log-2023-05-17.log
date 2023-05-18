@@ -1,0 +1,36 @@
+CRITICAL - 2023-05-17 22:37:19 --> Invalid file: "estructura/bodyPrincipal.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('estructura/bodyPrincipal.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('estructura/bodyPrincipal', [], true)
+ 3 APPPATH\Controllers\Home.php(15): view('estructura/bodyPrincipal', [])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-17 22:38:06 --> Invalid file: "estructura/bodyPrincipal.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('estructura/bodyPrincipal.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('estructura/bodyPrincipal', [], true)
+ 3 APPPATH\Controllers\Home.php(15): view('estructura/bodyPrincipal', [])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-17 22:39:26 --> Invalid file: "estructura/bodyPrincipal.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('estructura/bodyPrincipal.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('estructura/bodyPrincipal', [], true)
+ 3 APPPATH\Controllers\Home.php(15): view('estructura/bodyPrincipal', [])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-17 22:40:54 --> Invalid file: "estructura/bodyPrincipal.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('estructura/bodyPrincipal.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('estructura/bodyPrincipal', [], true)
+ 3 APPPATH\Controllers\Home.php(15): view('estructura/bodyPrincipal', [])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
