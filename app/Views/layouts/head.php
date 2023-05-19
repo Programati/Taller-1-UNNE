@@ -13,6 +13,8 @@
       <div class="collapse navbar-collapse" id="navbar-Toggler">
         <!-- Elementos del texto parte de UL -->
         <ul class="navbar-nav d-flex justify-content-center align-item-center ms-auto">
+
+
           <li class="nav-item">
             <a class="nav-link"  href="<?php echo base_url(); ?>">principal</a>
           </li>
@@ -28,6 +30,26 @@
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url(route_to('terminos_y_usos'))?>" >términos y usos</a>
           </li>
+
+          <?php if(!session()->has('loggedUser')):?>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="<?=base_url(route_to('login')) ?>">Ingresar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=base_url(route_to('formularioRegistro')) ?>">Registrarse</a>
+                </li>
+            <?php else:?>
+                <li class="nav-item d-flex align-items-center fw-bold text-white">
+                    <?="Hola ".$infoUsuarioLog['nombre'];?>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url(route_to('verUsuarios')); ?>">Lista de usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url(route_to('logout')); ?>">Salir</a>
+                </li>
+            <?php endif;?>
+
         </ul>
       </div>
     </div>

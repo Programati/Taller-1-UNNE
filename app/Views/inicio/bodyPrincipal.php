@@ -9,6 +9,20 @@ Inicio | Magic Shop
 
 <section class="container mt-1">
 
+    <?php if(!empty(session()->getFlashdata('fail'))) : ?>
+        <div class="alert alert-danger">
+            <?= session()->getFlashdata('fail'); ?>
+        </div>
+    <?php endif;?>
+    
+    <?php if(session()->get('success')): ?>
+
+      <div class="alert alert-success" role="alert">
+          <?=session()->get('success')?>
+      </div>
+
+    <?php endif; ?> 
+
     <!-- CARRUSEL -->
     <div id="carrusel-magico" class="carousel slide carrusel-magico carousel-dark" data-bs-ride="carousel">
       <!-- Botenes de abajo, para saber el orden y ubicacion de las imágenes -->
@@ -192,6 +206,7 @@ Inicio | Magic Shop
         </div>
 
     </div>
+
 </section>
 
 <?=$this->endSection()?>

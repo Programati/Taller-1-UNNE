@@ -29,7 +29,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'HomeController::index');
 
 $routes->get('quienes somos', 'QuienesSomosController::index', ['as' => "quienes_somos"]);
 
@@ -39,6 +39,35 @@ $routes->get('contacto', 'ContactoController::index', ['as' => "contacto"]);
 $routes->post('Mensaje Enviado', 'ContactoController::enviarMensaje', ['as' => "envioMensaje"]);
 
 $routes->get('terminos y usos', 'TerminosUsosController::index', ['as' => "terminos_y_usos"]);
+
+
+//FORMULARIO LOGIN pero primero destruimos sesion
+$routes->get('logout', 'AuthController::salir', ['as' => 'logout']);
+
+//Al enviar Formulario Registro nos redirege aqui
+//Controllador->funcion donde guardamos los datos
+$routes->post('/guardado', 'AuthController::guardarRegistro', ['as' => 'guardar']);
+
+//El Formulario de Logueo nos trae aqui y de aca vamos para la funcion CHECK
+//Controlador->funcion donde verificamos la identidad del usuario desde el LOGIN
+$routes->post('signin', 'AuthController::check', ['as' => 'controlUsuario']);
+
+//Para proteger RUTAS tenemos que ponerlas dentro de un grupo y aplicar el filtro programado
+$routes->group('',['filter'=>'VerificarAutenticacion'], function($routes)
+{
+    //Agregamos todas las rutas que querramos proteger con el filtro
+    $routes->match(['get','post'],'lista', 'HomeController::verUsuarios', ['as' => 'verUsuarios']);
+
+});
+$routes->group('',['filter'=>'UsuarioYaLogueado'], function($routes)
+{
+    //Agregamos todas las rutas que querramos proteger con el filtro
+    //FORMULARIOS LOGIN
+    $routes->match(['get','post'],'login', 'AuthController::formularioLogin', ['as' => 'login']);
+    //FORMULARIOS REGISTRO
+    $routes->match(['get','post'],'registrarse', 'AuthController::formularioRegistro', ['as' => 'formularioRegistro']);
+
+});
 
 /*
  * --------------------------------------------------------------------
