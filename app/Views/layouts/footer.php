@@ -14,6 +14,8 @@
                 <a href="<?= base_url(route_to('comercializacion')) ?>" class="nav-link mt-1 p-1 text-uppercase">Comercialización</a>
                 <a href="<?= base_url(route_to('contacto')) ?>" class="nav-link mt-1 p-1 text-uppercase">Contacto</a>
                 <a href="<?= base_url(route_to('terminos_y_usos'))?>" class="nav-link mt-1 p-1 text-uppercase">Términos y usos</a>
+                <a href="<?= base_url(route_to('terminos_y_usos'))?>" class="nav-link mt-1 p-1 text-uppercase">Términos y usos</a>
+                <a href="<?= base_url(route_to('catalogo'))?>" class="nav-link mt-1 p-1 text-uppercase">Catalogo</a>
             </div>
         </div>
         <!-- PARTE DEL MEDIO -->

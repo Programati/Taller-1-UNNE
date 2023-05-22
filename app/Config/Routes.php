@@ -39,6 +39,7 @@ $routes->get('contacto', 'ContactoController::index', ['as' => "contacto"]);
 $routes->post('Mensaje Enviado', 'ContactoController::enviarMensaje', ['as' => "envioMensaje"]);
 
 $routes->get('terminos y usos', 'TerminosUsosController::index', ['as' => "terminos_y_usos"]);
+$routes->get('Catalogo', 'CatalogoController::index', ['as' => "catalogo"]);
 
 
 //FORMULARIO LOGIN pero primero destruimos sesion
@@ -52,13 +53,20 @@ $routes->post('/guardado', 'AuthController::guardarRegistro', ['as' => 'guardar'
 //Controlador->funcion donde verificamos la identidad del usuario desde el LOGIN
 $routes->post('signin', 'AuthController::check', ['as' => 'controlUsuario']);
 
+
+
+
 //Para proteger RUTAS tenemos que ponerlas dentro de un grupo y aplicar el filtro programado
+
+//GRUPO DE LINKS donde hacemos que los que no estan logueados, tengan que loguearse para ver el contenido
 $routes->group('',['filter'=>'VerificarAutenticacion'], function($routes)
 {
     //Agregamos todas las rutas que querramos proteger con el filtro
     $routes->match(['get','post'],'lista', 'HomeController::verUsuarios', ['as' => 'verUsuarios']);
 
 });
+
+//GRUPO DE LINKS DONDE ASEGURAMOS QUE LOS USUARIOS LOGUEADOS NO INGRESEN
 $routes->group('',['filter'=>'UsuarioYaLogueado'], function($routes)
 {
     //Agregamos todas las rutas que querramos proteger con el filtro
@@ -68,6 +76,23 @@ $routes->group('',['filter'=>'UsuarioYaLogueado'], function($routes)
     $routes->match(['get','post'],'registrarse', 'AuthController::formularioRegistro', ['as' => 'formularioRegistro']);
 
 });
+
+//CREAR GRUPO DE RUTA PARA QUE SÓLO EL ADMIN INGRESE AQUI
+//Listar Productos
+//$routes->get('Allproductos', 'ProductoController::index', ['as' => 'listaProductos']);
+$routes->get('productos', 'ProductoController::index');
+
+//Crear Nuevo Libro
+$routes->get('NuevoProducto', 'ProductoController::crearProducto', ['as' => 'crearproducto']);
+
+//Guardar
+$routes->post('GuardarProducto', 'ProductoController::guardarProducto', ['as' => 'guardarproducto']);
+//Actualizar
+$routes->post('actualizar', 'ProductoController::actualizarProducto');
+//Borrar
+$routes->get('delete(:num)', 'ProductoController::borrarProducto/$1');
+//Editar
+$routes->get('editar(:num)', 'ProductoController::editarProducto/$1');
 
 /*
  * --------------------------------------------------------------------
@@ -85,3 +110,5 @@ $routes->group('',['filter'=>'UsuarioYaLogueado'], function($routes)
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
+
+

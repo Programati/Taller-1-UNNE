@@ -67,10 +67,6 @@ body{
 .navbar-toggler{
     color:#ffba00
 }
-.navbar-collapse{
-    align-items: center;
-    justify-content: space-between;
-}
 .nav-link {
     text-transform: capitalize;
 }
@@ -230,14 +226,16 @@ footer{
     .carousel-caption p {
         font-size: .8rem;
     }
+    .letrasLogo{
+        font-size: 2rem;
+    }
+    .nav-item a{
+        font-size: .7rem;
+    }
 }
 /*Medium device (tablets, 768px and up)*/
 /* Aplicaremos un estilo cuando la página sea menor a 768px */
 @media (max-width: 780px){
-    /* ocultaremos el icono que esta en la clase navbra-brand */
-    .navbar-brand{
-        display: none;
-    }
     .navbar-collapse{
         padding-top: 10px;
     }
@@ -257,9 +255,8 @@ footer{
     .seccion-medio p, .seccion-izquierda p{
         text-align: start;
     }
-    .nav-item a{
-        font-size: .9rem;
-    }
+    
+    
 
 }
 /*Small device (landscope, phone, 576px and up)*/

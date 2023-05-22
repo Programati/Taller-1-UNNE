@@ -1,12 +1,22 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Metadatos -->
+    <meta charset="UTF-8"> <!-- Carácteres especiales-->
+    <meta name="author" content="Martinez Matias Jose"> <!-- Autor de la página-->
+    <meta name="description" content="Sitio de venta de artículos de libreria personalizados"><!-- Descripción de la página-->
+    <meta name="keywords" content="BTS, Comic, Personalizado, libreria"><!-- Palabras claves-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Permite que se ajuste al tamaño del dispositivo en el que se está viendo la página-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Titulo de cada pestaña -->
     <title><?=$this->renderSection('title')?></title>
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/magicshopctes/logo/logo.png">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap.css"> -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/icon/bootstrap-icons-1.10.4/font/bootstrap-icons.css">
+    
 </head>
     <body>
 
@@ -15,6 +25,11 @@
     <?=$this->include('layouts/footer')?>
 
 
-    <script src="assets/js/bootstrap.js"></script>  
+    <!-- <script src="assets/js/bootstrap.js"></script> -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.js"></script>
+    <!-- <script src="assets/js/popper.min.js"></script>   -->
+    <!-- <script src="assets/js/jquery-3.7.0.min.js"></script>   -->
+    
   </body>
 </html>

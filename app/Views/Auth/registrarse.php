@@ -10,9 +10,9 @@ Registrarse
 
 <section>
 
-    <div class="container my-5">
+    <div class="container mb-5">
         <div class="row d-flex justify-content-center">
-            <div class="col-8 g-5">                
+            <div class="col-8 g-3">                
                 
                 <div class="card ">
                     <h5 class="card-header d-flex justify-content-center align-items-center">
@@ -37,6 +37,7 @@ Registrarse
                                 </div>
                             <?php endif;?>
 
+                            <!-- Nombre y Apellido -->
                             <div class="row">
 
                                 <div class="form-group col-12 col-md-6 mb-3">
@@ -63,8 +64,10 @@ Registrarse
 
                             </div>
 
+                            <!-- Correo -->
                             <div class="row">
 
+                                <!-- Correo -->
                                 <div class="form-group col-12 mb-3">
                                     <label for="email" class="form-label">Correo Electronico</label>
                                     <!--SET_VALUE = Para mantener el ultimo valor ingresado al recargar la página cuando nos da el error de validacion -->
@@ -78,6 +81,7 @@ Registrarse
 
                             </div>
 
+                            <!-- Contraseña -->
                             <div class="row">
 
                                 <div class="form-group col-12 col-md-6 mb-3">

@@ -9,19 +9,8 @@ Login
 
     <div class="container my-5">
 
-        <!-- Si existe un mensaje, va a mostrar la FILA de ALERTA  -->
-        <?php if(session('msg')): ?>
-            <div class="row">
-
-                <div class="alert alert-<?=session('msg.type')?>" role="alert">
-                    <?=session('msg.body')?>
-                </div>
-
-            </div>
-        <?php endif ?>
-
         <div class="row d-flex justify-content-center">
-            <div class="col-4 g-5">
+            <div class="col-12 col-md-7 col-lg-6">
             
 
                 <div class="card ">
@@ -43,7 +32,7 @@ Login
                             </div>
                         <?php endif;?>
                         
-                            <div class="form-group">
+                            <div class="form-group mb-3">
 
                                 <label for="email" class="form-label">Correo Electronico</label>
                                 <input type="email" id="email" placeholder="ejemplo@email.com" class="form-control" name="email" value="<?=set_value('email'); ?>">
@@ -56,7 +45,7 @@ Login
 
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-3">
 
                                 <label for="password">Contraseña</label>
                                 <input type="password" class="form-control mb-3" name="password">
@@ -68,9 +57,9 @@ Login
 
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-3">
 
-                                <button type="submit" class="btn btn-primary">Ingresr</button>
+                                <button type="submit" class="btn btn-primary">Ingresar</button>
 
                             </div>
 

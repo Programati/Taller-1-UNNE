@@ -9,12 +9,14 @@ Inicio | Magic Shop
 
 <section class="container mt-1">
 
+  <!-- Mensaje de CIERRE DE SESSION cuando SALE -->
     <?php if(!empty(session()->getFlashdata('fail'))) : ?>
         <div class="alert alert-danger">
             <?= session()->getFlashdata('fail'); ?>
         </div>
     <?php endif;?>
     
+    <!-- Mensaje de INICIO SESSION cuando se loguea -->
     <?php if(session()->get('success')): ?>
 
       <div class="alert alert-success" role="alert">
@@ -158,9 +160,10 @@ Inicio | Magic Shop
         </div>
         <!-- SECCION PRODUCTOS DE LA TIENDA -->
         <div class="productos container mt-2">
+
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4">
 
-                <div class="container g-col text-center mb-2 text-break">
+                <div class="container col text-center mb-2 text-break">
                     <img loading="lazy" class="img-fluid border rounded" src="assets/img/magicshopctes/productos/Sticker_sets/1_Portada_Stickers.png" alt="BTS1">
                     <hr>
                     <h5 class="title-prod text-wrap">FIESTA</h5>
@@ -203,6 +206,7 @@ Inicio | Magic Shop
                 </div>
 
             </div>
+            
         </div>
 
     </div>

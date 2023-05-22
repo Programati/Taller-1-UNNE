@@ -104,7 +104,7 @@ class AuthController extends BaseController
                 'nombre' => $nombre,
                 'apellido' => $apellido,
                 'email' => $email,
-                //Usando la Funcion creada, haseamos el password
+                //Usando la Funcion creada, hasheamos el password
                 'password' => Hash::make($password),
             ];
 
@@ -185,7 +185,7 @@ class AuthController extends BaseController
             {
                 $id_usuario_logueado = $informacion_usuario_logueado['id'];
                 session()->set('loggedUser', $id_usuario_logueado);
-                return redirect()->to(route_to('lista'));
+                return redirect()->to(route_to('/'))->with('success', 'Iniciaste sesion');
 
             }
         }
