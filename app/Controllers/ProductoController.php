@@ -4,53 +4,114 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\UsuarioModel;
+use App\Models\PersonaModel;
 use App\Models\ProductoModel;
+use App\Models\CategoriasModel;
 
 class ProductoController extends BaseController
 {
     public function __construct()
     {
+        //Siempre hay que ponerlos para que los validadores de errores funcionen
         helper(['url', 'form', 'FormularioError']);
     }
 
-    //Siempre hay que crear el OBJETO usuario y el OBJETO producto
     public function index()
+    {
+        //Creamos el objeto de la Tabla Productos
+        $productos = new ProductoModel();
+
+        //Ponemos en una varaible todos los productos de la tabla PRODUCTOS
+        $DatosProductos = $productos->orderBy('cantidad', 'ASC')->where('activo', 1)->findAll();
+
+        $data = [
+            'productos' => $DatosProductos
+        ];
+
+        return view('productos/productosActivos', $data);
+    }
+    public function productosDesactivados()
     {
         //Creamos el objeto de la Tabla Usuarios
         $datosUsuarios = new UsuarioModel();
-        
+        $datosPersona = new PersonaModel();
+
+        //$datosCategoria = new CategoriasModel();
+
         //Creamos el objeto de la Tabla Productos
         $productos = new ProductoModel();
 
         //Capturamos el ID del logueo del usuario reciente
-        $id_usuario_logueado = session()->get('loggedUser');
+        $id_persona_logueada = session()->get('loggedUser');
+
+        //Si está logueada buscamos su ROL
+        if(session()->get('loggedUser'))
+        {
+            //Buscamos en el objeto USUARIO el ID de la persona => Se convierte en un Array
+            $info_usuario = $datosUsuarios->where('id_persona',$id_persona_logueada)->first();
+        }else
+        {
+            //SINO mandamos 0
+            $info_usuario = 0;
+        }
 
         //Buscamos en el usuario logueado
-        $info_usuario = $datosUsuarios->find($id_usuario_logueado);
+        $info_persona = $datosPersona->find($id_persona_logueada);
 
         //Ponemos en una varaible todos los productos de la tabla PRODUCTOS
-        $DatosProductos = $productos->orderBy('id', 'ASC')->findAll();
+        $DatosProductos = $productos->orderBy('id_producto', 'ASC')->where('activo', 0)->findAll();
 
         //Array con 2 tipos de OBJETOS
         $data = [
             //Registro del usuario logueado
-            'infoUsuarioLog' => $info_usuario,
+            'infoPersonaLog' => $info_persona,
+            'infoUsuario' => $info_usuario,
             //Registros de todos los productos
             'productos' => $DatosProductos
         ];
 
-        return view('productos/listar', $data);
+        return view('productos/productosInactivos', $data);
     }
     
     public function crearProducto()
     {
-        $data = [];
+        
+        $datosUsuarios = new UsuarioModel();
+        $datosPersona = new PersonaModel();
+        $datosCategoria = new CategoriasModel();
+
+        //Capturamos el ID del logueo del usuario reciente
+        $id_persona_logueada = session()->get('loggedUser');
+
+        //Si está logueada buscamos su ROL
+        if(session()->get('loggedUser'))
+        {
+            //Buscamos en el objeto USUARIO el ID de la persona => Se convierte en un Array
+            $info_usuario = $datosUsuarios->where('id_persona',$id_persona_logueada)->first();
+        }else
+        {
+            //SINO mandamos 0
+            $info_usuario = 0;
+        }
+
+        //Buscamos en el usuario logueado
+        $info_persona = $datosPersona->find($id_persona_logueada);
+
+        //Array con 2 tipos de OBJETOS
+        $data = [
+            //Registro del usuario logueado
+            'infoPersonaLog' => $info_persona,
+            'infoUsuario' => $info_usuario,
+            'categorias' => $datosCategoria->findAll(),
+        ];
         return view('productos/crear', $data);
     
     
     }
+    
     public function guardarProducto()
     {
+        $datosCategoria = new CategoriasModel();        
 
         $validacion = $this->validate([
             'nombre' => [
@@ -58,6 +119,184 @@ class ProductoController extends BaseController
                 'errors' => [
                     'required' => 'Tienes que ingresar un nombre al producto',
                     'max_length' => 'El nombre del producto es muy largo'
+                    ]
+                ],
+            'precio' => [
+                'rules' => 'required|max_length[12]',
+                'errors' => [
+                    'required' => 'Tienes que ingresar un precio al producto',
+                    'max_length' => 'El precio del producto es muy largo'
+                    ]
+                ],
+            'cantidad' => [
+                'rules' => 'required|max_length[11]',
+                'errors' => [
+                    'required' => 'Tienes que ingresar una cantidad al producto',
+                    'max_length' => 'La cantidad del producto es muy largo'
+                    ]
+                ],
+            'categoria' => [
+                'rules' => 'required|is_not_unique[categorias.id_categoria]',
+                'errors' => [
+                    'required' => 'Tienes que elegir una categoria para el producto',
+                    'is_not_unique' => 'La categoria no existe'
+                    ]
+                ],
+                //IMG es el NAME del INPUT donde cargamos la IMAGEN
+            'img' => [
+                'rules' => 'uploaded[img]|mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,1024]',
+                'errors' => [
+                    'uploaded' => 'Tienes que subir una imagen',
+                    'mime_in' => 'Formato de imagen invalido, sólo subir(jpg/png)',
+                    'max_size' => 'Archivo muy pesado, sólo hasta 1024MB',
+                ]
+            ]
+        ]);
+
+        //Array
+        $data = [
+            'validation'=> $this->validator,
+            'categorias' => $datosCategoria->findAll(),
+        ];
+
+
+
+        if(!$validacion)
+        {
+            return view('productos/crear', $data);
+        }
+
+        if($imagen = $this->request->getFile('img'))
+        {
+
+            $nombre = $this->request->getPost('nombre');
+            $precio = $this->request->getPost('precio');
+            $cantidad = $this->request->getPost('cantidad');
+            $categoria = $this->request->getPost('categoria');
+            $imagen = $this->request->getFile('img');
+            $descripcion = $this->request->getPost('descripcion');
+            $estado = $this->request->getPost('estado');
+            
+            
+            $nuevoNombre = $imagen->getRandomName();
+            $imagen->move('assets/img/magicshopctes/productos/uploads',$nuevoNombre);
+            
+            $datos = [
+                'nombre_producto' => $nombre,
+                'descripcion_producto' => $descripcion,
+                'precio' => $precio,
+                'cantidad' => $cantidad,
+                'url_imagen' => $nuevoNombre,
+                'activo' => $estado,
+                'id_categoria' => $categoria
+            ];
+            $productos = new ProductoModel();
+    
+            $productos->insert($datos);
+        
+            return redirect()->to(route_to('productosOn'))->with('success', 'Producto cargado correctamente!');
+        }else
+        {
+
+            return redirect()->back()->with('fail', 'Error al intentar insertar datos en la BD');
+        }
+
+
+    }
+
+    public function borrarProducto($id=null)
+    {
+        $producto = new ProductoModel();
+        $datos = [
+            'activo' => 0,
+        ];
+        $producto->where('id_producto', $id)->update($id,$datos);
+
+
+        return redirect()->to(route_to('productosOn'))->with('success', 'El producto fue DESACTIVADO correctamente!');
+    }
+    public function activarProducto($id=null)
+    {
+        $producto = new ProductoModel();
+        $datos = [
+            'activo' => 1,
+        ];
+        $producto->where('id_producto', $id)->update($id,$datos);
+
+
+        return redirect()->to(route_to('productosOff'))->with('success', 'El producto fue ACTIVADO correctamente!');
+    }
+
+    public function editarProducto($id=null)
+    {
+        //Creamos el objeto de la Tabla Usuarios
+        $datosUsuarios = new UsuarioModel();
+        $datosPersona = new PersonaModel();
+        $productos = new ProductoModel();
+        $datosCategoria = new CategoriasModel();
+
+        //Capturamos el ID del logueo del usuario reciente
+        $id_persona_logueada = session()->get('loggedUser');
+
+        $info_usuario = $datosUsuarios->where('id_persona',$id_persona_logueada)->first();
+        $info_persona = $datosPersona->find($id_persona_logueada);
+        $DatosProductos = $productos->where('id_producto', $id)->first();
+        
+
+        $datos = [
+            //Registro del usuario logueado
+            'infoPersonaLog' => $info_persona,
+            'infoUsuario' => $info_usuario,
+            'producto' => $DatosProductos,
+            'categorias' => $datosCategoria->findAll(),
+            'categoriaEditar' => $datosCategoria->where('id_categoria',$DatosProductos['id_categoria'])->first()
+        ];
+
+        
+        return view('productos/editar',$datos);
+    }
+
+    public function actualizarProducto($id=null)
+    {
+        $producto = new ProductoModel();
+
+        $id = $this->request->getVar('id');
+        $nombre = $this->request->getPost('nombre');
+        $precio = $this->request->getPost('precio');
+        $cantidad = $this->request->getPost('cantidad');
+        $categoria = $this->request->getPost('categoria');
+        $imagen = $this->request->getFile('img');
+        $descripcion = $this->request->getPost('descripcion');
+        $estado = $this->request->getPost('estado');
+
+
+        $validacion = $this->validate([
+            'nombre' => [
+                'rules' => 'required|max_length[50]',
+                'errors' => [
+                    'required' => 'Tienes que ingresar un nombre al producto',
+                    'max_length' => 'El nombre del producto es muy largo'
+                    ]
+                ],
+            'precio' => [
+                'rules' => 'required|max_length[12]',
+                'errors' => [
+                    'required' => 'Tienes que ingresar un precio al producto',
+                    'max_length' => 'El precio del producto es muy largo'
+                    ]
+                ],
+            'cantidad' => [
+                'rules' => 'required|max_length[11]',
+                'errors' => [
+                    'required' => 'Tienes que ingresar una cantidad al producto',
+                    'max_length' => 'La cantidad del producto es muy largo'
+                    ]
+                ],
+            'categoria' => [
+                'rules' => 'required|is_not_unique[categorias.id_categoria]',
+                'errors' => [
+                    'required' => 'Tienes que elegir una categoria para el producto',
+                    'is_not_unique' => 'La categoria no existe'
                     ]
                 ],
                 //IMG es el NAME del INPUT donde cargamos la IMAGEN
@@ -72,115 +311,32 @@ class ProductoController extends BaseController
         ]);
 
 
-
-        if(!$validacion)
-        {
-            return view('productos/crear', ['validation'=>$this->validator]);
-        }
-
-        if($imagen = $this->request->getFile('img'))
-        {
-
-            $nombre = $this->request->getPost('nombre');
-            $imagen = $this->request->getFile('img');
-            
-            $nuevoNombre = $imagen->getRandomName();
-            $imagen->move('assets/img/magicshopctes/productos/uploads',$nuevoNombre);
-            
-            $datos = [
-                'nombre' => $nombre,
-                'imagen' => $nuevoNombre
+        $datos = [
+                'nombre_producto' => $nombre,
+                'descripcion_producto' => $descripcion,
+                'precio' => $precio,
+                'cantidad' => $cantidad,
+                'activo' => $estado,
+                'id_categoria' => $categoria
             ];
-            $productos = new ProductoModel();
-    
-            $productos->insert($datos);
-        
-            return redirect()->to(route_to('productos'))->with('success', 'Producto cargado correctamente!');
-        }else
-        {
-
-            return redirect()->back()->with('fail', 'Error al intentar insertar datos en la BD');
-        }
-
-
-    }
-
-    public function borrarProducto($id=null)
-    {
-        $producto = new ProductoModel();
-        $datosProducto = $producto->where('id',$id)->first();
-
-        $ruta = ('assets/img/magicshopctes/productos/uploads/'.$datosProducto['imagen']);
-        unlink($ruta);
-
-        $producto->where('id', $id)->delete($id);
-
-        return redirect()->to(route_to('productos'))->with('success', 'Producto borrado correctamente!');
-    }
-
-    public function editarProducto($id=null)
-    {
-        //Creamos el objeto de la Tabla Usuarios
-        $datosUsuarios = new UsuarioModel();
-        
-        //Creamos el objeto de la Tabla Productos
-        $productos = new ProductoModel();
-
-        //Capturamos el ID del logueo del usuario reciente
-        $id_usuario_logueado = session()->get('loggedUser');
-
-        //Buscamos en el objeto al usuario logueado
-        $info_usuario = $datosUsuarios->find($id_usuario_logueado);
-
-        
-        $DatosProductos = $productos->where('id', $id)->first();
-
-        $datos = [
-            //Registro del usuario logueado
-            'infoUsuarioLog' => $info_usuario,
-            'producto' => $DatosProductos
-        ];
-
-        
-        return view('productos/editar',$datos);
-    }
-//FALTAN VALIDACIONES
-    public function actualizarProducto($id=null)
-    {
-        $producto = new ProductoModel();
-
-        $nombre = $this->request->getPost('nombre');
-        $id = $this->request->getVar('id');
-
-        $datos = [
-            'nombre' => $nombre
-        ];
 
         $producto->update($id,$datos);
-
-        $validacion = $this->validate([
-            'imagen' => [
-                'uploaded[imagen]',
-                'mime_in[imagen,image/jpg,image/jpeg,image/png]',
-                'max_size[imagen,1024]'
-            ]
-            ]);
         
 
         if($validacion)
         {
-            if($imagen = $this->request->getFile('imagen'))
+            if($imagen = $this->request->getFile('img'))
             {
-                $datosProducto=$producto->where('id',$id)->first();
-
-                $ruta = ('assets/img/magicshopctes/productos/uploads/'.$datosProducto['imagen']);
+                //Obtenemos el producto con el ID escondido del formulario
+                $datosProducto=$producto->where('id_producto',$id)->first();
+                $ruta = ('assets/img/magicshopctes/productos/uploads/'.$datosProducto['url_imagen']);
                 unlink($ruta);
                 
                 $nuevoNombre = $imagen->getRandomName();
                 $imagen->move('assets/img/magicshopctes/productos/uploads',$nuevoNombre);
                 
                 $datos = [
-                    'imagen' => $nuevoNombre
+                    'url_imagen' => $nuevoNombre
                 ];
         
                 $producto->update($id,$datos);
@@ -189,7 +345,92 @@ class ProductoController extends BaseController
             
             
         }
-        return redirect()->to(route_to('productos'))->with('success', 'Producto actualizado correctamente!');
+        return redirect()->to(route_to('productosOn'))->with('success', 'Producto actualizado correctamente!');
+    }
+
+    public function carrito($id=null)
+    {
+        $producto = new ProductoModel();
+        $elegido = $producto->where('id_producto', $id)->first();
+
+        if(session()->get('productos') == null)
+        {
+            $total = array();
+            $productoElegido = array('id' => $id, 'cantidad' => 1);
+            array_push($total, $productoElegido);
+            $datos = [
+                'cantidad' => $elegido['cantidad'] - $productoElegido['cantidad'],
+            ];
+            
+            $asociar = [
+                'productos' => $total,
+            ];
+            session()->set(array_merge(session()->get(),$asociar));
+        }else
+        {
+            $total = session()->get('productos');
+            $productoElegido = array('id' => $id, 'cantidad' => 1);
+            array_push($total, $productoElegido);
+            $datos = [
+                'cantidad' => $elegido['cantidad'] - $productoElegido['cantidad'],
+            ];
+            $asociar = [
+                'productos' => $total,
+            ];
+            session()->set(array_merge(session()->get(),$asociar));
+        }
+        //dd($elegido['cantidad'] - $productoElegido['cantidad']);
+        
+        $producto->where('id_producto', $id)->update($id,$datos);
+
+
+        return redirect()->to(route_to('catalogo'))->with('success', 'Agregado al carrito');
+        
+    }
+    public function vaciarCarrito($id=null)
+    {
+
+        $producto = new ProductoModel();
+        $elegido = $producto->where('id_producto', $id)->first();
+        $datos = [
+            'cantidad' => $elegido['cantidad'] + 1,
+        ];
+
+        $arrayViejo = session()->get('productos');
+
+        for($x = 0; $x < count($arrayViejo); $x++) 
+        {
+            if($arrayViejo[$x]['id'] == $id)
+            {
+                unset($arrayViejo[$x]);
+                break;
+            }
+            echo $arrayViejo[$x]['id'];
+            echo "<br>";
+        }
+        $arrayViejo = array_values($arrayViejo);
+        
+        
+        
+
+        $asociar = [
+            'productos' => $arrayViejo,
+        ];
+        $producto->where('id_producto', $id)->update($id,$datos);
+        session()->remove('productos');
+        session()->set(array_merge(session()->get(),$asociar));
+
+        return redirect()->to(route_to('carritoCompras'))->with('success', '1 producto se ha sacado de la lista');
+    }
+
+    public function indexCompras()
+    {
+        $productos = new ProductoModel();
+        $data = [
+            'productosBD' => $productos->where('activo', 1)->findAll()
+        ];
+
+        return view('carritoCompras', $data);
     }
 
 }

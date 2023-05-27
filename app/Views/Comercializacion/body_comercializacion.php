@@ -10,11 +10,12 @@ Comercializacion
 <section class="container">
 
   <!-- CABECERA -->
-  <div class="row mt-3 text-center justify-content-center">
-    <h2>Información</h2>
-  </div>
-
-  <hr>
+  <div class="row text-center">
+      <div class="col">
+          <p class="seccion-descripcion fs-1">Información</p>
+          <hr>
+        </div>
+    </div>
 
   <!-- LISTA COMO COMPRAR -->
   <div class="row justify-content-center m-2">
