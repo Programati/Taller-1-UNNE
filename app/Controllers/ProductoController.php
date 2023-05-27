@@ -379,7 +379,6 @@ class ProductoController extends BaseController
             ];
             session()->set(array_merge(session()->get(),$asociar));
         }
-        //dd($elegido['cantidad'] - $productoElegido['cantidad']);
         
         $producto->where('id_producto', $id)->update($id,$datos);
 
@@ -387,6 +386,7 @@ class ProductoController extends BaseController
         return redirect()->to(route_to('catalogo'))->with('success', 'Agregado al carrito');
         
     }
+
     public function vaciarCarrito($id=null)
     {
 
@@ -421,6 +421,31 @@ class ProductoController extends BaseController
         session()->set(array_merge(session()->get(),$asociar));
 
         return redirect()->to(route_to('carritoCompras'))->with('success', '1 producto se ha sacado de la lista');
+    }
+    
+    public function vacioTotalCarrito()
+    {
+
+        $producto = new ProductoModel();
+        $arrayViejo = session()->get('productos');
+
+        
+        for($x = 0; $x < count($arrayViejo); $x++) 
+        {
+            $elegido = $producto->where('id_producto', $arrayViejo[$x]['id'])->first();
+            $datos = [
+                'cantidad' => $elegido['cantidad'] + 1,
+            ];
+            $producto->where('id_producto', $arrayViejo[$x]['id'])->update($arrayViejo[$x]['id'],$datos);
+        }
+
+        $asociar = [
+            'productos' => '',
+        ];
+        session()->remove('productos');
+        session()->set(array_merge(session()->get(),$asociar));
+
+        return redirect()->to(route_to('carritoCompras'))->with('success', 'Todos los productos fueron quitados');
     }
 
     public function indexCompras()

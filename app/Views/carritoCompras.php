@@ -91,6 +91,13 @@
                 <h5>Total</h5>
             </div>
         </div>
+        <div class="row">
+            <div class="col d-flex flex-row-reverse">
+                <a href="<?=base_url('vacioTotalCarrito') ?>" class="btn btn-danger " type="button">
+                    <i class="bi bi-x-octagon">Vaciar todo</i>
+                </a>
+            </div>
+        </div>
         <?php else:?>
         <div class="row row-cols-1 d-flex justify-content-center">
             <div class="col">

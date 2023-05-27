@@ -4,6 +4,7 @@ use CodeIgniter\Controller;
 use App\Models\UsuarioModel;
 use App\Models\PersonaModel;
 use App\Models\DomicilioModel;
+use App\Models\ProductoModel;
 
 use App\Libraries\Hash;
 
@@ -338,6 +339,18 @@ class AuthController extends BaseController
         //Si hemos registrado una sesion
         if(session()->has('loggedUser'))
         {
+            //Primero devolvemos todos los productos
+            $producto = new ProductoModel();
+            $arrayViejo = session()->get('productos');
+            for($x = 0; $x < count($arrayViejo); $x++) 
+            {
+                $elegido = $producto->where('id_producto', $arrayViejo[$x]['id'])->first();
+                $datos = [
+                    'cantidad' => $elegido['cantidad'] + 1,
+                ];
+                $producto->where('id_producto', $arrayViejo[$x]['id'])->update($arrayViejo[$x]['id'],$datos);
+            }
+
             //Removemos la sesion
             //session()->remove('loggedUser');
             session()->destroy();
