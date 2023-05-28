@@ -32,40 +32,13 @@ class ProductoController extends BaseController
     }
     public function productosDesactivados()
     {
-        //Creamos el objeto de la Tabla Usuarios
-        $datosUsuarios = new UsuarioModel();
-        $datosPersona = new PersonaModel();
-
-        //$datosCategoria = new CategoriasModel();
-
         //Creamos el objeto de la Tabla Productos
         $productos = new ProductoModel();
-
-        //Capturamos el ID del logueo del usuario reciente
-        $id_persona_logueada = session()->get('loggedUser');
-
-        //Si está logueada buscamos su ROL
-        if(session()->get('loggedUser'))
-        {
-            //Buscamos en el objeto USUARIO el ID de la persona => Se convierte en un Array
-            $info_usuario = $datosUsuarios->where('id_persona',$id_persona_logueada)->first();
-        }else
-        {
-            //SINO mandamos 0
-            $info_usuario = 0;
-        }
-
-        //Buscamos en el usuario logueado
-        $info_persona = $datosPersona->find($id_persona_logueada);
 
         //Ponemos en una varaible todos los productos de la tabla PRODUCTOS
         $DatosProductos = $productos->orderBy('id_producto', 'ASC')->where('activo', 0)->findAll();
 
-        //Array con 2 tipos de OBJETOS
         $data = [
-            //Registro del usuario logueado
-            'infoPersonaLog' => $info_persona,
-            'infoUsuario' => $info_usuario,
             //Registros de todos los productos
             'productos' => $DatosProductos
         ];
@@ -75,33 +48,9 @@ class ProductoController extends BaseController
     
     public function crearProducto()
     {
-        
-        $datosUsuarios = new UsuarioModel();
-        $datosPersona = new PersonaModel();
         $datosCategoria = new CategoriasModel();
 
-        //Capturamos el ID del logueo del usuario reciente
-        $id_persona_logueada = session()->get('loggedUser');
-
-        //Si está logueada buscamos su ROL
-        if(session()->get('loggedUser'))
-        {
-            //Buscamos en el objeto USUARIO el ID de la persona => Se convierte en un Array
-            $info_usuario = $datosUsuarios->where('id_persona',$id_persona_logueada)->first();
-        }else
-        {
-            //SINO mandamos 0
-            $info_usuario = 0;
-        }
-
-        //Buscamos en el usuario logueado
-        $info_persona = $datosPersona->find($id_persona_logueada);
-
-        //Array con 2 tipos de OBJETOS
         $data = [
-            //Registro del usuario logueado
-            'infoPersonaLog' => $info_persona,
-            'infoUsuario' => $info_usuario,
             'categorias' => $datosCategoria->findAll(),
         ];
         return view('productos/crear', $data);
@@ -153,7 +102,6 @@ class ProductoController extends BaseController
             ]
         ]);
 
-        //Array
         $data = [
             'validation'=> $this->validator,
             'categorias' => $datosCategoria->findAll(),
@@ -215,6 +163,7 @@ class ProductoController extends BaseController
 
         return redirect()->to(route_to('productosOn'))->with('success', 'El producto fue DESACTIVADO correctamente!');
     }
+
     public function activarProducto($id=null)
     {
         $producto = new ProductoModel();
@@ -223,30 +172,18 @@ class ProductoController extends BaseController
         ];
         $producto->where('id_producto', $id)->update($id,$datos);
 
-
         return redirect()->to(route_to('productosOff'))->with('success', 'El producto fue ACTIVADO correctamente!');
     }
 
     public function editarProducto($id=null)
     {
-        //Creamos el objeto de la Tabla Usuarios
-        $datosUsuarios = new UsuarioModel();
-        $datosPersona = new PersonaModel();
         $productos = new ProductoModel();
         $datosCategoria = new CategoriasModel();
 
-        //Capturamos el ID del logueo del usuario reciente
-        $id_persona_logueada = session()->get('loggedUser');
-
-        $info_usuario = $datosUsuarios->where('id_persona',$id_persona_logueada)->first();
-        $info_persona = $datosPersona->find($id_persona_logueada);
         $DatosProductos = $productos->where('id_producto', $id)->first();
         
 
         $datos = [
-            //Registro del usuario logueado
-            'infoPersonaLog' => $info_persona,
-            'infoUsuario' => $info_usuario,
             'producto' => $DatosProductos,
             'categorias' => $datosCategoria->findAll(),
             'categoriaEditar' => $datosCategoria->where('id_categoria',$DatosProductos['id_categoria'])->first()
@@ -382,9 +319,7 @@ class ProductoController extends BaseController
         
         $producto->where('id_producto', $id)->update($id,$datos);
 
-
         return redirect()->to(route_to('catalogo'))->with('success', 'Agregado al carrito');
-        
     }
 
     public function vaciarCarrito($id=null)
@@ -409,9 +344,6 @@ class ProductoController extends BaseController
             echo "<br>";
         }
         $arrayViejo = array_values($arrayViejo);
-        
-        
-        
 
         $asociar = [
             'productos' => $arrayViejo,
@@ -429,7 +361,6 @@ class ProductoController extends BaseController
         $producto = new ProductoModel();
         $arrayViejo = session()->get('productos');
 
-        
         for($x = 0; $x < count($arrayViejo); $x++) 
         {
             $elegido = $producto->where('id_producto', $arrayViejo[$x]['id'])->first();

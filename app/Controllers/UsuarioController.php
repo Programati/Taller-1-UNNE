@@ -6,42 +6,8 @@ use CodeIgniter\Controller;
 use App\Models\UsuarioModel;
 use App\Models\PersonaModel;
 
-class HomeController extends BaseController
+class UsuarioController extends BaseController
 {
-    public function __construct()
-    {
-        helper(['form', 'url']);
-    }
-
-    public function index()
-    {
-        //Creamos el objeto de la Tabla Usuarios
-        $datosUsuarios = new UsuarioModel();
-        $datosPersona = new PersonaModel();
-
-        //Capturamos el ID del logueo de la PERSONA reciente
-        $id_persona_logueada = session()->get('loggedUser');
-
-        if(session()->has('loggedUser'))
-        {
-            //Buscamos en el objeto USUARIO el ID de la persona => Se convierte en un Array
-            $info_usuario = $datosUsuarios->where('id_persona',$id_persona_logueada)->first();
-            //Buscamos en el objeto a la PERSONA logueada
-            $info_persona = $datosPersona->find($id_persona_logueada);
-            session()->set(array_merge(session()->get(),$info_usuario,$info_persona));
-        }else
-        {
-            $info_usuario = 0;
-            $info_persona = 0;
-        }
-
-        $data = [
-            //Registro de la PERSONA logueada
-            'infoPersonaLog' => $info_persona,
-            'infoUsuario' => $info_usuario,
-        ];
-        return view('inicio/bodyPrincipal', $data);
-    }
 
     public function usuariosActivos()
     {

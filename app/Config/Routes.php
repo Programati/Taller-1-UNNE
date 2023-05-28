@@ -53,8 +53,12 @@ $routes->post('signin', 'AuthController::check', ['as' => 'controlUsuario']);
 $routes->group('',['filter'=>'VerificarAdmin'], function($routes)
 {
     //Agregamos todas las rutas que querramos proteger con el filtro
-    $routes->get('usuariosOn', 'HomeController::usuariosActivos');
-    $routes->get('usuariosOff', 'HomeController::usuariosInActivos');
+    $routes->get('usuariosOn', 'UsuarioController::usuariosActivos');
+    $routes->get('usuariosOff', 'UsuarioController::usuariosInActivos');
+    //BorrarPersona
+    $routes->get('deleteP(:num)', 'UsuarioController::bajaPersona/$1');
+    //Activar Persona
+    $routes->get('activarP(:num)', 'UsuarioController::altaPersona/$1');
 
     //Listar Productos
     $routes->get('productosOn', 'ProductoController::index');
@@ -72,6 +76,7 @@ $routes->group('',['filter'=>'VerificarAdmin'], function($routes)
     $routes->get('activar(:num)', 'ProductoController::activarProducto/$1');
     //Editar
     $routes->get('editar(:num)', 'ProductoController::editarProducto/$1');
+
 
     
 

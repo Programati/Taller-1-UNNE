@@ -17,35 +17,63 @@
         </div>
         
         <div class="row">
-
             
-            <?php foreach($infoPersona as $key){?>
-                <div class="col d-flex">
-                
-                    <div class="card mb-3" style="max-width: 540px;">
-
-                        <div class="row g-0">
-
-                            <div class="col-md-4">
-                                <img src="assets/img/magicshopctes/staff/hombre_1.png" class="img-fluid rounded-start" alt="usuarios">
-                            </div>
-
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Mi id es: <?= $key['id_persona']?></h5>
-                                    <p class="card-text">
-                                    Mi rol es: <?=$key['id_rol']?> EN LA BD.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Valor de ACTIVO: <?= $key['activo']?></small></p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                        
+            <div class="col">
+            <?php if(session()->get('success')): ?>
+    
+                <div class="alert alert-success my-3" role="alert">
+                    <?=session()->get('success')?>
                 </div>
-            <?php };?>
-            
+
+            <?php endif; ?> 
+
+                <div class="table-responsive">
+                    <table class="table table-light">
+                    <thead class="thead table-secondary">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre y Apellido</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                            <th>Opcion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($infoUsuario as $x) {?>
+                            <?php foreach($infoPersona as $key){?>
+                                <?php if($key['id_persona'] == $x['id_persona']):?>
+
+                            <tr>
+                                <td><?=$key['id_persona']?></td>
+                                <td><?=$key['nombre']." ".$key['apellido']?></td>
+                                <td><?=$key['telefono']?></td>
+                                <td><?=$key['email']?></td>
+                                <td>
+                                <?php if($x['activo'] == 1):?>
+                                    <a href="<?=base_url('deleteP'.$x['id_persona']) ?>" class="btn btn-danger" type="button">
+                                        <i class="bi bi-x-circle">Dar Baja</i>
+                                    </a>
+                                <?php else:?>
+                                    <a href="<?=base_url('activarP'.$x['id_persona']) ?>" class="btn btn-success" type="button">
+                                    <i class="bi bi-check-circle">Dar Alta</i>
+                                    </a>
+                                <?php endif;?>
+                                </td>
+                            </tr>
+                        
+                            <?php endif;?>
+                        
+                        <?php };?>
+                                    
+                    <?php };?>
+
+
+                    </tbody>
+                    </table>
+                </div>
+                    
+            </div>
+
         </div>
 
     </div>

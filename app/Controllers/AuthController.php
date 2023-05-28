@@ -20,8 +20,6 @@ class AuthController extends BaseController
 
         //Archivo para asignar el Tipo de USUARIO APP\CONFIG->AsignarUsuario
         $this->configs = config('AsignarRolUsuario');
-
-        
     }
 
     //PANTALLA DE LOGUEO
@@ -323,7 +321,6 @@ class AuthController extends BaseController
                     'loggedUser' => $informacion_persona_logueada['id_persona'],
                     'productos' => '',
                 ];
-                //session()->set('loggedUser', $id_persona);
                 session()->set($DatosLogin);
 
                 return redirect()->to(route_to('/'))->with('success', 'Iniciaste sesion');
