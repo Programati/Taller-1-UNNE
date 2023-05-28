@@ -267,11 +267,12 @@ class AuthController extends BaseController
 
         $validacion = $this->validate([
             'email' => [
-                'rules' => 'required|valid_email|is_not_unique[personas.email]',
+                'rules' => 'required|valid_email|is_not_unique[personas.email]|email_estado[personas.email]',
                 'errors' => [
                     'required' => 'Introdusca un correo electronico',
                     'valid_email' => 'Introdusca un formato de correo electronico válido',
-                    'is_not_unique' => 'Su correo no está registrado'
+                    'is_not_unique' => 'Su correo no está registrado',
+                    'email_estado' => 'Su correo está dado de baja',
                     ]
                 ],
             'password' => [
@@ -339,16 +340,22 @@ class AuthController extends BaseController
         //Si hemos registrado una sesion
         if(session()->has('loggedUser'))
         {
-            //Primero devolvemos todos los productos
-            $producto = new ProductoModel();
-            $arrayViejo = session()->get('productos');
-            for($x = 0; $x < count($arrayViejo); $x++) 
+            //dd();
+            if(session()->get('productos') != null)
             {
-                $elegido = $producto->where('id_producto', $arrayViejo[$x]['id'])->first();
-                $datos = [
-                    'cantidad' => $elegido['cantidad'] + 1,
-                ];
-                $producto->where('id_producto', $arrayViejo[$x]['id'])->update($arrayViejo[$x]['id'],$datos);
+
+                //Primero devolvemos todos los productos
+                $producto = new ProductoModel();
+                $arrayViejo = session()->get('productos');
+                for($x = 0; $x < count($arrayViejo); $x++) 
+                {
+                    $elegido = $producto->where('id_producto', $arrayViejo[$x]['id'])->first();
+                    $datos = [
+                        'cantidad' => $elegido['cantidad'] + 1,
+                    ];
+                    $producto->where('id_producto', $arrayViejo[$x]['id'])->update($arrayViejo[$x]['id'],$datos);
+                }
+
             }
 
             //Removemos la sesion
