@@ -3,10 +3,15 @@
 <nav class="navbar navbar-expand-md sticky-top shadow">
     <!-- Contenedor interno de la barra -->
     <div class="container">
-
-      <a class="navbar-brand text-white fs-1"  href="<?php echo base_url('/'); ?>"><!-- LOGO/NOMBRE EMPRESA-->
-          <span class="magic letrasLogo">Magic</span><span class="shop letrasLogo">Shop</span>
-      </a>
+      <?php if(session()->has('loggedUser') && session()->get('id_rol') == 1):?>
+        <a class="navbar-brand text-white fs-1"  href="<?php echo base_url('dashboard'); ?>"><!-- LOGO/NOMBRE EMPRESA-->
+            <span class="magic letrasLogo">Magic</span><span class="shop letrasLogo">Shop</span>
+        </a>
+      <?php else:?>
+        <a class="navbar-brand text-white fs-1"  href="<?php echo base_url('/'); ?>"><!-- LOGO/NOMBRE EMPRESA-->
+            <span class="magic letrasLogo">Magic</span><span class="shop letrasLogo">Shop</span>
+        </a>
+      <?php endif;?>
         <!-- Boton que se va a mostrar en los dispositivos pequeños -->
       <button class="navbar-toggler btn btn-outline-light active" type="button" data-bs-toggle="collapse" data-bs-target="#deplegarMenu" aria-controls="deplegarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

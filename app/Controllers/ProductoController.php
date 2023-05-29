@@ -7,6 +7,8 @@ use App\Models\UsuarioModel;
 use App\Models\PersonaModel;
 use App\Models\ProductoModel;
 use App\Models\CategoriasModel;
+use App\Models\FacturaModel;
+use App\Models\DetalleFacturaModel;
 
 class ProductoController extends BaseController
 {
@@ -292,9 +294,14 @@ class ProductoController extends BaseController
 
         if(session()->get('productos') == null)
         {
+            //Creamos un arreglo vacio contenedor
             $total = array();
-            $productoElegido = array('id' => $id, 'cantidad' => 1);
+            //Creamos un arreglo con el producto añadido al carrito
+            //$productoElegido = array('id' => $id, 'cantidad' => 1);
+            $productoElegido = array('id' => $id, 'cantidad' => 1, 'subTotal' => $elegido['precio']);
+            //Metemos al arreglo contenedor el arreglo añadido al carrito
             array_push($total, $productoElegido);
+            //Descontamos 1 al producto en stock
             $datos = [
                 'cantidad' => $elegido['cantidad'] - $productoElegido['cantidad'],
             ];
@@ -302,11 +309,13 @@ class ProductoController extends BaseController
             $asociar = [
                 'productos' => $total,
             ];
+            //Metemos el array asociadito productos a la sesion
             session()->set(array_merge(session()->get(),$asociar));
         }else
         {
             $total = session()->get('productos');
-            $productoElegido = array('id' => $id, 'cantidad' => 1);
+            //$productoElegido = array('id' => $id, 'cantidad' => 1);
+            $productoElegido = array('id' => $id, 'cantidad' => 1, 'subTotal' => $elegido['precio']);
             array_push($total, $productoElegido);
             $datos = [
                 'cantidad' => $elegido['cantidad'] - $productoElegido['cantidad'],
@@ -314,10 +323,38 @@ class ProductoController extends BaseController
             $asociar = [
                 'productos' => $total,
             ];
+            //dd($total);
             session()->set(array_merge(session()->get(),$asociar));
         }
-        
+        //Actualizamos la cantidad del producto con la variable $datos=(cantidadEnLaBD - 1)
         $producto->where('id_producto', $id)->update($id,$datos);
+
+        //Ordenamos el arreglo productos
+        $result = array();
+        $PrecioTotal = 0;
+        foreach(session()->get('productos') as $t) 
+        {
+            $repeat=false;
+            for($i=0;$i<count($result);$i++)
+            {
+                if($result[$i]['id']==$t['id'])
+                {
+                    $result[$i]['cantidad']+=$t['cantidad'];
+                    $result[$i]['subTotal']+=$t['subTotal'];
+                    $repeat=true;
+                    break;
+                }
+            }
+            if($repeat==false)
+                $result[] = array('id' => $t['id'], 'cantidad' => $t['cantidad'], 'subTotal' => $t['subTotal']);
+                $PrecioTotal = $PrecioTotal + $t['subTotal'];
+        }
+        $asociar = [
+            'productosOrdenados' => $result,
+            'SumaPrecioProductos' => $PrecioTotal,
+        ];
+        //Creamos y Actualizamos un arreglo nuevo con los productos ordenados
+        session()->set(array_merge(session()->get(),$asociar));
 
         return redirect()->to(route_to('catalogo'))->with('success', 'Agregado al carrito');
     }
@@ -352,6 +389,33 @@ class ProductoController extends BaseController
         session()->remove('productos');
         session()->set(array_merge(session()->get(),$asociar));
 
+        //Ordenamos el arreglo productos
+        $result = array();
+        $PrecioTotal = 0;
+        foreach(session()->get('productos') as $t) 
+        {
+            $repeat=false;
+            for($i=0;$i<count($result);$i++)
+            {
+                if($result[$i]['id']==$t['id'])
+                {
+                    $result[$i]['cantidad']+=$t['cantidad'];
+                    $result[$i]['subTotal']+=$t['subTotal'];
+                    $repeat=true;
+                    break;
+                }
+            }
+            if($repeat==false)
+                $result[] = array('id' => $t['id'], 'cantidad' => $t['cantidad'], 'subTotal' => $t['subTotal']);
+                $PrecioTotal = $PrecioTotal + $t['subTotal'];
+        }
+        $asociar = [
+            'productosOrdenados' => $result,
+            'SumaPrecioProductos' => $PrecioTotal,
+        ];
+        //Creamos y Actualizamos un arreglo nuevo con los productos ordenados
+        session()->set(array_merge(session()->get(),$asociar));
+
         return redirect()->to(route_to('carritoCompras'))->with('success', '1 producto se ha sacado de la lista');
     }
     
@@ -360,7 +424,7 @@ class ProductoController extends BaseController
 
         $producto = new ProductoModel();
         $arrayViejo = session()->get('productos');
-
+        //Devolvemos producto x producto a la BD
         for($x = 0; $x < count($arrayViejo); $x++) 
         {
             $elegido = $producto->where('id_producto', $arrayViejo[$x]['id'])->first();
@@ -369,11 +433,12 @@ class ProductoController extends BaseController
             ];
             $producto->where('id_producto', $arrayViejo[$x]['id'])->update($arrayViejo[$x]['id'],$datos);
         }
-
+        //Ponemos en 0 a los array
         $asociar = [
             'productos' => '',
+            'productosOrdenados' => '',
+            'SumaPrecioProductos' => ''
         ];
-        session()->remove('productos');
         session()->set(array_merge(session()->get(),$asociar));
 
         return redirect()->to(route_to('carritoCompras'))->with('success', 'Todos los productos fueron quitados');
@@ -387,6 +452,41 @@ class ProductoController extends BaseController
         ];
 
         return view('carritoCompras', $data);
+    }
+    public function confirmarCompra()
+    {
+
+        $datosFactura = [
+            'id_usuario' => session()->get('id_usuario'),
+            'importe_total' => session()->get('SumaPrecioProductos'),
+        ];
+        //dd($datosFactura);
+
+        $factura = new FacturaModel();
+        $factura->save($datosFactura);
+        $ultimo_id = $factura->insertID();
+
+        foreach(session()->get('productosOrdenados') as $PO) 
+        {
+            $datosDetalleFactura = [
+                'id_factura' => $ultimo_id,
+                'id_producto' => $PO['id'],
+                'cantidad' => $PO['cantidad'],
+                'subTotal' => $PO['subTotal'],
+            ];
+            //dd($datosFactura,$datosDetalleFactura);
+            $detalleFactura = new DetalleFacturaModel();
+            $detalleFactura->save($datosDetalleFactura);
+        }
+        //Ponemos en 0 a los array
+        $asociar = [
+            'productos' => '',
+            'productosOrdenados' => '',
+            'SumaPrecioProductos' => ''
+        ];
+        session()->set(array_merge(session()->get(),$asociar));
+        
+        return redirect()->to(route_to('catalogo'))->with('success', 'Gracias por su compra!');
     }
 
 }

@@ -29,8 +29,8 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'HomeController::index');
 
+$routes->get('/', 'HomeController::index');
 $routes->get('quienes somos', 'QuienesSomosController::index', ['as' => "quienes_somos"]);
 $routes->get('comercializacion', 'ComercializacionController::index', ['as' => "comercializacion"]);
 $routes->get('contacto', 'ContactoController::index', ['as' => "contacto"]);
@@ -49,9 +49,12 @@ $routes->post('guardado', 'AuthController::guardarRegistro', ['as' => 'guardar']
 $routes->post('signin', 'AuthController::check', ['as' => 'controlUsuario']);
 
 
-//GRUPO DE LINKS donde hacemos que los que no estan logueados, tengan que loguearse para ver el contenido
+//GRUPO DE LINKS donde solo el ADMINISTRADOR puede ver
 $routes->group('',['filter'=>'VerificarAdmin'], function($routes)
 {
+    //Inicio Administracion
+    $routes->get('dashboard', 'HomeController::indexAdmin');
+
     //Agregamos todas las rutas que querramos proteger con el filtro
     $routes->get('usuariosOn', 'UsuarioController::usuariosActivos');
     $routes->get('usuariosOff', 'UsuarioController::usuariosInActivos');
@@ -107,6 +110,9 @@ $routes->group('',['filter'=>'VerificarAutenticacion'], function($routes)
     $routes->get('vaciarCarrito(:num)', 'ProductoController::vaciarCarrito/$1');
     //Vaciar Carrito Completo
     $routes->get('vacioTotalCarrito', 'ProductoController::vacioTotalCarrito');
+    
+    //ConfirmarCompra
+    $routes->get('confirmarCompra', 'ProductoController::confirmarCompra');
     
 
 });

@@ -237,8 +237,6 @@ class AuthController extends BaseController
                 'activo' => 1,
             ];
 
-            
-            
             //Asignamos el usuario normal
             //Guardamos los datos en dicho objeto y con "SAVE" lo metemos en la BD
             $query = $tablaUsuariosModelo->save($datosUsuario);
@@ -315,15 +313,18 @@ class AuthController extends BaseController
             }
             else//Si el usuario se loguea correctamente almacenamos su identificacion en la sesion
             {
-                
-                //$id_persona = $informacion_persona_logueada['id_persona'];
                 $DatosLogin = [
                     'loggedUser' => $informacion_persona_logueada['id_persona'],
                     'productos' => '',
                 ];
                 session()->set($DatosLogin);
-
-                return redirect()->to(route_to('/'))->with('success', 'Iniciaste sesion');
+                if($info_usuario_logueado['id_rol'] == 1)
+                {
+                    return redirect()->to(route_to('dashboard'))->with('success', 'Iniciaste sesion');
+                }else
+                {
+                    return redirect()->to(route_to('/'))->with('success', 'Iniciaste sesion');
+                };
 
             }
         }
@@ -337,10 +338,8 @@ class AuthController extends BaseController
         //Si hemos registrado una sesion
         if(session()->has('loggedUser'))
         {
-            //dd();
             if(session()->get('productos') != null)
             {
-
                 //Primero devolvemos todos los productos
                 $producto = new ProductoModel();
                 $arrayViejo = session()->get('productos');

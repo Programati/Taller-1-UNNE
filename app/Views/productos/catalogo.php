@@ -15,6 +15,13 @@ Catalogo
                 <hr>
             </div>
         </div>
+        <?php if(session()->get('success')): ?>
+    
+            <div class="alert alert-success my-3" role="alert">
+                <?=session()->get('success')?>
+            </div>
+
+        <?php endif; ?>
 
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 my-5 d-flex">
 
