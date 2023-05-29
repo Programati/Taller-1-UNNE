@@ -15,6 +15,10 @@ class FacturaModel extends Model
                                 'importe_total',
                             ];
 
+    protected $useTimestamps = true;
+    protected $createdField = 'fecha_factura';
+    protected $updatedField = 'fecha_updated';
+
 
 
 

@@ -91,118 +91,160 @@ Contacto
 
             <div class="card">
                 <div class="card-header">
-                    <p class="fs-3 text-center"><i class="bi bi-envelope-paper"></i>Contáctenos via correo</p>
+                    <p class="fs-3 text-center"><i class="bi bi-envelope-paper"></i>Contáctate con nosotros</p>
                 </div>
                 <div class="card-body">
                     <!-- <h5 class="card-title">Titulo</h5> -->
-                    <!-- <p class="card-text">Lorem ipsum dolor sit amet.</p> -->
-    
-                    <!-- FORMULARIO -->
-                    <form class="p-3" method="post" action="<?= base_url().route_to('envioMensaje') ?>">
-                        <!-- Nombre y Apellido -->
-                        <div class="row mb-3">
-                            <div class="col-12 col-lg-6">
-                                <div class="row mb-3">
-                                    <div class="col-12 col-md-4">
-                                        <label for="nombre" class="col-form-label">Nombre</label>
-                                    </div>
-                                    <div class="col-12 col-md-8">
-                                        <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre">
-                                    </div>
+                    
+                    <?php if(session()->has('loggedUser')):?>
+                        <!-- FORMULARIO PERSONAS LOGUEADAS-->
+                        <p class="card-text"><i class="bi bi-braces-asterisk"> </i>Recibirás una respuesta fiable y de calidad.</p>
+                        <p class="card-text"><i class="bi bi-braces-asterisk"> </i>Tu consulta será respondida en máximo 48hs.</p>
+                        <p class="card-text"><i class="bi bi-braces-asterisk"> </i>Checka tu correo, recibiras una notificación cuando te contestemos.</p>
+                        <form class="p-3" method="post" action="<?= base_url().route_to('envioMensaje') ?>">
+                            <!-- AREA DE MENSAJE -->
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <label for="mensaje" class="form-label">Mensaje</label>
                                 </div>
-                                
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="row mb-3">
-                                    <div class="col-12 col-md-4">
-                                        <label for="apellido" class="col-form-label">Apellido</label>
-                                    </div>
-                                    <div class="col-12 col-md-8">
-                                        <input type="text" class="form-control" placeholder="Apellido" id="apellido" name="apellido">
-                                    </div>
+                                <div class="col-12">
+                                    <textarea class="form-control" id="mensaje" rows="8" name="mensaje"></textarea>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Ciudad telefono -->
-                        <div class="row mb-3">
-                            <div class="col-12 col-lg-6">
-                                <div class="row mb-3">
-                                    <div class="col-12 col-md-4">
-                                        <label for="ciudad" class="col-form-label">Ciudad</label>
-                                    </div>
-                                    <div class="col-12 col-md-8">
-                                        <input type="text" class="form-control" placeholder="Ciudad" id="ciudad" name="ciudad">
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="row mb-3">
-                                    <div class="col-12 col-md-4">
-                                        <label for="telefono" class="col-form-label">Telefono</label>
-                                    </div>
-                                    <div class="col-12 col-md-8">
-                                        <input type="text" class="form-control" placeholder="+(54)" id="telefono" name="telefono">
-                                    </div>
+                            <!-- BOTON ENVIAR -->
+                            <div class="row mb-3">
+                                <div class="col">
+                                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#myModal">Enviar Pregunta</button>
                                 </div>
                             </div>
-                        </div>
-                        <!-- MAIL -->
-                        <div class="row mb-3">
-                            <div class="col-12 col-md-2">
-                                <label for="email" class="col-form-label">Email</label>
+            
+                            <!-- The Modal -->
+                            <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                            
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="staticBackdropLabel">Se ah enviado el mensaje</h4>
+                                    <button type="post" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                            
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Gracias por contactarnos!
+                                </div>
+                            
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="post" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            
+                                </div>
                             </div>
-                            <div class="col-12 col-md-10">
-                                <input type="email" class="form-control" id="email" placeholder="nombre@email.com" name="email">
                             </div>
-                        </div>
-                        <!-- AREA DE MENSAJE -->
-                        <div class="row mb-3">
-                            <div class="col-12">
-                                <label for="mensaje" class="form-label">Mensaje</label>
+                        </form>
+                    <?php else:?>
+                        <!-- FORMULARIO NORMAL-->
+                        <form class="p-3" method="post" action="<?= base_url().route_to('envioMensaje') ?>">
+                            <!-- Nombre y Apellido -->
+                            <div class="row mb-3">
+                                <div class="col-12 col-lg-6">
+                                    <div class="row mb-3">
+                                        <div class="col-12 col-md-4">
+                                            <label for="nombre" class="col-form-label">Nombre</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="row mb-3">
+                                        <div class="col-12 col-md-4">
+                                            <label for="apellido" class="col-form-label">Apellido</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <input type="text" class="form-control" placeholder="Apellido" id="apellido" name="apellido">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <textarea class="form-control" id="mensaje" rows="4" name="mensaje"></textarea>
+                            <!-- Ciudad telefono -->
+                            <div class="row mb-3">
+                                <div class="col-12 col-lg-6">
+                                    <div class="row mb-3">
+                                        <div class="col-12 col-md-4">
+                                            <label for="ciudad" class="col-form-label">Ciudad</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <input type="text" class="form-control" placeholder="Ciudad" id="ciudad" name="ciudad">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="row mb-3">
+                                        <div class="col-12 col-md-4">
+                                            <label for="telefono" class="col-form-label">Telefono</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <input type="text" class="form-control" placeholder="+(54)" id="telefono" name="telefono">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- BOTON ENVIAR -->
-                        <div class="row mb-3">
-                            <div class="col">
-                            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#myModal">Enviar</button>
+                            <!-- MAIL -->
+                            <div class="row mb-3">
+                                <div class="col-12 col-md-2">
+                                    <label for="email" class="col-form-label">Email</label>
+                                </div>
+                                <div class="col-12 col-md-10">
+                                    <input type="email" class="form-control" id="email" placeholder="nombre@email.com" name="email">
+                                </div>
                             </div>
-                        </div>
-        
-                        <!-- The Modal -->
-                        <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                        
-                              <!-- Modal Header -->
-                              <div class="modal-header">
-                                <h4 class="modal-title" id="staticBackdropLabel">Se ah enviado el mensaje</h4>
-                                <button type="post" class="btn-close" data-bs-dismiss="modal"></button>
-                              </div>
-                        
-                              <!-- Modal body -->
-                              <div class="modal-body">
-                                Gracias por contactarnos!
-                              </div>
-                        
-                              <!-- Modal footer -->
-                              <div class="modal-footer">
-                                <button type="post" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                              </div>
-                        
+                            <!-- AREA DE MENSAJE -->
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <label for="mensaje" class="form-label">Mensaje</label>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control" id="mensaje" rows="4" name="mensaje"></textarea>
+                                </div>
                             </div>
-                          </div>
-                        </div>
-                    </form>
-        
-                    <!-- <div class="formulario-contenedor container col-12 col-lg-6 mb-5">
-                        <div class="row mb-3">
-                            <p class="fs-3 text-center"><i class="bi bi-envelope-paper"></i>Contáctenos via correo</p>
-                        </div>
-                    </div> -->
+                            <!-- BOTON ENVIAR -->
+                            <div class="row mb-3">
+                                <div class="col">
+                                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#myModal">Enviar</button>
+                                </div>
+                            </div>
+            
+                            <!-- The Modal -->
+                            <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                            
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="staticBackdropLabel">Se ah enviado el mensaje</h4>
+                                    <button type="post" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                            
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Gracias por contactarnos!
+                                </div>
+                            
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="post" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+                    <?php endif;?>
                 
                 </div>
                 <div class="card-footer">Su consulta no nos molesta</div>
