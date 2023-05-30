@@ -110,10 +110,11 @@ $routes->group('',['filter'=>'VerificarAutenticacion'], function($routes)
     $routes->get('vaciarCarrito(:num)', 'ProductoController::vaciarCarrito/$1');
     //Vaciar Carrito Completo
     $routes->get('vacioTotalCarrito', 'ProductoController::vacioTotalCarrito');
-    
     //ConfirmarCompra
     $routes->get('confirmarCompra', 'ProductoController::confirmarCompra');
-    
+
+    //Factura
+    $routes->get('factura', 'FacturaController::index');
 
 });
 
