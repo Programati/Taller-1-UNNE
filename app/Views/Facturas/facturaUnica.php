@@ -2,19 +2,16 @@
 
 
 <?=$this->section('title')?>
-Facturas
+Factura <?=$facturaUsuario['id_factura']?>
 <?=$this->endSection()?>
 
 <?=$this->section('content')?>
 
-<?php if($facturaUsuario):?>
-
-    <?php for($i=0;$i<count($detalleFactura);$i++){?>
     <div class="container my-5">
 
         <div class="card">
             <div class="card-header">
-                FACTURA
+                Detalle completo de la Factura
             </div>
             <div class="card-body">
 
@@ -43,8 +40,8 @@ Facturas
                     </div>
                     <div class="col-12 col-md-5 text-md-end text-center order-3">
                         <h4>ORIGINAL</h4>
-                        <p>Número de factura: <?=$facturaUsuario[$i]['id_factura']?></p>
-                        <p>Fecha de emision: <?=$facturaUsuario[$i]['fecha_factura']?></p>
+                        <p>Número de factura: <?=$facturaUsuario['id_factura']?></p>
+                        <p>Fecha de emision: <?=$facturaUsuario['fecha_factura']?></p>
                         <p>MagicShop</p>
                         
                         <p>CUIT: 20-28717013-1</p>
@@ -64,8 +61,8 @@ Facturas
                     <div class="col-md-12">
                         <div class="row ">
                             <div class="col-12 d-flex justify-content-between">
-                                <p>Cliente:  <?=session()->get('nombre')?><?=" "?><?=session()->get('apellido')?></p>
-                                <p>Tel:  <?=session()->get('telefono')?></p>
+                                <p>Cliente: <?=$persona['nombre']." ",$persona['apellido']?></p>
+                                <p>Tel:  <?=$persona['telefono']?></p>
                                 <p>Dirección: <?=$domicilioUsuario['calle']." ",$domicilioUsuario['numero']." ",$domicilioUsuario['localidad']?></p>
                             </div>
                             <div class="col-12 d-flex justify-content-between">
@@ -86,23 +83,26 @@ Facturas
                                 <th>Descripción</th>
                                 <th>Cantidad</th>
                                 <th>Precio unitario</th>
-                                <th>Total</th>
+                                <th>Sub Total</th>
                             </tr>
                         </thead>
-                        <?php foreach ($detalleFactura[$i] as $key => $v) : ?>
+                        
+                        
+                        <?php foreach ($detalleFactura as $key => $v) : ?>
                         <tbody>
-                            <tr>
-                            <td><?=$v['nombre_producto']?></td>
-                            <td><?=$v['cantidad']?></td>
-                            <td>$<?=$v['subTotal']?></td>
-                            <td>$<?=(float)$v['cantidad']*(float)$v['subTotal']?></td>
-                            </tr>
+                                <tr>
+                                
+                                <td><?=$v['nombre_producto']?></td>
+                                <td><?=$v['cantidad']?></td>
+                                <td>$<?=$v['subTotal']?></td>
+                                <td>$<?=$v['cantidad']*(float)$v['subTotal']?></td>
+                                </tr>
                         </tbody>
                         <?php endforeach;?>
                         <tfoot>
-                            <tr>
+                            <tr class="fs-5 fw-bold">
                                 <td colspan="3" class="text-end">Total a pagar:</td>
-                                <td>$<?=$facturaUsuario[$i]['importe_total']?></td>
+                                <td>$<?=$facturaUsuario['importe_total']?></td>
                             </tr>
                             <tr>
                                 <td>Gracias por confiar en nosotros</td>
@@ -112,26 +112,13 @@ Facturas
                 </div>
                 
             </div>
+            <div class="card-footer">
+                <a href="<?= base_url('allFacturas')?>" class="btn btn-danger">
+                    <i class="bi bi-arrow-left-short">Volver</i>
+                </a>
+            </div>
         </div>    
 
     </div>
 
-    <?php };?>
-
-<?php else:?>
-    <div class="container">
-        <div class="row mt-5" style="height: 80vh">
-            <div class="col-12">
-                <h1>Aquí se mostraran las facturas de tus compras</h1>
-                <small>¡Miles de productos de esperan!, ve a la seccion catálogo</small>
-            </div>
-            <div class="col-12">
-                <a href="<?=base_url('catalogo') ?>" class="btn btn-primary" type="button">Catalogo</a>
-            </div>
-        </div>
-    </div>
-<?php endif;?>
-
-
-        
 <?=$this->endSection()?>

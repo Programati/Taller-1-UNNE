@@ -54,7 +54,7 @@ $routes->group('',['filter'=>'VerificarAdmin'], function($routes)
 {
     //Inicio Administracion
     $routes->get('dashboard', 'HomeController::indexAdmin');
-
+    
     //Agregamos todas las rutas que querramos proteger con el filtro
     $routes->get('usuariosOn', 'UsuarioController::usuariosActivos');
     $routes->get('usuariosOff', 'UsuarioController::usuariosInActivos');
@@ -80,6 +80,11 @@ $routes->group('',['filter'=>'VerificarAdmin'], function($routes)
     //Editar
     $routes->get('editar(:num)', 'ProductoController::editarProducto/$1');
 
+    //Todas las facturas
+    $routes->get('allFacturas', 'FacturaController::allFacturas');
+    
+    //1 sola Factura completa
+    $routes->get('facturaUnica(:num)', 'FacturaController::facturaUnica/$1');
 
     
 

@@ -6,6 +6,8 @@ use App\Models\FacturaModel;
 use App\Models\DetalleFacturaModel;
 use App\Models\DomicilioModel;
 use App\Models\ProductoModel;
+use App\Models\UsuarioModel;
+use App\Models\PersonaModel;
 
 class FacturaController extends BaseController
 {
@@ -52,5 +54,79 @@ class FacturaController extends BaseController
             'detalleFactura' => $detalleFacturaUsuario,
         ];
         return view('Facturas/factura', $data);
-    }        
+    }
+    
+    public function allFacturas()
+    {
+        $usuarios = new UsuarioModel();
+        $personas = new PersonaModel();
+        $facturas = new FacturaModel();
+        $detallesFacturas = new DetalleFacturaModel();
+        $productos = new ProductoModel();
+
+        $datos = [
+            'usuarios' => $usuarios->where('id_rol', 2)->findAll(),
+            'personas' => $personas->findAll(),
+            'facturas' => $facturas->findAll(),
+            'detallesFacturas' => $detallesFacturas->findAll(),
+            'productos' => $productos->findAll(),
+        ];
+
+        return view('Facturas/allFacturas', $datos);
+
+    }
+    public function facturaUnica($id=null)
+    {
+        $usuario = new UsuarioModel();
+        $persona = new PersonaModel();
+        $productos = new ProductoModel();
+        $domicilio = new DomicilioModel();
+        $factura = new FacturaModel();
+        $detalleFactura = new DetalleFacturaModel();
+
+        $facturaUsuario = $factura->where('id_factura', $id)->first();
+        $usuarioElegido = $usuario->where('id_usuario', $facturaUsuario['id_usuario'])->first();
+        $personaElegida = $persona->where('id_persona', $usuarioElegido['id_persona'])->first();
+        $detallesElegidos = $detalleFactura->where('id_factura', $id)->findAll();
+        $allProductos = $productos->findAll();
+        
+
+        //dd($facturaUsuario, $usuarioElegido, $personaElegida, $detallesElegidos);
+
+        //Array de los detalles de las facturas que sólo le pertenecen al USUARIO
+        $detalleFacturaUsuario = array();
+        $productoDetalle = array();
+        
+        //Recorremos todas las facturas del usuario
+        
+        foreach ($detallesElegidos as $key => $value) {
+            //echo $value['subTotal']."<br>";
+            //echo $value['id_producto']."<br>";
+            //array_push($detalleFacturaUsuario, $detalleFactura->where('id_factura', $facturaUsuario['id_factura'])->find() );
+            foreach ($allProductos as $keyP => $valueP) {
+                if($valueP['id_producto'] == $value['id_producto'])
+                {
+                    //echo $valueP['nombre_producto']."<br>";
+                    $detallesElegidos[$key]['nombre_producto'] = $valueP['nombre_producto'];
+                }
+            }
+        }
+
+        //dd($detallesElegidos);
+
+        
+        $domicilioUsuario = $domicilio->where('id_domicilio', $personaElegida['id_domicilio'])->first();
+
+        $data=[
+            'usuario' => $usuarioElegido,
+            'persona' => $personaElegida,
+            'facturaUsuario' => $facturaUsuario,
+            'domicilioUsuario' => $domicilioUsuario,
+            'detalleFactura' => $detallesElegidos,
+        ];
+        //dd($data);
+
+        return view('Facturas/facturaUnica', $data);
+
+    }
 }

@@ -70,15 +70,22 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col d-flex flex-row-reverse">
-                    <a href="<?=base_url('confirmarCompra') ?>" class="btn btn-success" type="button">
-                        <i class="bi bi-cart-check-fill">Comprar Carrito</i>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="<?=base_url('vacioTotalCarrito') ?>" class="btn btn-danger" type="button">
-                        <i class="bi bi-cart-x-fill"> Vaciar Carrito</i>
-                    </a>
+                <div class="col-12 d-flex justify-content-md-between align-items-center flex-wrap">
+
+                    <div class="col col-md-3">
+                        <a href="<?=base_url('confirmarCompra') ?>" class="btn btn-success" type="button">
+                            <i class="bi bi-cart-check-fill"></i>
+                            <p class="p-0 m-0">Confirmar Compra</p>
+                        </a>
+                    </div>
+
+                    <div class="col col-md-3">
+                        <a href="<?=base_url('vacioTotalCarrito') ?>" class="btn btn-danger" type="button">
+                            <i class="bi bi-cart-x-fill"></i>
+                            <p class="p-0 m-0">Vaciar Carrito</p>
+                        </a>
+                    </div>
+
                 </div>
             </div>
 

@@ -272,11 +272,9 @@ class AuthController extends BaseController
                     ]
                 ],
             'password' => [
-                'rules' => 'required|min_length[3]|max_length[50]',
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Tienes que ingresar tu contraseña',
-                    'min_length' => 'La contraseña es muy corta',
-                    'max_length' => 'La contraseña es muy larga'
                     ]
                 ]
         ]);
@@ -307,7 +305,7 @@ class AuthController extends BaseController
             if(!$check_password)//Si hay un error de logueo
             {
                 //En una sesion flash, mandamos un error
-                $this->session()->setFlashdata('fail', 'Contraseña incorrecta');
+                session()->setFlashdata('fail', 'Contraseña incorrecta');
                 //Y nos redirigimos a la pantalla de logueo
                 return redirect()->to(route_to('login'))->withInput();
             }

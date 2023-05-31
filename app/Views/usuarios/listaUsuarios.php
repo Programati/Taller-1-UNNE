@@ -43,29 +43,29 @@
                             <?php foreach($infoPersona as $key){?>
                                 <?php if($key['id_persona'] == $x['id_persona']):?>
 
-                            <tr>
-                                <td><?=$key['id_persona']?></td>
-                                <td><?=$key['nombre']." ".$key['apellido']?></td>
-                                <td><?=$key['telefono']?></td>
-                                <td><?=$key['email']?></td>
-                                <td>
-                                <?php if($x['activo'] == 1):?>
-                                    <a href="<?=base_url('deleteP'.$x['id_persona']) ?>" class="btn btn-danger" type="button">
-                                        <i class="bi bi-x-circle">Dar Baja</i>
-                                    </a>
-                                <?php else:?>
-                                    <a href="<?=base_url('activarP'.$x['id_persona']) ?>" class="btn btn-success" type="button">
-                                    <i class="bi bi-check-circle">Dar Alta</i>
-                                    </a>
+                                    <tr>
+                                        <td><?=$key['id_persona']?></td>
+                                        <td><?=$key['nombre']." ".$key['apellido']?></td>
+                                        <td><?=$key['telefono']?></td>
+                                        <td><?=$key['email']?></td>
+                                        <td>
+                                        <?php if($x['activo'] == 1):?>
+                                            <a href="<?=base_url('deleteP'.$x['id_persona']) ?>" class="btn btn-danger" type="button">
+                                                <i class="bi bi-x-circle">Dar Baja</i>
+                                            </a>
+                                        <?php else:?>
+                                            <a href="<?=base_url('activarP'.$x['id_persona']) ?>" class="btn btn-success" type="button">
+                                            <i class="bi bi-check-circle">Dar Alta</i>
+                                            </a>
+                                        <?php endif;?>
+                                        </td>
+                                    </tr>
+                        
                                 <?php endif;?>
-                                </td>
-                            </tr>
                         
-                            <?php endif;?>
-                        
-                        <?php };?>
+                            <?php };?>
                                     
-                    <?php };?>
+                        <?php };?>
 
 
                     </tbody>

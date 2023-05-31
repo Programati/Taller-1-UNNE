@@ -28,7 +28,7 @@
               <a class="nav-link"  href="#">CONSULTAS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">VENTAS REALIZADAS</a>
+              <a class="nav-link" href="<?=base_url('allFacturas')?>">VENTAS REALIZADAS</a>
             </li>
 
             <li class="nav-item dropdown">
@@ -81,7 +81,7 @@
               <a class="nav-link" href="<?= base_url(route_to('comercializacion')) ?>">comercialización</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= base_url(route_to('contacto'))?>">contacto</a>
+              <a class="nav-link" href="<?= base_url(route_to('contacto'))?>">Consulta</a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="<?= base_url(route_to('terminos_y_usos'))?>" >términos y usos</a>
