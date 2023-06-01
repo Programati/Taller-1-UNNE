@@ -14,8 +14,8 @@ Comercializacion
       <div class="col">
           <p class="seccion-descripcion fs-1">Información</p>
           <hr>
-        </div>
-    </div>
+      </div>
+  </div>
 
   <!-- LISTA COMO COMPRAR -->
   <div class="row justify-content-center m-2">

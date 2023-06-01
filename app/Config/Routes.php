@@ -83,9 +83,13 @@ $routes->group('',['filter'=>'VerificarAdmin'], function($routes)
 
     //Todas las facturas
     $routes->get('allFacturas', 'FacturaController::allFacturas');
-
     //1 sola Factura completa
     $routes->get('facturaUnica(:num)', 'FacturaController::facturaUnica/$1');
+
+    //Todas las consultas de todos los USUARIOS
+    $routes->get('listaConsultas', 'ConsultaController::listaConsultas');
+    //Check leido
+    $routes->get('consultaLeida(:num)', 'ConsultaController::consultaLeida/$1');
 
     
 

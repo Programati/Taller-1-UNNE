@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 
 use App\Models\ConsultaModel;
+use App\Models\UsuarioModel;
+use App\Models\PersonaModel;
 
 
 class ConsultaController extends BaseController
@@ -119,5 +121,39 @@ class ConsultaController extends BaseController
 
         $data=[];
         return view('Contacto/contacto', $data);
-    }        
+    } 
+    
+    public function listaConsultas()
+    {
+        $consultas = new ConsultaModel();
+
+        $listaConsultas = $consultas->findAll();
+
+        $data = [
+            'listaConsultas' => $listaConsultas,
+        ];
+
+        return view('Contacto/verConsultas', $data);
+    }
+
+    public function consultaLeida($id=null)
+    {
+        $consultas = new ConsultaModel();
+
+
+
+        $datos = [
+            'leido' => 1,
+        ];
+
+        $consultas->where('id_consulta', $id)->update($id,$datos);
+
+        $listaConsultas = $consultas->findAll();
+
+        $data = [
+            'listaConsultas' => $listaConsultas,
+        ];
+
+        return view('Contacto/verConsultas', $data);
+    }
 }
