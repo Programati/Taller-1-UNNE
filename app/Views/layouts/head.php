@@ -116,7 +116,7 @@
                 <li><h6 class="dropdown-header"><?=session()->get('apellido');?></h6></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
-                <li><a class="dropdown-item" href="<?= base_url('factura'); ?>">Compras</a></li>
+                <li><a class="dropdown-item" href="<?= base_url('factura'); ?>">Mis Compras</a></li>
                 <li><a class="dropdown-item" href="<?= base_url(route_to('logout')); ?>">Salir</a></li>
 
               </ul>

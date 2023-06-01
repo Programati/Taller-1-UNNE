@@ -41,6 +41,13 @@ Contacto
 
         <hr>
     </div>
+    <?php if(session()->get('success')): ?>
+
+        <div class="alert alert-success" role="alert">
+            <?=session()->get('success')?>
+        </div>
+
+    <?php endif; ?> 
     <!-- CUERPO -->
     <div class="row container d-flex align-items-stretch">
         <!-- DUEÑO Y MAPA -->
@@ -89,119 +96,99 @@ Contacto
         <!-- CARD que encierra el formulario -->
         <div class="col-12 col-lg-6 col-xl-6 mb-5 d-flex align-items-stretch">
 
-            <div class="card">
+            <div class="card col-12">
                 <div class="card-header">
                     <p class="fs-3 text-center"><i class="bi bi-envelope-paper"></i>Contáctate con nosotros</p>
                 </div>
                 <div class="card-body">
-                    <!-- <h5 class="card-title">Titulo</h5> -->
                     
                     <?php if(session()->has('loggedUser')):?>
                         <!-- FORMULARIO PERSONAS LOGUEADAS-->
                         <p class="card-text"><i class="bi bi-braces-asterisk"> </i>Recibirás una respuesta fiable y de calidad.</p>
                         <p class="card-text"><i class="bi bi-braces-asterisk"> </i>Tu consulta será respondida en máximo 48hs.</p>
                         <p class="card-text"><i class="bi bi-braces-asterisk"> </i>Checka tu correo, recibiras una notificación cuando te contestemos.</p>
-                        <form class="p-3" method="post" action="<?= base_url().route_to('envioMensaje') ?>">
+
+                        <form action="<?=base_url('consulta') ?>" method="POST">
+                            <!-- Asunto  -->
+                            <div class="row mb-1">
+                                <div class="col-12">
+                                    <label for="asunto" class="col-form-label">Asunto</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control" id="asunto" name="asunto" value="<?=set_value('asunto')?>">
+                                </div>
+                                <!-- ERRORES DE VALIDACION DEL CONTROLADOR -->
+                                <span class="text-danger">
+                                    <!-- Al parecer VALIDATION es palabra reservada, cambiandole, no mostrar error -->
+                                    <?=isset($validation) ? mostrar_error($validation, 'asunto') : " " ?>
+                                </span>
+                            </div>
                             <!-- AREA DE MENSAJE -->
                             <div class="row mb-3">
                                 <div class="col-12">
                                     <label for="mensaje" class="form-label">Mensaje</label>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control" id="mensaje" rows="8" name="mensaje"></textarea>
+                                    <textarea class="form-control" id="mensaje" rows="5" name="mensaje" value="<?=set_value('mensaje'); ?>"></textarea>
+                                    <!-- ERRORES DE VALIDACION DEL CONTROLADOR -->
+                                    <span class="text-danger">
+                                        <!-- Al parecer VALIDATION es palabra reservada, cambiandole, no mostrar error -->
+                                        <?=isset($validation) ? mostrar_error($validation, 'mensaje') : " " ?>
+                                    </span>
                                 </div>
                             </div>
                             <!-- BOTON ENVIAR -->
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                                 <div class="col">
-                                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#myModal">Enviar Pregunta</button>
+                                    <button type="submit" class="btn btn-primary mb-3">Enviar</button>
                                 </div>
                             </div>
             
-                            <!-- The Modal -->
-                            <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                            
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="staticBackdropLabel">Se ah enviado el mensaje</h4>
-                                    <button type="post" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                            
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    Gracias por contactarnos!
-                                </div>
-                            
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="post" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                </div>
-                            
-                                </div>
-                            </div>
-                            </div>
                         </form>
                     <?php else:?>
                         <!-- FORMULARIO NORMAL-->
-                        <form class="p-3" method="post" action="<?= base_url().route_to('envioMensaje') ?>">
-                            <!-- Nombre y Apellido -->
-                            <div class="row mb-3">
-                                <div class="col-12 col-lg-6">
-                                    <div class="row mb-3">
-                                        <div class="col-12 col-md-4">
-                                            <label for="nombre" class="col-form-label">Nombre</label>
-                                        </div>
-                                        <div class="col-12 col-md-8">
-                                            <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre">
-                                        </div>
-                                    </div>
-                                    
+                        <form action="<?=base_url('consulta') ?>" method="POST">
+                            <!-- Nombre  -->
+                            <div class="row mb-1">
+                                <div class="col-12">
+                                    <label for="nombre" class="col-form-label">Nombre</label>
                                 </div>
-                                <div class="col-12 col-lg-6">
-                                    <div class="row mb-3">
-                                        <div class="col-12 col-md-4">
-                                            <label for="apellido" class="col-form-label">Apellido</label>
-                                        </div>
-                                        <div class="col-12 col-md-8">
-                                            <input type="text" class="form-control" placeholder="Apellido" id="apellido" name="apellido">
-                                        </div>
-                                    </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control" id="nombre" name="nombre" value="<?=set_value('nombre')?>">
                                 </div>
+                                <!-- ERRORES DE VALIDACION DEL CONTROLADOR -->
+                                <span class="text-danger">
+                                    <!-- Al parecer VALIDATION es palabra reservada, cambiandole, no mostrar error -->
+                                    <?=isset($validation) ? mostrar_error($validation, 'nombre') : " " ?>
+                                </span>
                             </div>
-                            <!-- Ciudad telefono -->
-                            <div class="row mb-3">
-                                <div class="col-12 col-lg-6">
-                                    <div class="row mb-3">
-                                        <div class="col-12 col-md-4">
-                                            <label for="ciudad" class="col-form-label">Ciudad</label>
-                                        </div>
-                                        <div class="col-12 col-md-8">
-                                            <input type="text" class="form-control" placeholder="Ciudad" id="ciudad" name="ciudad">
-                                        </div>
-                                    </div>
-                                    
+                            <!-- Asunto  -->
+                            <div class="row mb-1">
+                                <div class="col-12">
+                                    <label for="asunto" class="col-form-label">Asunto</label>
                                 </div>
-                                <div class="col-12 col-lg-6">
-                                    <div class="row mb-3">
-                                        <div class="col-12 col-md-4">
-                                            <label for="telefono" class="col-form-label">Telefono</label>
-                                        </div>
-                                        <div class="col-12 col-md-8">
-                                            <input type="text" class="form-control" placeholder="+(54)" id="telefono" name="telefono">
-                                        </div>
-                                    </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control" id="asunto" name="asunto" value="<?=set_value('asunto')?>">
                                 </div>
+                                <!-- ERRORES DE VALIDACION DEL CONTROLADOR -->
+                                <span class="text-danger">
+                                    <!-- Al parecer VALIDATION es palabra reservada, cambiandole, no mostrar error -->
+                                    <?=isset($validation) ? mostrar_error($validation, 'asunto') : " " ?>
+                                </span>
                             </div>
                             <!-- MAIL -->
-                            <div class="row mb-3">
-                                <div class="col-12 col-md-2">
+                            <div class="row mb-1">
+                                <div class="col-12">
                                     <label for="email" class="col-form-label">Email</label>
                                 </div>
-                                <div class="col-12 col-md-10">
-                                    <input type="email" class="form-control" id="email" placeholder="nombre@email.com" name="email">
+                                <div class="col-12">
+                                    <input type="email" class="form-control" id="email"  name="email" value="<?=set_value('email')?>">
                                 </div>
+                                <!-- ERRORES DE VALIDACION DEL CONTROLADOR -->
+                                <span class="text-danger">
+                                    <!-- Al parecer VALIDATION es palabra reservada, cambiandole, no mostrar error -->
+                                    <?=isset($validation) ? mostrar_error($validation, 'email') : " " ?>
+                                </span>
                             </div>
                             <!-- AREA DE MENSAJE -->
                             <div class="row mb-3">
@@ -209,40 +196,22 @@ Contacto
                                     <label for="mensaje" class="form-label">Mensaje</label>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control" id="mensaje" rows="4" name="mensaje"></textarea>
+                                    <textarea class="form-control" id="mensaje" rows="5" name="mensaje" value="<?=set_value('mensaje'); ?>"></textarea>
+                                    <!-- ERRORES DE VALIDACION DEL CONTROLADOR -->
+                                    <span class="text-danger">
+                                        <!-- Al parecer VALIDATION es palabra reservada, cambiandole, no mostrar error -->
+                                        <?=isset($validation) ? mostrar_error($validation, 'mensaje') : " " ?>
+                                    </span>
                                 </div>
                             </div>
+                            
                             <!-- BOTON ENVIAR -->
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                                 <div class="col">
-                                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#myModal">Enviar</button>
+                                    <button type="submit" class="btn btn-primary mb-3">Enviar</button>
                                 </div>
                             </div>
             
-                            <!-- The Modal -->
-                            <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                            
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="staticBackdropLabel">Se ah enviado el mensaje</h4>
-                                    <button type="post" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                            
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    Gracias por contactarnos!
-                                </div>
-                            
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="post" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                </div>
-                            
-                                </div>
-                            </div>
-                            </div>
                         </form>
                     <?php endif;?>
                 

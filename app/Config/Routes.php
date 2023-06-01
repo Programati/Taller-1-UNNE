@@ -47,6 +47,7 @@ $routes->post('guardado', 'AuthController::guardarRegistro', ['as' => 'guardar']
 //El Formulario de Logueo nos trae aqui y de aca vamos para la funcion CHECK
 //Controlador->funcion donde verificamos la identidad del usuario desde el LOGIN
 $routes->post('signin', 'AuthController::check', ['as' => 'controlUsuario']);
+$routes->post('consulta', 'ConsultaController::index');
 
 
 //GRUPO DE LINKS donde solo el ADMINISTRADOR puede ver
@@ -82,7 +83,7 @@ $routes->group('',['filter'=>'VerificarAdmin'], function($routes)
 
     //Todas las facturas
     $routes->get('allFacturas', 'FacturaController::allFacturas');
-    
+
     //1 sola Factura completa
     $routes->get('facturaUnica(:num)', 'FacturaController::facturaUnica/$1');
 
