@@ -5,6 +5,8 @@ use App\Models\UsuarioModel;
 use App\Models\PersonaModel;
 use App\Models\DomicilioModel;
 use App\Models\ProductoModel;
+use App\Models\ConsultaModel;
+
 
 use App\Libraries\Hash;
 
@@ -318,6 +320,12 @@ class AuthController extends BaseController
                 session()->set($DatosLogin);
                 if($info_usuario_logueado['id_rol'] == 1)
                 {
+                    $consulta = new ConsultaModel();
+                    $asociar = [
+                        'consultas' => $consulta->where('leido', 0)->findAll(),
+                    ];
+
+                    session()->set(array_merge(session()->get(),$asociar));
                     return redirect()->to(route_to('dashboard'))->with('success', 'Iniciaste sesion');
                 }else
                 {

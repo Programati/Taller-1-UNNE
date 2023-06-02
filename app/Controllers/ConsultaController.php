@@ -140,13 +140,29 @@ class ConsultaController extends BaseController
     {
         $consultas = new ConsultaModel();
 
-
-
         $datos = [
             'leido' => 1,
         ];
 
         $consultas->where('id_consulta', $id)->update($id,$datos);
+        //Traemos el array de consultas de la sesion
+        $arrayViejo = session()->get('consultas');
+        //La recorremos
+        for($x = 0; $x < count($arrayViejo); $x++) 
+        {
+            if($arrayViejo[$x]['id_consulta'] == $id)
+            {
+                //Sacamos el mensaje leido del array consulas de la session
+                unset($arrayViejo[$x]);
+                break;
+            }
+        }
+        //Ponemos al array dentro de una variable
+        $asociar = [
+            'consultas' => $arrayViejo,
+        ];
+        //Actualizamos la sesion con el array de consultas
+        session()->set(array_merge(session()->get(),$asociar));
 
         $listaConsultas = $consultas->findAll();
 

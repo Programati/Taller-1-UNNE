@@ -8,7 +8,7 @@
 <?=$this->section('content')?>
 <?php //dd($infoPersona);?>
 
-    <div class="container mt-2 mb-5">
+    <div class="container mt-2" style="height: 70vh">
         <div class="row">
             <div class="col">
                 <h1 class="text-center">Lista de usuarios registrados</h1>

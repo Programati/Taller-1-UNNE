@@ -5,19 +5,19 @@
 
 
 <?=$this->section('title')?>
-    Todas las Facturas
+    Todas mis compras
 <?=$this->endSection()?>
 
 <?=$this->section('content')?>
 
-    <div class="container my-5" style="height: 70vh">
-        <div class="row">
-            <div class="col">
-                <h1 class="text-center">Lista de todas las compras</h1>
-                <hr>
-            </div>
+<div class="container my-3" style="height: 70vh">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">Todas mis compras</h1>
+            <hr>
         </div>
-
+    </div>
+    <?php if( $facturas != null):?>
         <div class="table-responsive">
 
             <table class="table table-light">
@@ -25,7 +25,6 @@
                 <thead class="thead table-secondary">
                     <tr>
                         <th>N° Factura</th>
-                        <th>Apellido y Nombre</th>
                         <th>Fecha emisión</th>
                         <th>Monto Total</th>
                         <th class="text-center">Vista rápida</th>
@@ -38,31 +37,6 @@
 
                         <tr>
                             <td><?= $value['id_factura']?></td>
-                            
-                            <td>
-                            
-                                <?php foreach($usuarios as $keyUsuarios => $valueUsuarios){?>
-
-                                    <?php if($valueUsuarios['id_usuario'] == $value['id_usuario']) {?>
-
-                                        
-                                        <?php foreach($personas as $keyPersonas => $valuePersonas){?>
-
-                                            <?php if($valuePersonas['id_persona'] == $valueUsuarios['id_persona']) {?>
-
-                                                <?= $valuePersonas['nombre']." ".$valuePersonas['apellido']?>
-                                                <?php //break?>
-
-
-                                            <?php }?>
-
-                                        <?php }?>
-
-                                    <?php }?>
-
-                                <?php }?>
-                                   
-                            </td>
                             <td><?= $value['fecha_factura']?></td>
                             <td><?= $value['importe_total']?></td>
                             <!-- BOTN VISTA RAPIDA -->
@@ -154,7 +128,7 @@
                             </td>
                             <!-- Link a FACTURA completa -->
                             <td class="text-center">
-                                <a href="<?=base_url('facturaUnica'.$value['id_factura']) ?>">
+                                <a href="<?=base_url('facturaUnicaUsuario'.$value['id_factura']) ?>">
                                     Vista completa...
                                 </a>
                             </td>
@@ -169,8 +143,18 @@
                 
         </div>
             
+    
+    <?php else:?>
+        <div class="row d-flex justify-content-center" style="height: 50vh">
+            <div class="col-12">
+                <h1>No tienes ninguna compra realizada</h1>
+                <small>¡Miles de productos de esperan!, ve a la seccion catálogo</small>
+            </div>
+            <div class="col-12">
+                <a href="<?=base_url('catalogo') ?>" class="btn btn-primary" type="button">Catalogo</a>
+            </div>
+        </div>
+    <?php endif?>
     </div>
-        
-        <?php?>
-<?=$this->endSection()?>
 
+<?=$this->endSection()?>

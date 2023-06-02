@@ -377,8 +377,6 @@ class ProductoController extends BaseController
                 unset($arrayViejo[$x]);
                 break;
             }
-            echo $arrayViejo[$x]['id'];
-            echo "<br>";
         }
         $arrayViejo = array_values($arrayViejo);
 

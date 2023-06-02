@@ -123,8 +123,10 @@ $routes->group('',['filter'=>'VerificarAutenticacion'], function($routes)
     //ConfirmarCompra
     $routes->get('confirmarCompra', 'ProductoController::confirmarCompra');
 
-    //Factura
-    $routes->get('factura', 'FacturaController::index');
+    //Lista de Facturas de cada usuario
+    $routes->get('allFacturasUsuario', 'FacturaController::allFacturasUsuario');
+    //Una factura del usuario
+    $routes->get('facturaUnicaUsuario(:num)', 'FacturaController::facturaUnicaUsuario/$1');
 
 });
 

@@ -11,8 +11,8 @@
                 <hr class="m-0">
                 <div class="row ms-1">
                     <a href="<?php echo base_url('dashboard'); ?>" class="nav-link mt-1 p-1 text-uppercase">Principal</a>
-                    <a href="#" class="nav-link mt-1 p-1 text-uppercase">Consultas</a>
-                    <a href="#" class="nav-link mt-1 p-1 text-uppercase">Ventas Realizadas</a>
+                    <a href="<?=base_url('listaConsultas')?>" class="nav-link mt-1 p-1 text-uppercase">Consultas</a>
+                    <a href="<?=base_url('allFacturas')?>" class="nav-link mt-1 p-1 text-uppercase">Ventas Realizadas</a>
                     <a href="<?=base_url(route_to('usuariosOn'))?>" class="nav-link mt-1 p-1 text-uppercase">Usuarios Activos</a>
                     <a href="<?=base_url(route_to('usuariosOff'))?>" class="nav-link mt-1 p-1 text-uppercase">Usuarios In-Activos</a>
                     <a href="<?=base_url(route_to('crearproducto'))?>" class="nav-link mt-1 p-1 text-uppercase">Crear Prodcutos</a>

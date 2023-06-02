@@ -25,7 +25,16 @@
           <ul class="navbar-nav  ms-auto">
 
             <li class="nav-item">
-              <a class="nav-link"  href="<?=base_url('listaConsultas')?>">CONSULTAS</a>
+              <a class="nav-link"  href="<?=base_url('listaConsultas')?>">
+                CONSULTAS
+                <i class="bi bi-bell">
+                  <?php if(session()->get('consultas') != null):?>
+                    <?=count(session()->get('consultas'))?>
+                  <?php else:?>
+                    0
+                  <?php endif?>
+                </i>
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?=base_url('allFacturas')?>">VENTAS REALIZADAS</a>
@@ -116,7 +125,7 @@
                 <li><h6 class="dropdown-header"><?=session()->get('apellido');?></h6></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
-                <li><a class="dropdown-item" href="<?= base_url('factura'); ?>">Mis Compras</a></li>
+                <li><a class="dropdown-item" href="<?= base_url('allFacturasUsuario'); ?>">Mis Compras</a></li>
                 <li><a class="dropdown-item" href="<?= base_url(route_to('logout')); ?>">Salir</a></li>
 
               </ul>
