@@ -156,7 +156,17 @@ EDICION DE PRODUCTOS
                                 <div class="form-group mb-3">
 
                                     <button type="submit" class="btn btn-success">GUARDAR <i class="bi bi-check"></i></button>
-                                    <a href="<?=base_url('productosOn') ?>" class="btn btn-danger">CANCELAR <i class="bi bi-check"></i></a>
+                                    <a 
+                                        href="<?php if($producto['activo'] == 1):?> 
+                                                <?=base_url('productosOn')?> 
+                                            <?php else:?>
+                                                <?=base_url('productosOff')?>
+                                            <?php endif ?>" 
+                                        class="btn btn-danger"
+                                        >
+                                        CANCELAR
+                                        <i class="bi bi-x"></i>
+                                    </a>
     
                                 </div>
 

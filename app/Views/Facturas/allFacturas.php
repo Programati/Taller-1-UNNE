@@ -10,10 +10,10 @@
 
 <?=$this->section('content')?>
 
-    <div class="container my-5" style="height: 70vh">
+    <div class="container my-5">
         <div class="row">
             <div class="col">
-                <h1 class="text-center">Lista de todas las compras</h1>
+                <h1 class="text-center">Lista de todas las ventas</h1>
                 <hr>
             </div>
         </div>
@@ -24,10 +24,10 @@
 
                 <thead class="thead table-secondary">
                     <tr>
-                        <th>N° Factura</th>
-                        <th>Apellido y Nombre</th>
-                        <th>Fecha emisión</th>
-                        <th>Monto Total</th>
+                        <th>N#</th>
+                        <th>Apellido/Nombre</th>
+                        <th>Fecha_emisión</th>
+                        <th>Monto_Total</th>
                         <th class="text-center">Vista rápida</th>
                         <th class="text-center">Ir a</th>
                     </tr>
@@ -64,7 +64,7 @@
                                    
                             </td>
                             <td><?= $value['fecha_factura']?></td>
-                            <td><?= $value['importe_total']?></td>
+                            <td>$<?= $value['importe_total']?></td>
                             <!-- BOTN VISTA RAPIDA -->
                             <td class="text-center">
                                 <!-- BOTON MODAL, despliega el detalle de cada factura -->
@@ -130,7 +130,7 @@
                                                     <?php endforeach;?>
                                                     <tfoot>
                                                         <tr>
-                                                            <td colspan="3" class="text-end">Total a pagar:</td>
+                                                            <td colspan="3" class="text-end fw-bold">Total a pagar:</td>
                                                             <td>$<?=$value['importe_total']?></td>
                                                         </tr>
                                                     </tfoot>

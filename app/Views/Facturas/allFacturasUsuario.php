@@ -24,9 +24,9 @@
 
                 <thead class="thead table-secondary">
                     <tr>
-                        <th>N° Factura</th>
-                        <th>Fecha emisión</th>
-                        <th>Monto Total</th>
+                        <th>Factura#</th>
+                        <th class="text-center">Fecha_emisión</th>
+                        <th class="text-center">Monto_Total</th>
                         <th class="text-center">Vista rápida</th>
                         <th class="text-center">Ir a</th>
                     </tr>
@@ -37,8 +37,8 @@
 
                         <tr>
                             <td><?= $value['id_factura']?></td>
-                            <td><?= $value['fecha_factura']?></td>
-                            <td><?= $value['importe_total']?></td>
+                            <td class="text-center"><?= $value['fecha_factura']?></td>
+                            <td class="text-center">$<?= $value['importe_total']?></td>
                             <!-- BOTN VISTA RAPIDA -->
                             <td class="text-center">
                                 <!-- BOTON MODAL, despliega el detalle de cada factura -->
@@ -104,8 +104,8 @@
                                                     <?php endforeach;?>
                                                     <tfoot>
                                                         <tr>
-                                                            <td colspan="3" class="text-end">Total a pagar:</td>
-                                                            <td>$<?=$value['importe_total']?></td>
+                                                            <td colspan="3" class="text-end fw-bolder">Total a pagar:</td>
+                                                            <td class="fw-bolder">$<?=$value['importe_total']?></td>
                                                         </tr>
                                                     </tfoot>
 

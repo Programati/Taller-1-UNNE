@@ -8,7 +8,7 @@
 <?=$this->section('content')?>
 <?php //dd($infoPersona);?>
 
-    <div class="container mt-2" style="height: 70vh">
+    <div class="container mt-2">
         <div class="row">
             <div class="col">
                 <h1 class="text-center">Lista de usuarios registrados</h1>
@@ -31,8 +31,8 @@
                     <table class="table table-light">
                     <thead class="thead table-secondary">
                         <tr>
-                            <th>ID</th>
-                            <th>Nombre y Apellido</th>
+                            <th>#</th>
+                            <th>Apellido/Nombre</th>
                             <th>Telefono</th>
                             <th>Correo</th>
                             <th>Opcion</th>
@@ -45,16 +45,16 @@
 
                                     <tr>
                                         <td><?=$key['id_persona']?></td>
-                                        <td><?=$key['nombre']." ".$key['apellido']?></td>
+                                        <td><?=$key['apellido']." ".$key['nombre']?></td>
                                         <td><?=$key['telefono']?></td>
                                         <td><?=$key['email']?></td>
                                         <td>
                                         <?php if($x['activo'] == 1):?>
-                                            <a href="<?=base_url('deleteP'.$x['id_persona']) ?>" class="btn btn-danger" type="button">
+                                            <a href="<?=base_url('deleteP'.$x['id_persona']) ?>" class="btn btn-danger btn-sm" type="button">
                                                 <i class="bi bi-x-circle">Dar Baja</i>
                                             </a>
                                         <?php else:?>
-                                            <a href="<?=base_url('activarP'.$x['id_persona']) ?>" class="btn btn-success" type="button">
+                                            <a href="<?=base_url('activarP'.$x['id_persona']) ?>" class="btn btn-success btn-sm" type="button">
                                             <i class="bi bi-check-circle">Dar Alta</i>
                                             </a>
                                         <?php endif;?>

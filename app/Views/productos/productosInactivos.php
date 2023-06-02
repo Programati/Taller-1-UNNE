@@ -27,8 +27,8 @@ Lista de Productos
                 <thead class="thead table-secondary">
                     <tr>
                         <th>N°</th>
-                        <th>Nombre</th>
-                        <th>Stock</th>
+                        <th>Nombre/Producto</th>
+                        <th class="text-center">Stock</th>
                         <th>Precio</th>
                         <th>Opciones</th>
                     </tr>
@@ -41,11 +41,15 @@ Lista de Productos
                         <tr>
                         <td><?=$key['id_producto']?></td>
                             <td><?=$key['nombre_producto']?></td>
-                            <td><?=$key['cantidad']?></td>
-                            <td><?=$key['precio']?></td>
+                            <td class="text-center"><?=$key['cantidad']?></td>
+                            <td>$<?=$key['precio']?></td>
                             <td>
-                                <a href="<?=base_url('editar'.$key['id_producto']) ?>" class="btn btn-primary" type="button">Editar</a>
-                                <a href="<?=base_url('activar'.$key['id_producto']) ?>" class="btn btn-success" type="button">Activar</a>
+                                <a href="<?=base_url('editar'.$key['id_producto']) ?>" class="btn btn-primary btn-sm" type="button">
+                                <i class="bi bi-pencil-fill"></i>
+                                </a>
+                                <a href="<?=base_url('activar'.$key['id_producto']) ?>" class="btn btn-success btn-sm" type="button">
+                                <i class="bi bi-plus-lg"></i>
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

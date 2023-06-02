@@ -11,12 +11,12 @@ Lista de consultas
     <!-- CABECERA -->
     <div class="row text-center">
         <div class="col">
-            <p class="seccion-descripcion fs-1">Lista de consultas de usuarios</p>
+            <p class="seccion-descripcion fs-1">Lista de consultas</p>
             <hr>
         </div>
     </div>
     
-    <div class="row mt-3" style="height:80vh">
+    <div class="row mt-3" >
 
         <div class="col">
 
@@ -28,8 +28,8 @@ Lista de consultas
                         <tr>
                             <th>N°</th>
                             <th>Nombre</th>
-                            <th>Fecha recibida</th>
-                            <th class="text-center">Estado</th>
+                            <th>Fecha_recibida</th>
+                            <th class="text-center">Estado/Fecha</th>
                             <th class="text-end">Accion</th>
                         </tr>
                     </thead>
@@ -42,23 +42,21 @@ Lista de consultas
                                 <td><?=$value['id_consulta']?></td>
                                 <td><?=$value['nombre']?></td>
                                 <td><?=$value['fecha_create']?></td>
-                                <td class="text-center">
-                                    <?php if($value['leido'] == 0) :?>
-                                        <div class="bg-secondary border rounded py-2 text-white">
-                                            <i class="bi bi-eye-slash">Sin leer</i>
-                                        </div>
-                                    <?php else:?>
-                                        <div class="bg-success border rounded py-2 text-white">
-                                            <i class="bi bi-eye">Leido el <?=$value['fecha_updated']?></i>
-                                        </div>
-                                    <?php endif?>
-                                </td>
+                                <?php if($value['leido'] == 0) :?>
+                                    <td class="text-center text-secondary fw-bolder">
+                                        <i class="bi bi-eye-slash"></i>&nbsp;Sin leer
+                                    </td>
+                                <?php else:?>
+                                    <td class="text-center text-success fw-bolder">
+                                        <i class="bi bi-eye"></i>&nbsp;Leido el <?=$value['fecha_updated']?>
+                                    </td>
+                                <?php endif?>
                                 
                                 <!-- BOTN LEER CONSULTA -->
-                                <td class="text-center">
+                                <td class="text-end">
                                     <!-- BOTON MODAL, despliega el mensaje reibido -->
                                     <button 
-                                        class="btn btn-primary"
+                                        class="btn btn-primary btn-sm"
                                         data-bs-toggle="modal"
                                         data-bs-target="#mi-modal-<?=$value['id_consulta']?>"
                                         >

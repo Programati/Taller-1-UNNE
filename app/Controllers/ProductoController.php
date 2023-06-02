@@ -191,7 +191,6 @@ class ProductoController extends BaseController
             'categoriaEditar' => $datosCategoria->where('id_categoria',$DatosProductos['id_categoria'])->first()
         ];
 
-        
         return view('productos/editar',$datos);
     }
 
@@ -284,7 +283,15 @@ class ProductoController extends BaseController
             
             
         }
-        return redirect()->to(route_to('productosOn'))->with('success', 'Producto actualizado correctamente!');
+
+        if($datos['activo'] == 1)
+        {
+            return redirect()->to(route_to('productosOn'))->with('success', 'Producto actualizado correctamente!');
+        }else
+        {
+            return redirect()->to(route_to('productosOff'))->with('success', 'Producto INACTIVO actualizado correctamente!');
+
+        }
     }
 
     public function carrito($id=null)

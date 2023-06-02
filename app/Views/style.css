@@ -1,0 +1,178 @@
+#cartaEcomers  {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    }
+  
+  @media (max-width: 980px) {
+  #cartaEcomers {
+   display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;    
+  }
+    
+  }
+  
+  @media (max-width: 620px) {
+  #cartaEcomers{
+   display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 2rem;
+  }
+  }
+  
+  #cartaEcomers .cartaEcomers {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+   display: grid;
+    grid-template-columns:300px;
+    grid-template-rows: 250px 35px 20px 150px 125px ;
+    grid-template-areas: "image" "title" "detail" "text" "product-price";
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    font-family: roboto;
+  }
+  #cartaEcomers .cartaEcomers-image {
+    grid-area: image;
+  }
+  
+  #cartaEcomers .cartaEcomers-title {
+    grid-area: title;
+  }
+  
+  #cartaEcomers .cartaEcomers-detail {
+    grid-area: detail;
+  }
+  
+  #cartaEcomers .cartaEcomers-text {
+    grid-area: text;
+  }
+  
+  #cartaEcomers .cartaEcomers-product-price {
+    grid-area: product-price; 
+  }
+  
+  #cartaEcomers .cartaEcomers-image {
+    /* grid-area: image; */
+    /* background: url("https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"); */
+    /* background: url("CuadernoPHP.jpg"); */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+   background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    
+  }
+  #cartaEcomers .cartaEcomers-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+  
+  #cartaEcomers .cartaEcomers-title h2 {
+    grid-area: title;
+    margin: 15px 25px 0px;
+    color: grey;
+    font-size:28px;
+    text-align: left;
+    line-height: 1.5em;    
+  }
+  
+  #cartaEcomers .cartaEcomers-detail  {
+    grid-area: detail;
+    margin: 5px 25px;}
+  
+  #cartaEcomers .cartaEcomers-detail h3 {
+    color: grey;
+    font-size:15px;
+    font-weight: 300;
+    text-align: left;
+    line-height: 1.5em;    
+     
+  }
+  
+  #cartaEcomers .cartaEcomers-detail .date {
+    color: #f0b501; 
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;  
+  }
+  
+      
+  #cartaEcomers .cartaEcomers-text  {
+    grid-area: text;
+    margin: 25px;}
+  
+  #cartaEcomers .cartaEcomers-text p {
+    color: grey;
+    font-size:17px;
+    font-weight: 300;
+    text-align: left;
+    line-height: 1.5em;    
+  }
+  
+  #cartaEcomers .cartaEcomers-product-price {
+    grid-area: product-price; 
+    margin:50px 25px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+  }
+  
+  
+  #cartaEcomers .cartaEcomers-product-price p {
+    display: inline-block;
+    position: absolute;
+    top:10px;
+    height: 50px;
+    margin: 0 0 0 50px;
+    font-size: 20px;
+    color: grey;}
+   
+  
+  #cartaEcomers span {
+    display: inline-block;
+    height: 50px;
+    font-size: 25px;
+  }
+  
+  #cartaEcomers .cartaEcomers-product-price button {
+    float: left;
+    display: inline-block;
+    height: 50px;
+    width:160px;
+    box-sizing: border-box;
+    border: transparent;
+    border-radius: 60px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #ffffff;
+    background-color: #f0b501;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  #cartaEcomers .cartaEcomers-product-price button:hover {
+    background-color: #ffd84e;
+  }
+  
+  
+  #cartaEcomers .cartaEcomers:hover {
+   
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+  }
+  #cartaEcomers .cartaEcomers {
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin:30px;
+  }   
+  

@@ -205,6 +205,19 @@ footer{
     color: #210440;
 }
 
+/*CATALOGO DE PRODUCTOS*/
+.card-descripcion-producto{
+    font-size: 12px;
+}
+.btn-comprar{
+    background-color: #5f1782;
+    color: #fff;
+}
+.btn-comprar:hover{
+    background-color: #ba82f2;
+    color: #210440;
+}
+
 
 
 

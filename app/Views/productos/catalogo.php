@@ -30,11 +30,11 @@ Catalogo
 
                 <div class="container col text-center mb-5">
                     
-                    <div class="row">
+                    <div class="row ">
 
                         <div class="col ">
 
-                            <div class="card">
+                            <div class="card ">
         
                                 <img    
                                     class="img-fluid border rounded"
@@ -42,38 +42,30 @@ Catalogo
                                     src="<?=base_url()?>assets/img/magicshopctes/productos/uploads/<?=$key['url_imagen']?>" 
                                     alt="<?=$key['nombre_producto']?>"
                                 >  
-                                <div class="card-body">
-                                    <h5 class="card-title"><?=$key['nombre_producto']?></h5>
-                                    <p class="card-text"><small><?=$key['descripcion_producto']?></small></p>
-                                    <p class="card-text fs-4 fw-bold" style="color:red">$<?=$key['precio']?></p>
+                                <div class="card-body p-0 text-start">
+                                    <p class="card-title p-0 ps-1 fw-bold"><?=$key['nombre_producto']?></p>
+                                    <small class="card-descripcion-producto p-0 ps-1"><?=$key['descripcion_producto']?></small>
+                                    <p class="card-text fs-4 fw-bold text-end pe-1" style="color:red">$<?=$key['precio']?></p>
                                 </div>
-                                <hr>
         
                                 <div class="card-body d-flex justify-content-between f-direction-row">
                                     <div class="col">
 
-                                        <div class="row mb-2">
-    
-                                            <div class="col-12">
-                                                Codigo <?=$key['id_producto']."<br>"?>
-                                                <small>STOCK: <?=$key['cantidad']?></small>
-                                            </div>
-                                        </div>
                                         <div class="row">
-                                            <div class="col-6">
-                                                <a href="#" class="btn btn-primary btn-sm">Ver</a>
+                                            <div class="col-12 mb-1">
+                                                <span class="badge rounded-pill text-bg-warning">
+                                                    <small>STOCK <?=$key['cantidad']?></small>
+                                                </span>
                                             </div>
-                                            <div class="col-6">
-                                                <?php if(session()->has('loggedUser')):?>
+                                            <?php if(session()->has('loggedUser')):?>
+                                            <div class="d-grid gap-1">
 
-                                                    <a href="<?=base_url('carrito'.$key['id_producto']) ?>" class="btn btn-primary btn-sm" type="button">
-                                                    Comprar
-                                                    </a>
-                                                
-                                                <?php endif; ?>
-
-                                            </div>
+                                                <a href="<?=base_url('carrito'.$key['id_producto']) ?>" class="btn btn-sm btn-comprar fw-bold" type="button">
+                                                COMPRAR AHORA</a>
     
+                                            </div>
+                                            <?php endif; ?>
+                                                
                                         </div>
 
                                     </div>
@@ -91,9 +83,9 @@ Catalogo
                 </div>
 
             <?php };?>
-
+            
         </div>
-
+        
     </div>
 
 <?=$this->endSection()?>   

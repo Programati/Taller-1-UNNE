@@ -157,8 +157,7 @@ Crar producto
                     <div class="card-footer text-body-secondary">
                         <div class="row ">
                             <div class="col">
-                                <a href="<?=base_url('productos') ?>" class=""><small>Volver a Lista</small></a>                            
-                                <!-- <a href="<?=base_url();?>productos/listar" class=""><small>Volver a Lista</small></a>                             -->
+                                Carga de productos
                             </div>
                         </div>
                     </div>

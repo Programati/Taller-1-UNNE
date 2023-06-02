@@ -27,10 +27,10 @@
                         <thead class="thead table-secondary">
                             <tr>
                                 <th>Cantidad</th>
-                                <th>Nombre</th>
-                                <th>Precio</th>
+                                <th>Nombre_Producto</th>
+                                <th>Precio_Unitario</th>
                                 <th>SubTotal</th>
-                                <th>Opciones</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,11 +42,11 @@
                                 <tr>
                                     <td><?=$key['cantidad']?></td>
                                     <td><?=$bd['nombre_producto']?></td>
-                                    <td><?=$bd['precio']?></td>
-                                    <td><?=$key['subTotal']?></td>
+                                    <td>$<?=$bd['precio']?></td>
+                                    <td>$<?=$key['subTotal']?></td>
                                     <td>
                                         <a href="<?=base_url('vaciarCarrito'.$key['id']) ?>" class="btn btn-danger btn-sm" type="button">
-                                        <i class="bi bi-x"></i>
+                                        <i class="bi bi-bag-dash-fill"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -65,23 +65,21 @@
 
             </div>
             <div class="row">
-                <div class="col">
-                    <h5>Total $<?=session()->get('SumaPrecioProductos')?></h5>
+                <div class="col d-flex justify-content-end">
+                    <h5 class="fw-bolder">Total a pagar $<?=session()->get('SumaPrecioProductos')?></h5>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 d-flex justify-content-md-between align-items-center flex-wrap">
+                <div class="col-12 d-flex  align-items-stretch flex-wrap ">
 
-                    <div class="col col-md-3">
-                        <a href="<?=base_url('confirmarCompra') ?>" class="btn btn-success" type="button">
-                            <i class="bi bi-cart-check-fill"></i>
+                    <div class="col-12 col-sm-2 d-flex align-self-stretch">
+                        <a href="<?=base_url('confirmarCompra') ?>" class="btn btn-success btn-sm d-flex" type="button">
                             <p class="p-0 m-0">Confirmar Compra</p>
                         </a>
                     </div>
 
-                    <div class="col col-md-3">
-                        <a href="<?=base_url('vacioTotalCarrito') ?>" class="btn btn-danger" type="button">
-                            <i class="bi bi-cart-x-fill"></i>
+                    <div class="col-12 col-sm-2 d-flex align-self-stretch">
+                        <a href="<?=base_url('vacioTotalCarrito') ?>" class="btn btn-danger btn-sm d-flex" type="button">
                             <p class="p-0 m-0">Vaciar Carrito</p>
                         </a>
                     </div>

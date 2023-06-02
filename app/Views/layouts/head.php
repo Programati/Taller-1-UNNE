@@ -115,10 +115,12 @@
                 aria-expanded="false"
                 
                 >
+                
                 <!-- ICONO -->
                 <i class="bi bi-person-circle fs-3 text-white"></i>
               
               </a>
+              
               <!-- MENU DEPLEGABLE |Nombre|Perfil|Cerrar Sesion -->
               <ul class="dropdown-menu bg-dark" aria-labelledby="submenu-usuario">
                 
@@ -134,18 +136,19 @@
             <!-- CARRITO -->
             <li class="nav-item d-flex align-items-center" >
               <!-- ICONO DE USUARIO -->
-              <a class="nav-link" href="<?php echo base_url('carritoCompras'); ?>">
+              <a class="nav-link position-relative" href="<?php echo base_url('carritoCompras'); ?>">
                 <!-- ICONO -->
                 <i class="bi bi-cart3 fs-3"></i>
-                <span class="badge bg-primary rounded-pill">
-                  <?php if(session()->get('productos') != null)
-                  {
-                    echo "+".count(session()->get('productos'));
-                  }else
-                  {
-                    echo "0";
-                  }?> 
-                </span>
+                  <span class="badge rounded-pill position-absolute top-1 start-1 translate-middle bg-danger">
+                    <?php if(session()->get('productos') != null)
+                    {
+                      echo "+".count(session()->get('productos'));
+                    }else
+                    {
+                      echo "0";
+                    }?> 
+                  </span>
+                
               </a>
 
             </li>

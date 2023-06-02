@@ -28,8 +28,8 @@ Lista de Productos
                 <table class="table table-light">
                 <thead class="thead table-secondary">
                     <tr>
-                        <th>N°</th>
-                        <th>Nombre</th>
+                        <th>#</th>
+                        <th>Nombre_Producto</th>
                         <th>Stock</th>
                         <th>Precio</th>
                         <th>Opciones</th>
@@ -43,11 +43,15 @@ Lista de Productos
                         <tr>
                             <td><?=$key['id_producto']?></td>
                             <td><?=$key['nombre_producto']?></td>
-                            <td><?=$key['cantidad']?></td>
-                            <td><?=$key['precio']?></td>
+                            <td class="text-center"><?=$key['cantidad']?></td>
+                            <td>$<?=$key['precio']?></td>
                             <td>
-                                <a href="<?=base_url('editar'.$key['id_producto']) ?>" class="btn btn-primary btn-sm" type="button">Editar</a>
-                                <a href="<?=base_url('delete'.$key['id_producto']) ?>" class="btn btn-danger btn-sm" type="button">Borrar</a>
+                                <a href="<?=base_url('editar'.$key['id_producto']) ?>" class="btn btn-primary btn-sm" type="button">
+                                <i class="bi bi-pencil-fill"></i>
+                                </a>
+                                <a href="<?=base_url('delete'.$key['id_producto']) ?>" class="btn btn-danger btn-sm" type="button">
+                                <i class="bi bi-trash-fill"></i>    
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
