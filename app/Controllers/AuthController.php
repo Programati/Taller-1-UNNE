@@ -79,7 +79,7 @@ class AuthController extends BaseController
                     'required' => 'Tienes que ingresar tu correo electronico',
                     'max_length' => 'El correo electronico es muy largo',
                     'valid_email' => 'Tienes que ingresar un correo electronico válido',
-                    'is_unique[usuarios.email]' => 'El correo que ingresaste ya esta registrado'
+                    'is_unique' => 'El correo que ingresaste ya esta registrado',
                     ]
                 ],
             'password' => [

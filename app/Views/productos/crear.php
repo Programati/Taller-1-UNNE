@@ -65,8 +65,9 @@ Crar producto
 
                                 <div class="form-group col-12 col-md-2 mb-3">
                                     <label for="precio" class="form-label">Precio</label>
+                                    
                                     <!--SET_VALUE = Para mantener el ultimo valor ingresado al recargar la página cuando nos da el error de validacion -->
-                                    <input type="number" id="precio" placeholder="$" class="form-control" name="precio" value="<?=set_value('precio'); ?>">
+                                    <input type="number" step="0.01" id="precio" placeholder="$" class="form-control" name="precio" value="<?=set_value('precio'); ?>">
                                     <!-- ERRORES DE VALIDACION DEL CONTROLADOR -->
                                     <span class="text-danger">
                                         <!-- Al parecer VALIDATION es palabra reservada, cambiandole, no mostrar error -->

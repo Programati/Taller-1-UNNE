@@ -36,7 +36,7 @@ EDICION DE PRODUCTOS
 
                             <!-- NOMBRE Categoria Precio y Cantidad-->
                             <div class="row">
-
+                                <!-- NOMBRE -->
                                 <div class="form-group col-12 col-md-5 mb-3">
     
                                     <label for="nombre" class="form-label">Nombre del producto</label>
@@ -49,7 +49,7 @@ EDICION DE PRODUCTOS
                                     
     
                                 </div>
-
+                                <!-- CATEGORIA -->
                                 <div class="form-group col-12 col-md-3 mb-3">
 
                                     <label for="categoria" class="form-label">Categoria</label>
@@ -67,18 +67,18 @@ EDICION DE PRODUCTOS
                                     </span>                
     
                                 </div>
-
+                                <!-- PRECIO -->
                                 <div class="form-group col-12 col-md-2 mb-3">
                                     <label for="precio" class="form-label">Precio</label>
                                     <!--SET_VALUE = Para mantener el ultimo valor ingresado al recargar la página cuando nos da el error de validacion -->
-                                    <input type="number" id="precio" placeholder="$" class="form-control" name="precio" value="<?=$producto['precio']; ?>">
+                                    <input type="number" step="0.01" id="precio" placeholder="$" class="form-control" name="precio" value="<?=$producto['precio']; ?>">
                                     <!-- ERRORES DE VALIDACION DEL CONTROLADOR -->
                                     <span class="text-danger">
                                         <!-- Al parecer VALIDATION es palabra reservada, cambiandole, no mostrar error -->
                                         <?=isset($validation) ? mostrar_error($validation, 'precio') : " " ?>
                                     </span>
                                 </div>
-
+                                <!-- CANTIDAD -->
                                 <div class="form-group col-12 col-md-2 mb-3">
                                     <label for="cantidad" class="form-label">Cantidad</label>
                                     <!--SET_VALUE = Para mantener el ultimo valor ingresado al recargar la página cuando nos da el error de validacion -->
@@ -92,7 +92,7 @@ EDICION DE PRODUCTOS
 
                             </div>
 
-                            <!-- IMAGEN -->
+                            <!-- IMAGEN / ESTADO-->
                             <div class="row">
 
                                 <div class="form-group col-12 col-md-10 mb-3">

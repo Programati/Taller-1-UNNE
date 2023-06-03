@@ -143,8 +143,17 @@ class ProductoController extends BaseController
             $productos = new ProductoModel();
     
             $productos->insert($datos);
+
+            if($datos['activo'] == 1)
+            {
+                return redirect()->to(route_to('productosOn'))->with('success', 'Producto cargado correctamente!');
+            }else
+            {
+                return redirect()->to(route_to('productosOff'))->with('success', 'Producto creado correctamente! Se ecuentra INACTIVO');
+
+            }
         
-            return redirect()->to(route_to('productosOn'))->with('success', 'Producto cargado correctamente!');
+            // return redirect()->to(route_to('productosOn'))->with('success', 'Producto cargado correctamente!');
         }else
         {
 

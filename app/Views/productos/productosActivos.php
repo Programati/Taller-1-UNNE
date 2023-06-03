@@ -30,7 +30,7 @@ Lista de Productos
                     <tr>
                         <th>#</th>
                         <th>Nombre_Producto</th>
-                        <th>Stock</th>
+                        <th class="text-center">Stock</th>
                         <th>Precio</th>
                         <th>Opciones</th>
                     </tr>
