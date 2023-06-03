@@ -105,26 +105,29 @@
           <ul class="navbar-nav ms-auto">
 
             <!-- LISTA DESPLEGABLE -->
-            <li class="nav-item dropdown" >
+            <!-- <li class="nav-item dropdown dropstart" > -->
+            <li class="nav-item  dropdown" >
               <!-- ICONO DE USUARIO -->
               <a  
                 href="#"
-                class="nav-link dropdown-toggle"
+                class="nav-link dropdown-toggle d-flex align-items-center"
                 role="button" 
-                data-bs-toggle="dropdown" 
+                data-bs-toggle="dropdown"
                 aria-expanded="false"
                 
                 >
                 
                 <!-- ICONO -->
-                <i class="bi bi-person-circle fs-3 text-white"></i>
+                <i class="bi bi-person-circle fs-3 text-white me-1"></i>
+                
+                <small class="d-sm-block d-md-none d-lg-block" ><?=session()->get('apellido');?></small>
               
               </a>
               
               <!-- MENU DEPLEGABLE |Nombre|Perfil|Cerrar Sesion -->
-              <ul class="dropdown-menu bg-dark" aria-labelledby="submenu-usuario">
+              <ul class="dropdown-menu dropdown-menu-start bg-dark" aria-labelledby="submenu-usuario">
                 
-                <li><h6 class="dropdown-header"><?=session()->get('apellido');?></h6></li>
+                <li><h6 class="dropdown-header"><?=session()->get('apellido')." "?><?=session()->get('nombre');?></h6></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
                 <li><a class="dropdown-item" href="<?= base_url('allFacturasUsuario'); ?>">Mis Compras</a></li>

@@ -31,6 +31,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 
 $routes->get('/', 'HomeController::index');
+// $routes->get('a', 'HomeController::index2');
 $routes->get('quienes somos', 'QuienesSomosController::index', ['as' => "quienes_somos"]);
 $routes->get('comercializacion', 'ComercializacionController::index', ['as' => "comercializacion"]);
 $routes->get('contacto', 'ContactoController::index', ['as' => "contacto"]);

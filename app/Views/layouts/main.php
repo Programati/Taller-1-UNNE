@@ -16,20 +16,16 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/icon/bootstrap-icons-1.10.4/font/bootstrap-icons.css">
-    
+    <script src="assets/js/bootstrap.bundle.js"></script>
+
 </head>
     <body>
+      
 
     <?=$this->include('layouts/head')?>
     <?=$this->renderSection('content')?>
     <?=$this->include('layouts/footer')?>
 
-
-    <!-- <script src="assets/js/bootstrap.js"></script> -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.js"></script>
-    <!-- <script src="assets/js/popper.min.js"></script>   -->
-    <!-- <script src="assets/js/jquery-3.7.0.min.js"></script>   -->
     
   </body>
 </html>

@@ -209,6 +209,10 @@ footer{
 .card-descripcion-producto{
     font-size: 12px;
 }
+.carta-precio{
+    color: red;
+    font-weight: bold;
+}
 .btn-comprar{
     background-color: #5f1782;
     color: #fff;
@@ -288,12 +292,9 @@ footer{
     .info-contacto p{
         font-size: 1rem !important;
     }
+    .navbar ul li a{
+        font-size: .9rem;
+    }
     
     
-}
-
-.main {
-    width: 80vw;
-    height: 100vh;
-    background-color: tomato;
 }

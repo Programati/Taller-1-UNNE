@@ -40,10 +40,15 @@ Lista de Productos
                 <?php if($productos):?>
                     <!-- Recorremos la tabla productos -->
                     <?php foreach($productos as $key) : ?>
-                        <tr>
+                        <tr class="<?php if($key['cantidad'] <= 0):?>
+                                    table-danger
+                                <?php endif?>"
+                            >
                             <td><?=$key['id_producto']?></td>
                             <td><?=$key['nombre_producto']?></td>
-                            <td class="text-center"><?=$key['cantidad']?></td>
+                            <td class="text-center">
+                                <?=$key['cantidad']?>
+                            </td>
                             <td>$<?=$key['precio']?></td>
                             <td>
                                 <a href="<?=base_url('editar'.$key['id_producto']) ?>" class="btn btn-primary btn-sm" type="button">

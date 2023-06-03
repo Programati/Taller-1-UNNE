@@ -43,9 +43,23 @@ Catalogo
                                     alt="<?=$key['nombre_producto']?>"
                                 >  
                                 <div class="card-body p-0 text-start">
-                                    <p class="card-title p-0 ps-1 fw-bold"><?=$key['nombre_producto']?></p>
-                                    <small class="card-descripcion-producto p-0 ps-1"><?=$key['descripcion_producto']?></small>
-                                    <p class="card-text fs-4 fw-bold text-end pe-1" style="color:red">$<?=$key['precio']?></p>
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="card-title p-0 ps-1 fw-bold"><?=$key['nombre_producto']?></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                        <small class="card-descripcion-producto p-0 ps-1"><?=$key['descripcion_producto']?></small>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                        <p class="card-text fs-4 fw-bold text-center text-sm-end pe-1 carta-precio">$<?=$key['precio']?></p>
+                                        </div>
+                                    </div>
+                                    
+                                    
                                 </div>
         
                                 <div class="card-body d-flex justify-content-between f-direction-row">
@@ -58,10 +72,23 @@ Catalogo
                                                 </span>
                                             </div>
                                             <?php if(session()->has('loggedUser')):?>
-                                            <div class="d-grid gap-1">
+                                            <!-- <div class="d-grid gap-1">
 
-                                                <a href="<?=base_url('carrito'.$key['id_producto']) ?>" class="btn btn-sm btn-comprar fw-bold" type="button">
-                                                COMPRAR AHORA</a>
+                                                
+    
+                                            </div> -->
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <a href="<?=base_url('carrito'.$key['id_producto']) ?>" class="btn btn-sm btn-comprar fw-bold d-block d-sm-none p-0 m-0" type="button">
+                                                        <i class="bi bi-bag-check-fill display-6"></i>
+                                                        </a>
+                                                        <a href="<?=base_url('carrito'.$key['id_producto']) ?>" class="btn btn-sm btn-comprar fw-bold d-none d-sm-block p-0 m-0" type="button">
+                                                            COMPRAR AHORA
+                                                        </a>
+                                                        
+                                                    </div>
+                                                </div>
     
                                             </div>
                                             <?php endif; ?>
