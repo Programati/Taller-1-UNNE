@@ -15,8 +15,7 @@ Login
 
                 <div class="card ">
                     <h5 class="card-header text-center d-flex justify-content-center align-items-center">
-                    <i class="bi bi-person-circle display-6"></i>
-                        INGRESAR
+                        <i class="bi bi-person-circle display-6">&nbsp;INGRESAR</i>
                     </h5>
 
                     <div class="card-body ">

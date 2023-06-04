@@ -66,25 +66,24 @@
             </div>
             <div class="row">
                 <div class="col d-flex justify-content-end">
-                    <h5 class="fw-bolder">Total a pagar $<?=session()->get('SumaPrecioProductos')?></h5>
+                    <h5 class="fw-bolder fs-3">Total a pagar $<?=session()->get('SumaPrecioProductos')?></h5>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 d-flex  align-items-stretch flex-wrap ">
-
-                    <div class="col-12 col-sm-2 d-flex align-self-stretch">
-                        <a href="<?=base_url('confirmarCompra') ?>" class="btn btn-success btn-sm d-flex" type="button">
-                            <p class="p-0 m-0">Confirmar Compra</p>
-                        </a>
-                    </div>
-
-                    <div class="col-12 col-sm-2 d-flex align-self-stretch">
-                        <a href="<?=base_url('vacioTotalCarrito') ?>" class="btn btn-danger btn-sm d-flex" type="button">
-                            <p class="p-0 m-0">Vaciar Carrito</p>
-                        </a>
-                    </div>
-
+                <div class="col-5 col-sm-3 d-flex justify-content-stretch">
+                    <a href="<?=base_url('confirmarCompra') ?>" class="btn btn-success btn-sm d-block" type="button">
+                        <p class="p-0 m-0">Confirmar Compra</p>
+                    </a>
                 </div>
+                <div class="col-5 col-sm-3 d-flex justify-content-stretch align-items-stretch">
+                    <a href="<?=base_url('vacioTotalCarrito') ?>" class="btn btn-danger btn-sm d-block" type="button">
+                        <p class="p-0 m-0">Vaciar Carrito</p>
+                    </a>
+                </div>
+                <!-- <div class="col d-flex justify-content-stretch align-items-stretch">
+
+                </div> -->
+                
             </div>
 
         <?php else:?>

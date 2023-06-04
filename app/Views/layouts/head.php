@@ -1,4 +1,24 @@
-
+<!-- Mostramos BARRA DE PROPAGANDA amarilla sólo si no es ADMINISTRADOR-->
+<?php if( !session()->has('loggedUser') || (session()->has('loggedUser') && session()->get('id_rol') != 1) ):?>
+  <div class="container-fluid m-0 d-none d-md-block" id="propaganda">
+    <div class="col container d-flex justify-content-between align-items-center">
+      <div class="row">
+        <p class="m-0 p-0">TIENDA ONLINE DE K-POP CORRENTINA</p>
+      </div>
+      <div class="row iconos-redes-sociales-top">
+            <a href="#" class="nav-link">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" class="nav-link">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" class="nav-link">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+  </div>
+<?php endif;?>
 <!-- Barra de navegación -->
 <nav class="navbar navbar-expand-md sticky-top shadow">
     <!-- Contenedor interno de la barra -->
@@ -12,7 +32,7 @@
             <span class="magic letrasLogo">Magic</span><span class="shop letrasLogo">Shop</span>
         </a>
       <?php endif;?>
-        <!-- Boton que se va a mostrar en los dispositivos pequeños -->
+      <!-- Boton que se va a mostrar en los dispositivos pequeños -->
       <button class="navbar-toggler btn btn-outline-light active" type="button" data-bs-toggle="collapse" data-bs-target="#deplegarMenu" aria-controls="deplegarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -136,13 +156,15 @@
               </ul>
 
             </li>
+            <!-- BARRA SEPARADORA PERFIL | CARRITO -->
+            <div class="vr text-white d-none d-md-block"></div>
             <!-- CARRITO -->
             <li class="nav-item d-flex align-items-center" >
-              <!-- ICONO DE USUARIO -->
-              <a class="nav-link position-relative" href="<?php echo base_url('carritoCompras'); ?>">
+              <!-- LINK DE CARRITO -->
+              <a class="nav-link position-relative" href="<?=base_url('carritoCompras')?>">
                 <!-- ICONO -->
                 <i class="bi bi-cart3 fs-3"></i>
-                  <span class="badge rounded-pill position-absolute top-1 start-1 translate-middle bg-danger">
+                  <span class="num badge rounded-pill position-absolute top-1 start-1 translate-middle bg-danger">
                     <?php if(session()->get('productos') != null)
                     {
                       echo "+".count(session()->get('productos'));

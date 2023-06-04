@@ -18,11 +18,9 @@ Inicio | Magic Shop
     
     <!-- Mensaje de INICIO SESSION cuando se loguea -->
     <?php if(session()->get('success')): ?>
-
-      <div class="alert alert-success" role="alert">
-          <?=session()->get('success')?>
-      </div>
-
+      <div class="alert alert-success">
+            <?= session()->getFlashdata('success'); ?>
+        </div>
     <?php endif; ?> 
 
     <!-- CARRUSEL -->

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/icon/bootstrap-icons-1.10.4/font/bootstrap-icons.css">
     <script src="assets/js/bootstrap.bundle.js"></script>
+  
 
 </head>
     <body>
@@ -25,7 +26,6 @@
     <?=$this->include('layouts/head')?>
     <?=$this->renderSection('content')?>
     <?=$this->include('layouts/footer')?>
-
     
   </body>
 </html>

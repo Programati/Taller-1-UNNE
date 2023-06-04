@@ -8,7 +8,7 @@ Lista de Productos
 <?=$this->section('content')?>
 
 <div class="container">
-    <div class="row my-5">
+    <div class="row my-3">
         <div class="col">
             
             <h1 class="text-center">PRODUCTOS DESACTIVADOS</h1>

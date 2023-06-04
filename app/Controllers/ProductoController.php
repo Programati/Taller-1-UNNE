@@ -99,7 +99,7 @@ class ProductoController extends BaseController
                 'errors' => [
                     'uploaded' => 'Tienes que subir una imagen',
                     'mime_in' => 'Formato de imagen invalido, sólo subir(jpg/png)',
-                    'max_size' => 'Archivo muy pesado, sólo hasta 1024MB',
+                    'max_size' => 'Archivo muy pesado, sólo hasta 1024KB',
                 ]
             ]
         ]);
@@ -252,7 +252,7 @@ class ProductoController extends BaseController
                 'errors' => [
                     'uploaded' => 'Tienes que subir una imagen',
                     'mime_in' => 'Formato de imagen invalido, sólo subir(jpg/png)',
-                    'max_size' => 'Archivo muy pesado, sólo hasta 1024MB',
+                    'max_size' => 'Archivo muy pesado, sólo hasta 1024KB',
                 ]
             ]
         ]);
@@ -282,16 +282,17 @@ class ProductoController extends BaseController
                 $nuevoNombre = $imagen->getRandomName();
                 $imagen->move('assets/img/magicshopctes/productos/uploads',$nuevoNombre);
                 
-                $datos = [
+                $img = [
                     'url_imagen' => $nuevoNombre
                 ];
         
-                $producto->update($id,$datos);
+                $producto->update($id,$img);
             
             }
             
             
         }
+        //dd($datos);
 
         if($datos['activo'] == 1)
         {

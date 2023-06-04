@@ -35,11 +35,24 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Mirza';
+    src: url('../font/Mirza/Mirza-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Mirza Bold';
+    src: url('../font/Mirza/Mirza-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 
 body{
-    font-family: 'Museo', Impact;
+    /* font-family: 'Museo', Impact; */
+    font-family: 'Mirza', cursive;
     font-size: 16px;
     background-color: #dec6f6;
 }
@@ -52,6 +65,10 @@ body{
     font-family: 'Montez';
 }
 
+#propaganda{
+    background-color: #ffba00;
+    color: #fff;
+}
 
 /* Barra de navegación */
 .navbar{
@@ -60,15 +77,18 @@ body{
 .navbar-nav a{
     font-size: 0.87em;
     color: #fff;
+    font-weight: 700;
 }
 .navbar-nav .nav-item a:hover{
     color: #ffba00;
 }
-.navbar-toggler{
-    color:#ffba00
-}
+
 .nav-link {
-    text-transform: capitalize;
+    text-transform: uppercase;
+}
+/* NUMERO DE PRODUCTOS en el carrito */
+.num{
+    font-size: .85rem;
 }
 
 /* CARRUSEL PROPIO*/
@@ -197,26 +217,47 @@ footer{
     border-radius: 50%;
     transition: all 0.2s ease-in;
 }
-.iconos-redes-sociales i {
+.iconos-redes-sociales-top a{
+    width: 1.7em;
+    height: 1.7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px;
+    margin: 1px 5px 1px 5px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    transition: all 0.2s ease-in;
+}
+.iconos-redes-sociales i{
     color: #fff ;
     font-size: 1.5em;
     transition: all 0.2s ease-in;
 }
-.iconos-redes-sociales a:hover {
+.iconos-redes-sociales-top i {
+    color: #fff ;
+    font-size: 1em;
+    transition: all 0.2s ease-in;
+}
+.iconos-redes-sociales a:hover, .iconos-redes-sociales a:hover{
     background-color: #fff;
     border: 2px solid #210440;
 }
-.iconos-redes-sociales a:hover i {
+.iconos-redes-sociales a:hover i, .iconos-redes-sociales-top a:hover i{
     color: #210440;
 }
 
 /*CATALOGO DE PRODUCTOS*/
+.card-title{
+    font-size: 1.3rem;
+}
 .card-descripcion-producto{
-    font-size: 12px;
+    font-size: 1rem;
 }
 .carta-precio{
     color: red;
     font-weight: bold;
+    font-size: 2rem;
 }
 .btn-comprar{
     background-color: #5f1782;
@@ -226,7 +267,6 @@ footer{
     background-color: #ba82f2;
     color: #210440;
 }
-
 
 
 
@@ -277,7 +317,12 @@ footer{
     .seccion-medio p, .seccion-izquierda p{
         text-align: start;
     }
-    
+    .card-title, .carta-precio{
+        font-size: 1.5rem;
+    }
+    .card-descripcion-producto{
+        font-size: 1rem;
+    }
     
 
 }
@@ -299,6 +344,15 @@ footer{
     }
     .navbar ul li a{
         font-size: .9rem;
+    }
+    .card-title, .carta-precio{
+        font-size: 1rem;
+    }
+    .card-descripcion-producto{
+        font-size: 1rem;
+    }
+    .stock-badge{
+        font-size: 1rem;
     }
     
     

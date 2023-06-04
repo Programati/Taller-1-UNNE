@@ -10,7 +10,7 @@
 
 <?=$this->section('content')?>
 
-<div class="container my-3" style="height: 70vh">
+<div class="container my-3">
     <div class="row">
         <div class="col">
             <h1 class="text-center">Todas mis compras</h1>

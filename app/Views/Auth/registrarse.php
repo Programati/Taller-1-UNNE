@@ -12,12 +12,12 @@ Registrarse
 
     <div class="container mb-5">
         <div class="row d-flex justify-content-center">
-            <div class="col-8 g-3">                
+            <div class="col-12 g-3">                
                 
                 <div class="card ">
-                    <h5 class="card-header d-flex justify-content-center align-items-center">
-                    <i class="bi bi-person-vcard display-6"></i>
-                        REGISTRARSE
+                    <h5 class="card-header text-center d-flex justify-content-center align-items-center">
+                        <i class="bi bi-person-vcard display-6"> &nbsp;REGISTRARSE</i>
+                        
                     </h5>
 
                     <div class="card-body ">

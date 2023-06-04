@@ -9,23 +9,20 @@
 <?php //dd($infoPersona);?>
 
     <div class="container mt-2">
-        <div class="row">
-            <div class="col">
-                <h1 class="text-center">Lista de usuarios registrados</h1>
-                <hr>
-            </div>
-        </div>
         
-        <div class="row">
+        <div class="row my-3">
             
             <div class="col">
-            <?php if(session()->get('success')): ?>
-    
-                <div class="alert alert-success my-3" role="alert">
-                    <?=session()->get('success')?>
-                </div>
+                <h1 class="text-center">Lista de usuarios registrados <?php echo ($infoUsuario['0']['activo'] == 1) ? 'Activos' : 'In-Activos' ?></h1>
+                <hr>
 
-            <?php endif; ?> 
+                <?php if(session()->get('success')): ?>
+        
+                    <div class="alert alert-success my-3" role="alert">
+                        <?=session()->get('success')?>
+                    </div>
+
+                <?php endif; ?> 
 
                 <div class="table-responsive">
                     <table class="table table-light">
