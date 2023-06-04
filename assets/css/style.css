@@ -142,10 +142,15 @@ body{
     color: #210440;
 }
 
-/* -------------------- PAGINA COMERCIALIZACION ---------------- */
+/* -------------------- PERFIL DE USUARIO ---------------- */
 
-
-
+/* Boton redireccion a facturas */
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
 /* -------------------- PAGINA CONTACTOS -------------------- */
 .formulario-contenedor {
     border: 2px solid #210440;

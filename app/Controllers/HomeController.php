@@ -5,6 +5,8 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\UsuarioModel;
 use App\Models\PersonaModel;
+use App\Models\DomicilioModel;
+use App\Models\FacturaModel;
 
 class HomeController extends BaseController
 {
@@ -42,35 +44,23 @@ class HomeController extends BaseController
         ];
         return view('inicio/bodyPrincipal', $data);
     }
-    //PARA PROBAR COSAS-- ACTIVAR LA RUTA
-    public function index2()
+    
+    public function perfil()
     {
-        //Creamos el objeto de la Tabla Usuarios
-        $datosUsuarios = new UsuarioModel();
-        $datosPersona = new PersonaModel();
-
-        //Capturamos el ID del logueo de la PERSONA reciente
-        $id_persona_logueada = session()->get('loggedUser');
-
-        if(session()->has('loggedUser'))
-        {
-            //Buscamos en el objeto USUARIO el ID de la persona => Se convierte en un Array
-            $info_usuario = $datosUsuarios->where('id_persona',$id_persona_logueada)->first();
-            //Buscamos en el objeto a la PERSONA logueada
-            $info_persona = $datosPersona->find($id_persona_logueada);
-            session()->set(array_merge(session()->get(),$info_usuario,$info_persona));
-        }else
-        {
-            $info_usuario = 0;
-            $info_persona = 0;
+        $domicilio = new DomicilioModel();
+        $factura = new FacturaModel();
+        $total = 0;
+        foreach ($factura->where('id_usuario', session()->get('id_usuario'))->findAll() as $key => $value) {
+            $total += $value['importe_total'];
         }
+        
 
         $data = [
-            //Registro de la PERSONA logueada
-            'infoPersonaLog' => $info_persona,
-            'infoUsuario' => $info_usuario,
+            'domicilio' => $domicilio->where('id_domicilio', session()->get('id_domicilio'))->first(),
+            'factura' => $factura->where('id_usuario', session()->get('id_usuario'))->orderBy('id_factura', 'DESC')->first(),
+            'total' => $total,
         ];
-        return view('a', $data);
+        return view('usuarios/perfil', $data);
     }
 
     public function indexAdmin()
