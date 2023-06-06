@@ -12,7 +12,7 @@ Registrarse
 
     <div class="container mb-5">
         <div class="row d-flex justify-content-center">
-            <div class="col-12 g-3">                
+            <div class="col-12 col-md-8 g-3">                
                 
                 <div class="card ">
                     <h5 class="card-header text-center d-flex justify-content-center align-items-center">
@@ -133,9 +133,9 @@ Registrarse
                                 </div>
 
                                 <div class="form-group col-12 col-md-6 mb-3">
-                                    <label for="localidad" class="form-label">Localidad</label>
+                                    <label for="localidad" class="form-label">Localidad/Ciudad</label>
                                     <!--SET_VALUE = Para mantener el ultimo valor ingresado al recargar la página cuando nos da el error de validacion -->
-                                    <input type="text" id="localidad" placeholder="Localidad" class="form-control" name="localidad" value="<?=set_value('localidad'); ?>">
+                                    <input type="text" id="localidad" placeholder="Localidad/Ciudad" class="form-control" name="localidad" value="<?=set_value('localidad'); ?>">
                                     <!-- ERRORES DE VALIDACION DEL CONTROLADOR -->
                                     <span class="text-danger">
                                         <!-- Al parecer VALIDATION es palabra reservada, cambiandole, no mostrar error -->

@@ -66,7 +66,7 @@ body{
 }
 
 #propaganda{
-    background-color: #ffba00;
+    background-image: linear-gradient(to right, #ffba00, #ffbb00a3,#ffbb00);
     color: #fff;
 }
 
@@ -85,6 +85,14 @@ body{
 
 .nav-link {
     text-transform: uppercase;
+}
+/* CAMPANA DE NOTIFICACION DE CONSULTAS */
+.notificacion{
+    color: white;
+    font-family: 'Mirza Bold';
+}
+.campana{
+    font-size: .7rem;
 }
 /* NUMERO DE PRODUCTOS en el carrito */
 .num{

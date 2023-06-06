@@ -70,7 +70,9 @@ Mi Perfil
                     <a href="<?= base_url('allFacturasUsuario'); ?>" class="nav-link border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Mis Facturas</a>
                 </div><br>
                 <div class="col-md-12"><label class="labels">Importe de última compra</label>
-                <input disabled type="text" class="form-control" value="$<?=$factura['importe_total']?>"></div> <br>
+                <input disabled type="text" class="form-control"
+                    value="$<?= ($factura) ? $factura['importe_total'] : '0'?>">
+                </div> <br>
                 <div class="col-md-12"><label class="labels">Total general gastado</label>
                 <input disabled type="text" class="form-control" value="$<?=$total?>"></div>
             </div>

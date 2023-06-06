@@ -24,10 +24,11 @@ class ProductoController extends BaseController
         $productos = new ProductoModel();
 
         //Ponemos en una varaible todos los productos de la tabla PRODUCTOS
+        // $DatosProductos = $productos->orderBy('cantidad', 'ASC')->where('activo', 1)->findAll();
         $DatosProductos = $productos->orderBy('cantidad', 'ASC')->where('activo', 1)->findAll();
 
         $data = [
-            'productos' => $DatosProductos
+            'productos' => $DatosProductos,
         ];
 
         return view('productos/productosActivos', $data);

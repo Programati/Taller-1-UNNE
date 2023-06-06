@@ -71,14 +71,8 @@ Lista de Productos
 
     </div>
     
+    
 </div>
 
 
 <?=$this->endSection()?>
-
-<img    
-    class="img-thumbnail" 
-    width="50" 
-    src="<?=base_url()?>assets/img/magicshopctes/productos/uploads/<?=$key['url_imagen']?>" 
-    alt="<?=$key['nombre_producto']?>"
->  

@@ -8,9 +8,15 @@ use App\Models\DomicilioModel;
 use App\Models\ProductoModel;
 use App\Models\UsuarioModel;
 use App\Models\PersonaModel;
+use CodeIgniter\I18n\Time;
 
 class FacturaController extends BaseController
 {
+    public function __construct()
+    {
+        helper(['url','form','FormularioError']);
+
+    }
     public function index()
     {
         $factura = new FacturaModel();

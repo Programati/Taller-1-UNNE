@@ -18,9 +18,5 @@ class FacturaModel extends Model
     protected $useTimestamps = true;
     protected $createdField = 'fecha_factura';
     protected $updatedField = 'fecha_updated';
-
-
-
-
     
 }

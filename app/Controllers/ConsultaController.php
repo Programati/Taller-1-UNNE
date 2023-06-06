@@ -126,7 +126,13 @@ class ConsultaController extends BaseController
     public function listaConsultas()
     {
         $consultas = new ConsultaModel();
+        // ACTUALIZAMOS LA LISTA DE CONSULTAS NO LEIDAS
+        $asociar = [
+            'consultas' => $consultas->where('leido', 0)->findAll(),
+        ];
+        session()->set(array_merge(session()->get(),$asociar));
 
+        // TRAMOS TODAS LAS CONSULTAS A LA VISTA
         $listaConsultas = $consultas->findAll();
 
         $data = [
@@ -147,13 +153,16 @@ class ConsultaController extends BaseController
         $consultas->where('id_consulta', $id)->update($id,$datos);
         //Traemos el array de consultas de la sesion
         $arrayViejo = session()->get('consultas');
+        //dd(session()->get('consultas'));
         //La recorremos
         for($x = 0; $x < count($arrayViejo); $x++) 
         {
+            //dd($arrayViejo);
             if($arrayViejo[$x]['id_consulta'] == $id)
             {
                 //Sacamos el mensaje leido del array consulas de la session
                 unset($arrayViejo[$x]);
+                $arrayViejo = array_values($arrayViejo);
                 break;
             }
         }

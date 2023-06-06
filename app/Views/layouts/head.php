@@ -3,7 +3,7 @@
   <div class="container-fluid m-0 d-none d-md-block" id="propaganda">
     <div class="col container d-flex justify-content-between align-items-center">
       <div class="row">
-        <p class="m-0 p-0">TIENDA ONLINE DE K-POP CORRENTINA</p>
+        <p class="m-0 p-0">TIENDA ONLINE DE K-POP ARGENTINA / CORRIENTES</p>
       </div>
       <div class="row iconos-redes-sociales-top">
             <a href="#" class="nav-link">
@@ -47,13 +47,13 @@
             <li class="nav-item">
               <a class="nav-link"  href="<?=base_url('listaConsultas')?>">
                 CONSULTAS
-                <i class="bi bi-bell">
-                  <?php if(session()->get('consultas') != null):?>
-                    <?=count(session()->get('consultas'))?>
-                  <?php else:?>
-                    0
-                  <?php endif?>
-                </i>
+                <?php if(session()->get('consultas') != null):?>
+                  <i class="bi bi-bell notificacion">
+                      <span class="campana badge rounded-pill position-absolute top-1 start-1 translate-middle bg-danger">
+                        <?=count(session()->get('consultas'))?>
+                      </span>
+                    </i>
+                <?php endif?>
               </a>
             </li>
             <li class="nav-item">

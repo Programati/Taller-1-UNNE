@@ -77,7 +77,11 @@ Lista de consultas
                                             <div class="modal-content">
                                                 <!-- Encabezado de la caja -->
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Consulta N° <?=$value['id_consulta']."<br>Fecha: ".$value['fecha_create']?></h5>
+                                                
+                                                    <h5 class="modal-title">
+                                                    <i class="bi bi-megaphone"></i>
+                                                        Consulta N° <?=$value['id_consulta']."<br>Fecha: ".$value['fecha_create']?>
+                                                    </h5>
                                                     <button class="btn-close" data-bs-dismiss="modal" aria-label="cerar"></button>
                                                 </div>
                                                 <!-- Cuerpo de la caja -->
@@ -106,11 +110,15 @@ Lista de consultas
                                                 </div>
                                                 <!-- Pie de pagina de la caja -->
                                                 <div class="modal-footer">
-
-                                                    <a href="<?=base_url('consultaLeida'.$value['id_consulta']) ?>" class="btn btn-success btn-sm" type="button">
-                                                        Aceptar
+                                                <?php if($value['leido'] == 0): ?>
+                                                    <a href="<?=base_url('consultaLeida'.$value['id_consulta']) ?>" class="btn btn-danger btn-sm" type="button">
+                                                        Marcar como leido<i class="bi bi-check-lg"></i>
                                                     </a>
-                                                    
+                                                    <?php else: ?>
+                                                        <a href="<?=base_url('consultaLeida'.$value['id_consulta']) ?>" class="btn btn-primary btn-sm" type="button">
+                                                            Aceptar
+                                                        </a>
+                                                <?php endif ?>
                                                 </div>
 
                                             </div>
