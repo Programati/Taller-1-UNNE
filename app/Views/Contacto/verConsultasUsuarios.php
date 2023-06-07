@@ -11,10 +11,24 @@ Lista de consultas
     <!-- CABECERA -->
     <div class="row text-center">
         <div class="col">
-            <p class="seccion-descripcion fs-1">Lista de consultas</p>
+            <p class="seccion-descripcion fs-1">Lista de consultas de usuarios registrados</p>
             <hr>
         </div>
     </div>
+    <!-- Filtro de Fecha -->
+    <div class="row my-3 d-flex flex-wrap justify-content-between">
+            <div class="col">
+                <a class="btn btn-sm btn-outline-primary" href="<?=base_url(route_to('listaConsultasUsuarios')) ?>">Traer todas</a>
+            </div>
+
+            <div class="col d-flex flex-wrap justify-content-end">
+                <form class="d-flex flex-wrap" role="search" action="<?=base_url(route_to('buscarConsultaUsuarios')) ?>" method="POST">
+                    <button class="btn btn-sm btn-outline-primary btn-buscar-fecha me-3" type="submit">Buscar</button>
+                    <input type="date" name="fecha" id="fecha">
+                </form>
+            </div> 
+            
+        </div>
     
     <div class="row mt-3" >
 

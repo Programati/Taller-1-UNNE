@@ -38,6 +38,9 @@ $routes->get('terminos y usos', 'TerminosUsosController::index', ['as' => "termi
 $routes->get('catalogo', 'CatalogoController::index', ['as' => "catalogo"]);
 $routes->get('filtrado(:num)', 'CatalogoController::filtrado/$1');
 $routes->post('buscarProducto', 'CatalogoController::buscarProducto');
+$routes->post('buscarFactura', 'FacturaController::buscarFactura');
+$routes->post('buscarConsultaUsuarios', 'ConsultaController::buscarConsultaUsuarios');
+$routes->post('buscarConsultaNoUsuario', 'ConsultaController::buscarConsultaNoUsuario');
 
 
 

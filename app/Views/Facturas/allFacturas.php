@@ -11,11 +11,26 @@
 <?=$this->section('content')?>
 
     <div class="container my-3">
+
         <div class="row">
             <div class="col">
                 <h1 class="text-center">Lista de todas las ventas</h1>
                 <hr>
             </div>
+        </div>
+        <!-- Filtro de Fecha -->
+        <div class="row my-3 d-flex flex-wrap justify-content-between">
+            <div class="col">
+                <a class="btn btn-sm btn-outline-primary" href="<?=base_url(route_to('allFacturas')) ?>">Traer todas</a>
+            </div>
+
+            <div class="col d-flex flex-wrap justify-content-end">
+                <form class="d-flex flex-wrap" role="search" action="<?=base_url(route_to('buscarFactura')) ?>" method="POST">
+                    <button class="btn btn-sm btn-outline-primary btn-buscar-fecha me-3" type="submit">Buscar</button>
+                    <input type="date" name="fecha" id="fecha">
+                </form>
+            </div> 
+            
         </div>
 
         <div class="table-responsive">

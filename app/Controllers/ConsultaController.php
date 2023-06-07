@@ -206,4 +206,44 @@ class ConsultaController extends BaseController
         }
 
     }
+
+    public function buscarConsultaUsuarios()
+    {
+        $consultas = new ConsultaModel();
+        // ACTUALIZAMOS LA LISTA DE CONSULTAS NO LEIDAS
+        $asociar = [
+            'consultas' => $consultas->where('leido', 0)->findAll(),
+        ];
+        session()->set(array_merge(session()->get(),$asociar));
+
+
+        $fecha = $this->request->getPost('fecha');
+        $encontrado = $consultas->where('fecha_create', $fecha)->where('id_usuario!=', null)->findAll();
+
+        $data = [
+            'listaConsultas' => $encontrado,
+        ];
+
+        return view('Contacto/verConsultasUsuarios', $data);
+    }
+
+    public function buscarConsultaNoUsuario()
+    {
+        $consultas = new ConsultaModel();
+        // ACTUALIZAMOS LA LISTA DE CONSULTAS NO LEIDAS
+        $asociar = [
+            'consultas' => $consultas->where('leido', 0)->findAll(),
+        ];
+        session()->set(array_merge(session()->get(),$asociar));
+
+
+        $fecha = $this->request->getPost('fecha');
+        $encontrado = $consultas->where('fecha_create', $fecha)->where('id_usuario', null)->findAll();
+
+        $data = [
+            'listaConsultas' => $encontrado,
+        ];
+
+        return view('Contacto/verConsultasUsuarios', $data);
+    }
 }

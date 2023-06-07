@@ -204,4 +204,27 @@ class FacturaController extends BaseController
         return view('Facturas/facturaUnicaUsuario', $data);
 
     }
+
+    public function buscarFactura()
+    {
+        $usuarios = new UsuarioModel();
+        $personas = new PersonaModel();
+        $facturas = new FacturaModel();
+        $detallesFacturas = new DetalleFacturaModel();
+        $productos = new ProductoModel();
+        
+        $fecha = $this->request->getPost('fecha');
+        $encontrado = $facturas->where('fecha_factura', $fecha)->findAll();
+
+        $datos = [
+            'usuarios' => $usuarios->where('id_rol', 2)->findAll(),
+            'personas' => $personas->findAll(),
+            'facturas' => $encontrado,
+            'detallesFacturas' => $detallesFacturas->findAll(),
+            'productos' => $productos->findAll(),
+        ];
+
+        return view('Facturas/allFacturas', $datos);
+
+    }
 }
