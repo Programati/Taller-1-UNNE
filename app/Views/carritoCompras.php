@@ -26,8 +26,8 @@
                         <table class="table table-light">
                         <thead class="thead table-secondary">
                             <tr>
-                                <th>Cantidad</th>
                                 <th>Nombre_Producto</th>
+                                <th class="text-center">Cantidad</th>
                                 <th>Precio_Unitario</th>
                                 <th>SubTotal</th>
                                 <th>Eliminar</th>
@@ -40,8 +40,8 @@
                             <?php foreach($productosBD as $bd){?>
                                 <?php if($bd['id_producto'] == $key['id']):?>
                                 <tr>
-                                    <td><?=$key['cantidad']?></td>
                                     <td><?=$bd['nombre_producto']?></td>
+                                    <td class="text-center"><?=$key['cantidad']?></td>
                                     <td>$<?=$bd['precio']?></td>
                                     <td>$<?=$key['subTotal']?></td>
                                     <td>

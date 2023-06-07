@@ -36,6 +36,8 @@ $routes->get('comercializacion', 'ComercializacionController::index', ['as' => "
 $routes->get('contacto', 'ContactoController::index', ['as' => "contacto"]);
 $routes->get('terminos y usos', 'TerminosUsosController::index', ['as' => "terminos_y_usos"]);
 $routes->get('catalogo', 'CatalogoController::index', ['as' => "catalogo"]);
+$routes->get('filtrado(:num)', 'CatalogoController::filtrado/$1');
+$routes->post('buscarProducto', 'CatalogoController::buscarProducto');
 
 
 
@@ -68,17 +70,17 @@ $routes->group('',['filter'=>'VerificarAdmin'], function($routes)
     $routes->get('productosOn', 'ProductoController::index');
     $routes->get('productosOff', 'ProductoController::productosDesactivados');
 
-    //Crear
+    //Crear Producto
     $routes->get('NuevoProducto', 'ProductoController::crearProducto', ['as' => 'crearproducto']);
-    //Guardar
+    //Guardar Producto
     $routes->post('GuardarProducto', 'ProductoController::guardarProducto', ['as' => 'guardarproducto']);
-    //Actualizar
+    //Actualizar Producto
     $routes->post('actualizar', 'ProductoController::actualizarProducto');
-    //Borrar
+    //Borrar Producto
     $routes->get('delete(:num)', 'ProductoController::borrarProducto/$1');
-    //Activar
+    //Activar Producto
     $routes->get('activar(:num)', 'ProductoController::activarProducto/$1');
-    //Editar
+    //Editar Producto
     $routes->get('editar(:num)', 'ProductoController::editarProducto/$1');
 
     //Todas las facturas
@@ -87,9 +89,27 @@ $routes->group('',['filter'=>'VerificarAdmin'], function($routes)
     $routes->get('facturaUnica(:num)', 'FacturaController::facturaUnica/$1');
 
     //Todas las consultas de todos los USUARIOS
-    $routes->get('listaConsultas', 'ConsultaController::listaConsultas');
+    $routes->get('listaConsultasUsuarios', 'ConsultaController::listaConsultasUsuarios');
+    //Todas las consultas de todos los NO-USUARIOS
+    $routes->get('listaConsultasNoUsuarios', 'ConsultaController::listaConsultasNoUsuarios');
     //Check leido
     $routes->get('consultaLeida(:num)', 'ConsultaController::consultaLeida/$1');
+
+    //Listar Categorias
+    $routes->get('categoriasOn', 'CategoriaController::index');
+    $routes->get('categoriasOff', 'CategoriaController::categoriasDesactivados');
+    //Crear Categoria
+    $routes->get('crearCategoria', 'CategoriaController::crearCategoria');
+    //Guardar Categoria
+    $routes->post('guardarCategoria', 'CategoriaController::guardarCategoria');
+    //Borrar Categoria
+    $routes->get('borrarCategoria(:num)', 'CategoriaController::borrarCategoria/$1');
+    //Activar Categoria
+    $routes->get('activarCategoria(:num)', 'CategoriaController::activarCategoria/$1');
+    //Editar Categoria
+    $routes->get('editarCategoria(:num)', 'CategoriaController::editarCategoria/$1');
+    //Actualizar Categoria
+    $routes->post('actualizarCategoria', 'CategoriaController::actualizarCategoria');
 
     
 

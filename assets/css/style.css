@@ -53,7 +53,7 @@
 body{
     /* font-family: 'Museo', Impact; */
     font-family: 'Mirza', cursive;
-    font-size: 16px;
+    font-size: 18px;
     background-color: #dec6f6;
 }
 /* NOMBRE DE LA EMPRESA */
@@ -268,12 +268,29 @@ footer{
     font-size: 2rem;
 }
 .btn-comprar{
-    background-color: #5f1782;
+    /* background-color: #5f1782; */
+    background-image: linear-gradient(to right, #a517ba, #5f1782);
     color: #fff;
 }
 .btn-comprar:hover{
-    background-color: #ba82f2;
-    color: #210440;
+    color: #ffba00;
+}
+/* MENU DE FILTADO POR CATEGORIA */
+.nav-categoria{
+    /* background-color: #210440; */
+    background-image: linear-gradient(to right, #a517ba, #5f1782);
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 0px 10px 0px 5px;
+}
+
+.sub-menu-categoria{
+    /* background-color: #210440; */
+    background-image: linear-gradient(to right, #a517ba, #5f1782);
+}
+.sub-menu-categoria a:hover{
+    background-color: #ffffff !important;
+    color:  #5f1782 !important;
 }
 
 
@@ -335,7 +352,7 @@ footer{
 
 }
 /*Small device (landscope, phone, 576px and up)*/
-@media (max-width: 576px){
+@media (max-width: 575px){
     body {
         font-size: 12px;
     }
@@ -360,8 +377,13 @@ footer{
         font-size: 1rem;
     }
     .stock-badge{
-        font-size: 1rem;
+        font-size: .8rem;
     }
-    
+    .carta-precio{
+        font-size: 1.7rem;
+    }
+    .nav-categoria a{
+        font-size: .9rem;
+    }
     
 }

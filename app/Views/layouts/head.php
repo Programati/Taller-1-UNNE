@@ -44,8 +44,8 @@
           <!-- Elementos del texto parte de UL -->
           <ul class="navbar-nav  ms-auto">
 
-            <li class="nav-item">
-              <a class="nav-link"  href="<?=base_url('listaConsultas')?>">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" href="#">
                 CONSULTAS
                 <?php if(session()->get('consultas') != null):?>
                   <i class="bi bi-bell notificacion">
@@ -55,11 +55,17 @@
                     </i>
                 <?php endif?>
               </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="submenu-consultas">
+
+                <li><a class="dropdown-item" href="<?=base_url(route_to('listaConsultasUsuarios'))?>">USUARIOS REGISTRADOS</a></li>
+                <li><a class="dropdown-item" href="<?=base_url(route_to('listaConsultasNoUsuarios'))?>">USUARIOS NO REGISTRADOS</a></li>
+
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?=base_url('allFacturas')?>">VENTAS REALIZADAS</a>
             </li>
-
+              <!-- USUARIOS -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" href="#" >USUARIOS</a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="submenu-usuario">
@@ -69,7 +75,7 @@
 
               </ul>
             </li>
-
+            <!-- PRODUCTOS -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" href="#" >PRODUCTOS</a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="submenu-usuario">
@@ -77,6 +83,17 @@
                 <li><a class="dropdown-item" href="<?=base_url(route_to('crearproducto'))?>">CARGAR NUEVO</a></li>  
                 <li><a class="dropdown-item" href="<?=base_url(route_to('productosOn'))?>">PRODUCTOS ACTIVOS</a></li>
                 <li><a class="dropdown-item" href="<?=base_url(route_to('productosOff'))?>">PRODUCTOS IN-ACIVOS</a></li>
+
+              </ul>
+            </li>
+            <!-- CATEGORIAS -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" href="#" >CATEGORIAS</a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="submenu-usuario">
+
+                <li><a class="dropdown-item" href="<?=base_url(route_to('crearCategoria'))?>">CARGAR NUEVA</a></li>  
+                <li><a class="dropdown-item" href="<?=base_url(route_to('categoriasOn'))?>">CATEGORIAS ACTIVAS</a></li>
+                <li><a class="dropdown-item" href="<?=base_url(route_to('categoriasOff'))?>">CATEGORIAS IN-ACIVAS</a></li>
 
               </ul>
             </li>

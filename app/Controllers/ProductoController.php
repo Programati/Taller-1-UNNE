@@ -206,6 +206,7 @@ class ProductoController extends BaseController
 
     public function actualizarProducto($id=null)
     {
+        $datosCategoria = new CategoriasModel(); 
         $producto = new ProductoModel();
 
         $id = $this->request->getVar('id');
@@ -222,7 +223,7 @@ class ProductoController extends BaseController
             'nombre' => [
                 'rules' => 'required|max_length[50]',
                 'errors' => [
-                    'required' => 'Tienes que ingresar un nombre al producto',
+                    'required' => 'Dejaste en blanco el nombre al guardar',
                     'max_length' => 'El nombre del producto es muy largo'
                     ]
                 ],
@@ -249,9 +250,8 @@ class ProductoController extends BaseController
                 ],
                 //IMG es el NAME del INPUT donde cargamos la IMAGEN
             'img' => [
-                'rules' => 'uploaded[img]|mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,1024]',
+                'rules' => 'mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,1024]',
                 'errors' => [
-                    'uploaded' => 'Tienes que subir una imagen',
                     'mime_in' => 'Formato de imagen invalido, sólo subir(jpg/png)',
                     'max_size' => 'Archivo muy pesado, sólo hasta 1024KB',
                 ]
@@ -268,12 +268,15 @@ class ProductoController extends BaseController
                 'id_categoria' => $categoria
             ];
 
-        $producto->update($id,$datos);
         
 
         if($validacion)
         {
-            if($imagen = $this->request->getFile('img'))
+            $producto->update($id,$datos);
+
+            $imagen = $this->request->getFile('img');
+
+            if($imagen->getname() != null)
             {
                 //Obtenemos el producto con el ID escondido del formulario
                 $datosProducto=$producto->where('id_producto',$id)->first();
@@ -288,21 +291,32 @@ class ProductoController extends BaseController
                 ];
         
                 $producto->update($id,$img);
-            
+                
             }
-            
-            
-        }
-        //dd($datos);
 
-        if($datos['activo'] == 1)
-        {
-            return redirect()->to(route_to('productosOn'))->with('success', 'Producto actualizado correctamente!');
-        }else
-        {
-            return redirect()->to(route_to('productosOff'))->with('success', 'Producto INACTIVO actualizado correctamente!');
-
+            if($datos['activo'] == 1)
+            {
+                return redirect()->to(route_to('productosOn'))->with('success', 'Producto actualizado correctamente!');
+            }else
+            {
+                return redirect()->to(route_to('productosOff'))->with('success', 'Producto INACTIVO actualizado correctamente!');
+    
+            }    
         }
+        else
+        {
+
+            $DatosProductos = $producto->where('id_producto', $id)->first();
+
+            $data = [
+                'validation'=> $this->validator,
+                'categorias' => $datosCategoria->findAll(),
+                'producto' => $DatosProductos,
+                'categoriaEditar' => $datosCategoria->where('id_categoria',$DatosProductos['id_categoria'])->first()
+            ];
+            return view('productos/editar',$data);
+        }
+
     }
 
     public function carrito($id=null)

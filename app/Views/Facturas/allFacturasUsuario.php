@@ -64,7 +64,10 @@
                                         <div class="modal-content">
                                             <!-- Encabezado de la caja -->
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Factura N° <?=$value['id_factura']."<br>FECHA: ".$value['fecha_factura']?></h5>
+                                                <h5 class="modal-title">
+                                                    <i class="bi bi-receipt-cutoff"></i>
+                                                    Factura N° <?=$value['id_factura']."<br>FECHA: ".$value['fecha_factura']?>
+                                                </h5>
                                                 <button class="btn-close" data-bs-dismiss="modal" aria-label="cerar"></button>
                                             </div>
                                             <!-- Cuerpo de la caja -->

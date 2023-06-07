@@ -78,14 +78,11 @@ Contacto
                         Feria a la que siempre asistimos
                     </div>
                     <div class="card-body">
+
                         <div class="ratio ratio-4x3">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.130209415391!2d-58.8492372264757!3d-27.465205364163896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94456cba732018df%3A0x6bd1c7906478f9a3!2sParque%20Camba%20Cua!5e0!3m2!1ses-419!2sar!4v1682105672808!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             
                         </div>
-                        <!-- <blockquote class="blockquote m-0">
-                            <p class="card-text">No me quemeees!.</p>
-                            <footer class="blockquote-footer">Sin codificar.</footer>
-                        </blockquote> -->
 
                     </div>
                 </div>

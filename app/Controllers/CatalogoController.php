@@ -6,6 +6,7 @@ use CodeIgniter\Controller;
 use App\Models\UsuarioModel;
 use App\Models\PersonaModel;
 use App\Models\ProductoModel;
+use App\Models\CategoriasModel;
 
 class CatalogoController extends BaseController
 {
@@ -13,6 +14,8 @@ class CatalogoController extends BaseController
     {
         //Creamos el objeto de la Tabla Productos
         $productos = new ProductoModel();
+        $categorias = new CategoriasModel();
+        $numFiltro = 0;
 
         $DatosProductos = $productos->orderBy('id_producto', 'DESC')
                             ->where('activo', 1)->where('cantidad >', 0)
@@ -20,9 +23,65 @@ class CatalogoController extends BaseController
         //$DatosProductos = $productos->orderBy('id_producto', 'ASC')->where('activo', 0)->findAll();
 
         $data = [
-            'productos' => $DatosProductos
+            'productos' => $DatosProductos,
+            'categorias' => $categorias->findAll(),
+            'numFiltro' => $numFiltro,
         ];
 
         return view('productos/catalogo', $data);
     }        
+    public function filtrado($id=null)
+    {
+        //Creamos el objeto de la Tabla Productos
+        $productos = new ProductoModel();
+        $categorias = new CategoriasModel();
+        $numFiltro = $id;
+        if($id==0)
+        {
+            $DatosProductos = $productos->orderBy('id_producto', 'DESC')
+                            ->where('activo', 1)->where('cantidad >', 0)
+                            ->findAll();
+
+            $data = [
+            'productos' => $DatosProductos,
+            'categorias' => $categorias->findAll(),
+            'numFiltro' => $numFiltro,
+            ];
+        }else
+        {
+            $DatosProductos = $productos->where('id_categoria', $id)
+                                ->where('activo', 1)->where('cantidad >', 0)
+                                ->findAll();
+    
+            $data = [
+                'productos' => $DatosProductos,
+                'categorias' => $categorias->findAll(),
+                'numFiltro' => $numFiltro,
+            ];
+        }
+
+        
+
+        return view('productos/catalogo', $data);
+    }    
+    
+    public function buscarProducto()
+    {
+        $productos = new ProductoModel();
+        $categorias = new CategoriasModel();
+
+        $nombre = $this->request->getPost('nombre');
+
+        //$encontrado = $producto->where('nombre_producto', $nombre)->findAll();
+        $encontrado = $productos->orderBy('id_producto', 'DESC')
+                            ->where('activo', 1)->like('nombre_producto', $nombre)
+                            ->findAll();
+
+        $data = [
+            'productos' => $encontrado,
+            'categorias' => $categorias->findAll(),
+            'numFiltro' => 0,
+            ];
+        return view('productos/catalogo', $data);
+    }
 }

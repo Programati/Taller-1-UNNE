@@ -138,21 +138,15 @@ class FacturaController extends BaseController
         //Recorremos todas las facturas del usuario
         
         foreach ($detallesElegidos as $key => $value) {
-            //echo $value['subTotal']."<br>";
-            //echo $value['id_producto']."<br>";
-            //array_push($detalleFacturaUsuario, $detalleFactura->where('id_factura', $facturaUsuario['id_factura'])->find() );
+
             foreach ($allProductos as $keyP => $valueP) {
                 if($valueP['id_producto'] == $value['id_producto'])
                 {
-                    //echo $valueP['nombre_producto']."<br>";
                     $detallesElegidos[$key]['nombre_producto'] = $valueP['nombre_producto'];
                 }
             }
         }
-
-        //dd($detallesElegidos);
-
-        
+    
         $domicilioUsuario = $domicilio->where('id_domicilio', $personaElegida['id_domicilio'])->first();
 
         $data=[

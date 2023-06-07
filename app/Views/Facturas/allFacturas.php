@@ -34,7 +34,7 @@
                 </thead>
 
                 <?php foreach($facturas as $key => $value){?>
-                <tbody>
+                    <tbody>
 
                         <tr>
                             <td><?= $value['id_factura']?></td>
@@ -44,15 +44,12 @@
                                 <?php foreach($usuarios as $keyUsuarios => $valueUsuarios){?>
 
                                     <?php if($valueUsuarios['id_usuario'] == $value['id_usuario']) {?>
-
                                         
                                         <?php foreach($personas as $keyPersonas => $valuePersonas){?>
 
                                             <?php if($valuePersonas['id_persona'] == $valueUsuarios['id_persona']) {?>
 
                                                 <?= $valuePersonas['nombre']." ".$valuePersonas['apellido']?>
-                                                <?php //break?>
-
 
                                             <?php }?>
 
@@ -61,7 +58,7 @@
                                     <?php }?>
 
                                 <?php }?>
-                                   
+                                    
                             </td>
                             <td><?= $value['fecha_factura']?></td>
                             <td>$<?= $value['importe_total']?></td>
@@ -90,7 +87,10 @@
                                         <div class="modal-content">
                                             <!-- Encabezado de la caja -->
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Factura N° <?=$value['id_factura']."<br>FECHA: ".$value['fecha_factura']?></h5>
+                                                <h5 class="modal-title">
+                                                    <i class="bi bi-receipt-cutoff"></i>
+                                                    Factura N° <?=$value['id_factura']."<br>FECHA: ".$value['fecha_factura']?>
+                                                </h5>
                                                 <button class="btn-close" data-bs-dismiss="modal" aria-label="cerar"></button>
                                             </div>
                                             <!-- Cuerpo de la caja -->
@@ -160,10 +160,9 @@
                             </td>
 
                         </tr>
-
-                        
+                            
                     </tbody>
-                    <?php }?>
+                <?php }?>
                     
             </table>
                 

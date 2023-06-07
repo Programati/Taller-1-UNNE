@@ -70,7 +70,7 @@ Registrarse
                                 <div class="form-group col-12 col-md-6 mb-3">
                                     <label for="telefono" class="form-label">Teléfono</label>
                                     <!--SET_VALUE = Para mantener el ultimo valor ingresado al recargar la página cuando nos da el error de validacion -->
-                                    <input type="number" id="telefono" placeholder="numeros sin guiones" class="form-control" name="telefono" value="<?=set_value('telefono'); ?>">
+                                    <input type="text" id="telefono" placeholder="numeros sin guiones" class="form-control" name="telefono" value="<?=set_value('telefono'); ?>">
                                     <!-- ERRORES DE VALIDACION DEL CONTROLADOR -->
                                     <span class="text-danger">
                                         <!-- Al parecer VALIDATION es palabra reservada, cambiandole, no mostrar error -->
@@ -81,7 +81,7 @@ Registrarse
                                 <div class="form-group col-12 col-md-6 mb-3">
                                     <label for="dni" class="form-label">DNI</label>
                                     <!--SET_VALUE = Para mantener el ultimo valor ingresado al recargar la página cuando nos da el error de validacion -->
-                                    <input type="number" id="dni" placeholder="numeros sin puntos" class="form-control" name="dni" value="<?=set_value('dni'); ?>">
+                                    <input type="text" id="dni" placeholder="numeros sin puntos" class="form-control" name="dni" value="<?=set_value('dni'); ?>">
                                     <!-- ERRORES DE VALIDACION DEL CONTROLADOR -->
                                     <span class="text-danger">
                                         <!-- Al parecer VALIDATION es palabra reservada, cambiandole, no mostrar error -->
@@ -124,7 +124,7 @@ Registrarse
                                 <div class="form-group col-12 col-md-6 mb-3">
                                     <label for="codigoPostal" class="form-label">Codigo Postal</label>
                                     <!--SET_VALUE = Para mantener el ultimo valor ingresado al recargar la página cuando nos da el error de validacion -->
-                                    <input type="number" id="codigoPostal" placeholder="Podigo Postal" class="form-control" name="codigoPostal" value="<?=set_value('codigoPostal'); ?>">
+                                    <input type="text" id="codigoPostal" placeholder="Podigo Postal" class="form-control" name="codigoPostal" value="<?=set_value('codigoPostal'); ?>">
                                     <!-- ERRORES DE VALIDACION DEL CONTROLADOR -->
                                     <span class="text-danger">
                                         <!-- Al parecer VALIDATION es palabra reservada, cambiandole, no mostrar error -->

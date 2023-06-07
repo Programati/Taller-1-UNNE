@@ -94,6 +94,7 @@ class ConsultaController extends BaseController
             ]);
             if(!$validacionesFormulario)
             {
+                // return view('Contacto/contacto', ['validation'=>$this->validator]);
                 return view('Contacto/contacto', ['validation'=>$this->validator]);
             }else
             {
@@ -117,13 +118,11 @@ class ConsultaController extends BaseController
 
         }
         
-
-
         $data=[];
         return view('Contacto/contacto', $data);
     } 
     
-    public function listaConsultas()
+    public function listaConsultasUsuarios()
     {
         $consultas = new ConsultaModel();
         // ACTUALIZAMOS LA LISTA DE CONSULTAS NO LEIDAS
@@ -133,13 +132,32 @@ class ConsultaController extends BaseController
         session()->set(array_merge(session()->get(),$asociar));
 
         // TRAMOS TODAS LAS CONSULTAS A LA VISTA
-        $listaConsultas = $consultas->findAll();
+        $listaConsultas = $consultas->where('id_usuario!=', null)->findAll();
 
         $data = [
             'listaConsultas' => $listaConsultas,
         ];
 
-        return view('Contacto/verConsultas', $data);
+        return view('Contacto/verConsultasUsuarios', $data);
+    }
+
+    public function listaConsultasNoUsuarios()
+    {
+        $consultas = new ConsultaModel();
+        // ACTUALIZAMOS LA LISTA DE CONSULTAS NO LEIDAS
+        $asociar = [
+            'consultas' => $consultas->where('leido', 0)->findAll(),
+        ];
+        session()->set(array_merge(session()->get(),$asociar));
+
+        // TRAMOS TODAS LAS CONSULTAS A LA VISTA
+        $listaConsultas = $consultas->where('id_usuario', null)->findAll();
+
+        $data = [
+            'listaConsultas' => $listaConsultas,
+        ];
+
+        return view('Contacto/verConsultasNoUsuarios', $data);
     }
 
     public function consultaLeida($id=null)
@@ -178,7 +196,14 @@ class ConsultaController extends BaseController
         $data = [
             'listaConsultas' => $listaConsultas,
         ];
+        
+        if($consultas->where('id_consulta', $id)->first()['id_usuario'] != null)
+        {
+            return redirect()->to(route_to('listaConsultasUsuarios', $data));
+        }else
+        {
+            return redirect()->to(route_to('listaConsultasNoUsuarios', $data));
+        }
 
-        return view('Contacto/verConsultas', $data);
     }
 }
