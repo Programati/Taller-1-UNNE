@@ -41,7 +41,7 @@ Factura <?=$facturaUsuario['id_factura']?>
                     <div class="col-12 col-md-5 text-md-end text-center order-3">
                         <h4>ORIGINAL</h4>
                         <p>Número de factura: <?=$facturaUsuario['id_factura']?></p>
-                        <p>Fecha de emision: <?=$facturaUsuario['fecha_factura']?></p>
+                        <p>Fecha de emision: <?php $dt = new DateTime($facturaUsuario['fecha_factura']);?> <?=$dt->format('d/m/Y')?></p>
                         <p>MagicShop</p>
                         
                         <p>CUIT: 20-28717013-1</p>

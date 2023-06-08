@@ -80,9 +80,6 @@
                         <p class="p-0 m-0">Vaciar Carrito</p>
                     </a>
                 </div>
-                <!-- <div class="col d-flex justify-content-stretch align-items-stretch">
-
-                </div> -->
                 
             </div>
 
@@ -93,7 +90,7 @@
                     <small>¡Miles de productos de esperan!, ve a la seccion catálogo</small>
                 </div>
                 <div class="col-12">
-                    <a href="<?=base_url('catalogo') ?>" class="btn btn-primary" type="button">Catalogo</a>
+                    <a href="<?=base_url('catalogo') ?>" class="btn btn-custom" type="button">Catalogo</a>
                 </div>
             </div>
         <?php endif?>

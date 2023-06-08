@@ -244,6 +244,6 @@ class ConsultaController extends BaseController
             'listaConsultas' => $encontrado,
         ];
 
-        return view('Contacto/verConsultasUsuarios', $data);
+        return view('Contacto/verConsultasNoUsuarios', $data);
     }
 }

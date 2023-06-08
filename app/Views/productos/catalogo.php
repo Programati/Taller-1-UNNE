@@ -20,7 +20,7 @@ Catalogo
             <div class="col-12 col-sm-6 mb-3 mb-md-0">
                 <form class="d-flex" role="search" action="<?=base_url(route_to('buscarProducto')) ?>" method="POST">
                     <input name="nombre" class="form-control me-2" type="search" placeholder="Buscar producto" aria-label="Search">
-                    <button class="btn btn-outline-primary btn-buscar-producto" type="submit">Buscar</button>
+                    <button class="btn btn-custom" type="submit">Buscar</button>
                 </form>
             </div>    
             <div class="col-12 col-sm-6">

@@ -201,4 +201,32 @@ class CategoriaController extends BaseController
 
     }
 
+    public function buscarCategoriasActivas()
+    {
+        //Creamos el objeto de la Tabla Categorias
+        $categorias = new CategoriasModel();
+        $nombre = $this->request->getPost('nombre');
+        $encontrado = $categorias->where('activo', 1)->like('nombre_categoria', $nombre)->findAll();
+
+        $data = [
+            'categorias' => $encontrado,
+        ];
+
+        return view('Categorias/categoriasActivas', $data);
+    }
+    
+    public function buscarCategoriasInActivas()
+    {
+        //Creamos el objeto de la Tabla Categorias
+        $categorias = new CategoriasModel();
+        $nombre = $this->request->getPost('nombre');
+        $encontrado = $categorias->where('activo', 0)->like('nombre_categoria', $nombre)->findAll();
+
+        $data = [
+            'categorias' => $encontrado,
+        ];
+
+        return view('Categorias/categoriasActivas', $data);
+    }
+
 }

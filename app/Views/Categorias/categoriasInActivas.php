@@ -7,14 +7,44 @@ Categorias
 
 <?=$this->section('content')?>
 
-<div class="container">
+<div class="container mt-2">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">CATEGORIAS IN-ACTIVAS</h1>
+            <hr>
+        </div>
+    </div>
+    <!-- Filtro de Nombres -->
+    <div class="row my-3 d-flex justify-content-between">
 
+        <div class="col-12 col-sm-6 g-sm-0 d-flex align-items-end">
+            
+            <a href="<?=base_url('categoriasOff') ?>" class="btn btn-custom btn-sm" type="button">
+                Traer todos
+            </a>
+        </div>
+
+        <div class="col-12 col-sm-6 g-sm-0">
+            <div class="row g-0">
+                <div class="col d-flex flex-row-reverse">
+                    Filtrar por nombre de categoria
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col d-flex justify-content-end flex-fill flex-wrap">
+                    <form class="d-flex" role="search" action="<?=base_url(route_to('buscarCategoriasInActivas')) ?>" method="POST">
+                        <input name="nombre" class="form-control me-2" type="search" placeholder="Buscar usuario" aria-label="Search">
+                        <button class="btn btn-custom btn-sm" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </div> 
+
+    </div>
+    <?php if($categorias):?>
     <div class="row my-3">
 
         <div class="col">
-            
-            <h1 class="text-center">CATEGORIAS IN-ACTIVAS</h1>
-            <hr>
             
             <?php if(session()->get('success')): ?>
     
@@ -63,6 +93,24 @@ Categorias
         </div>
 
     </div>
+    <?php else: ?>
+        <div class="container my-5" style="height:40vh">
+            <div class="row">
+                <div class="col-2">
+                    <p class="display-3">
+                        <i class="bi bi-search"></i>
+                    </p>
+                </div>
+                <div class="col-10">
+                    <p class="fs-2 fw-bolder">No hay categorias INACTIVAS que coincidan con tu búsqueda</p>
+                    <ul>
+                        <li>Revisá la ortografía de la palabra</li>
+                        <li>Utilizá palabras más genericas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <?php endif?>
     
     
 </div>

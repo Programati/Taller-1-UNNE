@@ -74,4 +74,41 @@ class UsuarioController extends BaseController
 
         return redirect()->to(route_to('usuariosOff'))->with('success', 'El usuario fue dado de alta correctamente!');
     }
+
+    public function buscarUsuarioActivo()
+    {
+        $datosUsuarios = new UsuarioModel();
+        $datosPersonas = new PersonaModel();
+
+        $nombre = $this->request->getPost('nombre');
+
+        //Metemos a todos los usuarios en un ARRAY
+        $info_persona = $datosPersonas->like('nombre', $nombre)->findAll();
+        $info_usuario = $datosUsuarios->where('activo', 1)->where('id_rol', 2)->findAll();
+
+        $data = [
+            //Todos los registros de la tabla usuarios
+            'infoUsuario' => $info_usuario,
+            'infoPersona' => $info_persona
+        ];
+        return view('usuarios/listaUsuarios', $data);
+    }
+    public function buscarUsuarioInActivo()
+    {
+        $datosUsuarios = new UsuarioModel();
+        $datosPersonas = new PersonaModel();
+
+        $nombre = $this->request->getPost('nombre');
+
+        //Metemos a todos los usuarios en un ARRAY
+        $info_persona = $datosPersonas->like('nombre', $nombre)->findAll();
+        $info_usuario = $datosUsuarios->where('activo', 0)->where('id_rol', 2)->findAll();
+
+        $data = [
+            //Todos los registros de la tabla usuarios
+            'infoUsuario' => $info_usuario,
+            'infoPersona' => $info_persona
+        ];
+        return view('usuarios/listaUsuarios', $data);
+    }
 }

@@ -37,7 +37,7 @@
 
                         <tr>
                             <td><?= $value['id_factura']?></td>
-                            <td class="text-center"><?= $value['fecha_factura']?></td>
+                            <td class="text-center"><?php $dt = new DateTime($value['fecha_factura']);?><?=$dt->format('d/m/Y')?></td>
                             <td class="text-center">$<?= $value['importe_total']?></td>
                             <!-- BOTN VISTA RAPIDA -->
                             <td class="text-center">
@@ -66,7 +66,8 @@
                                             <div class="modal-header">
                                                 <h5 class="modal-title">
                                                     <i class="bi bi-receipt-cutoff"></i>
-                                                    Factura N° <?=$value['id_factura']."<br>FECHA: ".$value['fecha_factura']?>
+                                                    <?php $dt = new DateTime($value['fecha_factura']);?>
+                                                    Factura N° <?=$value['id_factura']."<br>FECHA: ".$dt->format('d/m/Y')?>
                                                 </h5>
                                                 <button class="btn-close" data-bs-dismiss="modal" aria-label="cerar"></button>
                                             </div>

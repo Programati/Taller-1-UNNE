@@ -5,42 +5,49 @@
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Lobster Two Italic';
     src: url('../font/Lobster_Two/LobsterTwo-Italic.ttf');
     font-weight: normal;
     font-style: italic;
 }
+
 @font-face {
     font-family: 'Lobster Two Bold';
     src: url('../font/Lobster_Two/LobsterTwo-Bold.ttf');
     font-weight: bold;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Lobster Two BoldItalic';
     src: url('../font/Lobster_Two/LobsterTwo-BoldItalic.ttf');
     font-weight: bold;
     font-style: italic;
 }
+
 @font-face {
     font-family: 'Montez';
     src: url('../font/Montez/Montez-Regular.ttf');
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Museo';
     src: url('../font/MuseoModerno/MuseoModerno-VariableFont_wght.ttf');
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Mirza';
     src: url('../font/Mirza/Mirza-Regular.ttf');
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Mirza Bold';
     src: url('../font/Mirza/Mirza-Bold.ttf');
@@ -50,52 +57,59 @@
 
 
 
-body{
+body {
     /* font-family: 'Museo', Impact; */
     font-family: 'Mirza', cursive;
     font-size: 18px;
     background-color: #dec6f6;
 }
+
 /* NOMBRE DE LA EMPRESA */
-.magic{
+.magic {
     font-family: 'Lobster Two Bold';
     font-weight: bold;
 }
+
 .shop {
     font-family: 'Montez';
 }
 
-#propaganda{
-    background-image: linear-gradient(to right, #ffba00, #ffbb00a3,#ffbb00);
+#propaganda {
+    background-image: linear-gradient(to right, #ffba00, #ffbb00a3, #ffbb00);
     color: #fff;
 }
 
 /* Barra de navegación */
-.navbar{
+.navbar {
     background-color: #210440;
 }
-.navbar-nav a{
+
+.navbar-nav a {
     font-size: 0.87em;
     color: #fff;
     font-weight: 700;
 }
-.navbar-nav .nav-item a:hover{
+
+.navbar-nav .nav-item a:hover {
     color: #ffba00;
 }
 
 .nav-link {
     text-transform: uppercase;
 }
+
 /* CAMPANA DE NOTIFICACION DE CONSULTAS */
-.notificacion{
+.notificacion {
     color: white;
     font-family: 'Mirza Bold';
 }
-.campana{
+
+.campana {
     font-size: .7rem;
 }
+
 /* NUMERO DE PRODUCTOS en el carrito */
-.num{
+.num {
     font-size: .85rem;
 }
 
@@ -106,10 +120,12 @@ body{
     transform: translateY(-30%);
     bottom: unset;
 }
+
 .breve-descripcion {
     background-image: linear-gradient(to right, #a517ba, #5f1782);
 }
-.breve-descripcion .descripcion{
+
+.breve-descripcion .descripcion {
     text-align: justify;
 }
 
@@ -124,17 +140,19 @@ body{
 .equipoMS {
     padding: 2.5em 2.5em 5em 2.5em;
 }
+
 /* seteamos un tamaño del carruel del staf */
 .equipoMS .carousel {
     max-width: 800px;
 }
+
 /* Cada item va a tener una altura fija, si hay otra img mas grande no se va a notar */
 .equipoMS .carousel-item {
     height: 500px;
 }
 
 /* contenedor de cada item */
-.equipoMS .carousel-item .container{
+.equipoMS .carousel-item .container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -142,29 +160,35 @@ body{
     align-items: center;
     justify-content: center;
 }
+
 /* Ajustamos la imagen */
 .equipoMS .equipo-imagen {
     height: 140px;
     width: 150px;
     margin: 10px 10px 20px 10px;
 }
+
 .equipo-texto {
     max-width: 70%;
     font-size: 20px;
     text-align: center;
     text-align: justify;
 }
+
 /* contenedor de info adicional */
 .equipo-info {
     font-weight: bold;
     text-align: center;
 }
+
 .equipo-info p {
     margin-bottom: 0;
 }
+
 .empleado {
     font-size: 1.2rem;
 }
+
 .cargo {
     font-size: 0.9rem;
     color: #210440;
@@ -179,15 +203,18 @@ body{
     cursor: pointer;
     border: solid 1px #BA68C8
 }
+
 /* -------------------- PAGINA CONTACTOS -------------------- */
 .formulario-contenedor {
     border: 2px solid #210440;
 }
+
 .descripcion-contacto p {
     text-align: justify;
 }
+
 #mensaje {
-    resize:none;
+    resize: none;
 }
 
 /* -------------------- PAGINA TERMINOS Y USOS -------------------- */
@@ -198,7 +225,7 @@ body{
 
 
 /* -------------------- PIE DE PAGINA -------------------- */
-footer{
+footer {
     min-height: 25em;
     background-color: #210440;
     padding: 1em;
@@ -206,14 +233,15 @@ footer{
 }
 
 /* FOOTER MEDIO */
-.seccion-izquierda p{
+.seccion-izquierda p {
     text-align: end;
 }
-.seccion-medio p{
+
+.seccion-medio p {
     text-align: center;
 }
 
-.iconos-redes-sociales a{
+.iconos-redes-sociales a {
     width: 3em;
     height: 3em;
     display: flex;
@@ -225,7 +253,8 @@ footer{
     border-radius: 50%;
     transition: all 0.2s ease-in;
 }
-.iconos-redes-sociales-top a{
+
+.iconos-redes-sociales-top a {
     width: 1.7em;
     height: 1.7em;
     display: flex;
@@ -237,46 +266,57 @@ footer{
     border-radius: 50%;
     transition: all 0.2s ease-in;
 }
-.iconos-redes-sociales i{
-    color: #fff ;
+
+.iconos-redes-sociales i {
+    color: #fff;
     font-size: 1.5em;
     transition: all 0.2s ease-in;
 }
+
 .iconos-redes-sociales-top i {
-    color: #fff ;
+    color: #fff;
     font-size: 1em;
     transition: all 0.2s ease-in;
 }
-.iconos-redes-sociales a:hover, .iconos-redes-sociales a:hover{
+
+.iconos-redes-sociales a:hover,
+.iconos-redes-sociales a:hover {
     background-color: #fff;
     border: 2px solid #210440;
 }
-.iconos-redes-sociales a:hover i, .iconos-redes-sociales-top a:hover i{
+
+.iconos-redes-sociales a:hover i,
+.iconos-redes-sociales-top a:hover i {
     color: #210440;
 }
 
 /*CATALOGO DE PRODUCTOS*/
-.card-title{
+.card-title {
     font-size: 1.3rem;
 }
-.card-descripcion-producto{
+
+.card-descripcion-producto {
     font-size: 1rem;
 }
-.carta-precio{
+
+.carta-precio {
     color: red;
     font-weight: bold;
     font-size: 2rem;
 }
-.btn-comprar{
+
+.btn-comprar {
     /* background-color: #5f1782; */
     background-image: linear-gradient(to right, #a517ba, #5f1782);
     color: #fff;
 }
-.btn-comprar:hover{
+
+.btn-comprar:hover {
     color: #ffba00;
 }
+
 /* MENU DE FILTADO POR CATEGORIA */
-.nav-categoria{
+.nav-categoria {
     /* background-color: #210440; */
     background-image: linear-gradient(to right, #a517ba, #5f1782);
     color: #ffffff;
@@ -284,14 +324,30 @@ footer{
     padding: 0px 10px 0px 5px;
 }
 
-.sub-menu-categoria{
+.sub-menu-categoria {
     /* background-color: #210440; */
     background-image: linear-gradient(to right, #a517ba, #5f1782);
 }
-.sub-menu-categoria a:hover{
+
+.sub-menu-categoria a:hover {
     background-color: #ffffff !important;
-    color:  #5f1782 !important;
+    color: #5f1782 !important;
 }
+
+.btn-custom {
+    color: #a517ba;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 2px #a517ba;
+}
+
+.btn-custom:hover {
+    font-weight: normal;
+    color: white;
+    background-color: #a517ba;
+}
+
 
 
 
@@ -300,90 +356,114 @@ footer{
 /* Aplicaremos un estilo cuando la página sea menor a .... */
 
 /* Extra large device (large desktops, 1200px and up) */
-@media (max-width: 1200px){
-    body{
+@media (max-width: 1200px) {
+    body {
         font-size: 14px;
     }
 }
+
 /* Large device (desktops, 992px and up) */
-@media (max-width: 992px){
-    body{
+@media (max-width: 992px) {
+    body {
         font-size: 16px;
     }
+
     .carousel-caption p {
         font-size: .8rem;
     }
-    .letrasLogo{
+
+    .letrasLogo {
         font-size: 2rem;
     }
-    .nav-item a{
+
+    .nav-item a {
         font-size: .7rem;
     }
 }
+
 /*Medium device (tablets, 768px and up)*/
 /* Aplicaremos un estilo cuando la página sea menor a 768px */
-@media (max-width: 780px){
-    .navbar-collapse{
+@media (max-width: 780px) {
+    .navbar-collapse {
         padding-top: 10px;
     }
+
     /* HOME */
-    .breve-descripcion p{
+    .breve-descripcion p {
         font-size: 1.2rem;
     }
+
     /* QUIENES SOMOS */
     .equipo-imagen {
         height: 100px;
         width: 120px;
     }
+
     .equipo-texto {
         font-size: 0.8em;
     }
+
     /* FOOTER */
-    .seccion-medio p, .seccion-izquierda p{
+    .seccion-medio p,
+    .seccion-izquierda p {
         text-align: start;
     }
-    .card-title, .carta-precio{
+
+    .card-title,
+    .carta-precio {
         font-size: 1.5rem;
     }
-    .card-descripcion-producto{
+
+    .card-descripcion-producto {
         font-size: 1rem;
     }
-    
+
 
 }
+
 /*Small device (landscope, phone, 576px and up)*/
-@media (max-width: 575px){
+@media (max-width: 575px) {
     body {
         font-size: 12px;
     }
+
     /* PAGINA HOME - Parrafos de cada MODELO de productos */
     .modelos p {
         font-size: 1em;
     }
+
     /* PAGINA CONTACTO */
     .titulo-contacto p {
         font-size: 1.8rem !important;
     }
-    .info-contacto p{
+
+    .info-contacto p {
         font-size: 1rem !important;
     }
-    .navbar ul li a{
+
+    .navbar ul li a {
         font-size: .9rem;
     }
-    .card-title, .carta-precio{
+
+    .card-title,
+    .carta-precio {
         font-size: 1rem;
     }
-    .card-descripcion-producto{
+
+    .card-descripcion-producto {
         font-size: 1rem;
     }
-    .stock-badge{
+
+    .stock-badge {
         font-size: .8rem;
     }
-    .carta-precio{
+
+    .carta-precio {
         font-size: 1.7rem;
     }
-    .nav-categoria a{
+
+    .nav-categoria a {
         font-size: .9rem;
     }
-    
+
 }

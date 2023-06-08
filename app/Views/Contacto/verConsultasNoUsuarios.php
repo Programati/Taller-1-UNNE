@@ -16,19 +16,30 @@ Lista de consultas
         </div>
     </div>
     <!-- Filtro de Fecha -->
-    <div class="row my-3 d-flex flex-wrap justify-content-between">
-            <div class="col">
-                <a class="btn btn-sm btn-outline-primary" href="<?=base_url(route_to('listaConsultasNoUsuarios')) ?>">Traer todas</a>
-            </div>
+    
+    <div class="row my-3 d-flex justify-content-between">
 
-            <div class="col d-flex flex-wrap justify-content-end">
-                <form class="d-flex flex-wrap" role="search" action="<?=base_url(route_to('buscarConsultaNoUsuario')) ?>" method="POST">
-                    <button class="btn btn-sm btn-outline-primary btn-buscar-fecha me-3" type="submit">Buscar</button>
-                    <input type="date" name="fecha" id="fecha">
-                </form>
-            </div> 
-            
+        <div class="col g-sm-0 d-flex align-items-end">
+            <a class="btn btn-sm btn-custom" href="<?=base_url(route_to('listaConsultasNoUsuarios')) ?>">Traer todas</a>
         </div>
+
+        <div class="col g-sm-0">
+            <div class="row g-0">
+                <div class="col d-flex flex-sm-row-reverse">
+                    Filtrar por fecha
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-end flex-fill">
+                    <form class="d-flex flex-wrap" role="search" action="<?=base_url(route_to('buscarConsultaNoUsuario')) ?>" method="POST">
+                        <button class="btn btn-sm btn-custom me-sm-3" type="submit">Buscar</button>
+                        <input type="date" name="fecha" id="fecha">
+                    </form>
+                </div>
+            </div>
+        </div> 
+        
+    </div>
     
     <div class="row mt-3" >
 
@@ -55,14 +66,14 @@ Lista de consultas
                                 
                                 <td><?=$value['id_consulta']?></td>
                                 <td><?=$value['nombre']?></td>
-                                <td><?=$value['fecha_create']?></td>
+                                <td><?php $dt = new DateTime($value['fecha_create']);?><?=$dt->format('d/m/Y')?></td>
                                 <?php if($value['leido'] == 0) :?>
                                     <td class="text-center text-secondary fw-bolder">
                                         <i class="bi bi-eye-slash"></i>&nbsp;Sin leer
                                     </td>
                                 <?php else:?>
                                     <td class="text-center text-success fw-bolder">
-                                        <i class="bi bi-eye"></i>&nbsp;Leido el <?=$value['fecha_updated']?>
+                                        <i class="bi bi-eye"></i>&nbsp;Leido el <?php $du = new DateTime($value['fecha_updated']);?><?=$du->format('d/m/Y')?>
                                     </td>
                                 <?php endif?>
                                 
@@ -94,7 +105,8 @@ Lista de consultas
                                                 
                                                     <h5 class="modal-title">
                                                     <i class="bi bi-megaphone"></i>
-                                                        Consulta N° <?=$value['id_consulta']."<br>Fecha: ".$value['fecha_create']?>
+                                                        <?php $dt = new DateTime($value['fecha_create']);?>
+                                                        Consulta N° <?=$value['id_consulta']."<br>Fecha: ".$dt->format('d/m/Y')?>
                                                     </h5>
                                                     <button class="btn-close" data-bs-dismiss="modal" aria-label="cerar"></button>
                                                 </div>

@@ -228,7 +228,7 @@ Registrarse
                                             <?=isset($validation) ? mostrar_error($validation, 'terminos') : " " ?>
                                         </span>
                                         <br>
-                                        <button type="submit" class="btn btn-primary col-12">Enviar</button>
+                                        <button type="submit" class="btn btn-custom col-12">Enviar</button>
                                     </div>
 
                                 </div>

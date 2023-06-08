@@ -137,7 +137,7 @@ Contacto
                             <!-- BOTON ENVIAR -->
                             <div class="row mb-1">
                                 <div class="col">
-                                    <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+                                    <button type="submit" class="btn btn-custom mb-3">Enviar</button>
                                 </div>
                             </div>
             
@@ -205,7 +205,7 @@ Contacto
                             <!-- BOTON ENVIAR -->
                             <div class="row mb-1">
                                 <div class="col">
-                                    <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+                                    <button type="submit" class="btn btn-custom mb-3">Enviar</button>
                                 </div>
                             </div>
             

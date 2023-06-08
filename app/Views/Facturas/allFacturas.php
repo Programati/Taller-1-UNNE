@@ -19,18 +19,30 @@
             </div>
         </div>
         <!-- Filtro de Fecha -->
-        <div class="row my-3 d-flex flex-wrap justify-content-between">
-            <div class="col">
-                <a class="btn btn-sm btn-outline-primary" href="<?=base_url(route_to('allFacturas')) ?>">Traer todas</a>
+        <div class="row my-3 d-flex justify-content-between">
+
+            <div class="col g-sm-0 d-flex align-items-end">
+                <a class="btn btn-sm btn-custom" href="<?=base_url(route_to('allFacturas')) ?>">Traer todas</a>
             </div>
 
-            <div class="col d-flex flex-wrap justify-content-end">
-                <form class="d-flex flex-wrap" role="search" action="<?=base_url(route_to('buscarFactura')) ?>" method="POST">
-                    <button class="btn btn-sm btn-outline-primary btn-buscar-fecha me-3" type="submit">Buscar</button>
-                    <input type="date" name="fecha" id="fecha">
-                </form>
+            <div class="col g-sm-0">
+                <div class="row g-0">
+                    <div class="col d-flex flex-sm-row-reverse">
+                        Filtrar por fecha
+                    </div>
+                </div>
+                <div class="row g-0">
+                    <div class="col d-flex justify-content-end flex-fill">
+                        <form class="d-flex flex-wrap" role="search" action="<?=base_url(route_to('buscarFactura')) ?>" method="POST">
+                            <button class="btn btn-sm btn-custom me-sm-3" type="submit">Buscar</button>
+                            <input type="date" name="fecha" id="fecha">
+                        </form>
+
+                    </div>
+
+                </div>
             </div> 
-            
+
         </div>
 
         <div class="table-responsive">
@@ -75,7 +87,7 @@
                                 <?php }?>
                                     
                             </td>
-                            <td><?= $value['fecha_factura']?></td>
+                            <td><?php $dt = new DateTime($value['fecha_factura']);?><?=$dt->format('d/m/Y')?></td>
                             <td>$<?= $value['importe_total']?></td>
                             <!-- BOTN VISTA RAPIDA -->
                             <td class="text-center">
@@ -104,7 +116,8 @@
                                             <div class="modal-header">
                                                 <h5 class="modal-title">
                                                     <i class="bi bi-receipt-cutoff"></i>
-                                                    Factura N° <?=$value['id_factura']."<br>FECHA: ".$value['fecha_factura']?>
+                                                    <?php $dt = new DateTime($value['fecha_factura']);?>
+                                                    Factura N° <?=$value['id_factura']."<br>FECHA: ".$dt->format('d/m/Y')?>
                                                 </h5>
                                                 <button class="btn-close" data-bs-dismiss="modal" aria-label="cerar"></button>
                                             </div>

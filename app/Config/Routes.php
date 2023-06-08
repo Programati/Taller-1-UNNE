@@ -36,11 +36,19 @@ $routes->get('comercializacion', 'ComercializacionController::index', ['as' => "
 $routes->get('contacto', 'ContactoController::index', ['as' => "contacto"]);
 $routes->get('terminos y usos', 'TerminosUsosController::index', ['as' => "terminos_y_usos"]);
 $routes->get('catalogo', 'CatalogoController::index', ['as' => "catalogo"]);
+// Filtro de categorias de producto
 $routes->get('filtrado(:num)', 'CatalogoController::filtrado/$1');
+
 $routes->post('buscarProducto', 'CatalogoController::buscarProducto');
 $routes->post('buscarFactura', 'FacturaController::buscarFactura');
 $routes->post('buscarConsultaUsuarios', 'ConsultaController::buscarConsultaUsuarios');
 $routes->post('buscarConsultaNoUsuario', 'ConsultaController::buscarConsultaNoUsuario');
+$routes->post('buscarUsuarioActivo', 'UsuarioController::buscarUsuarioActivo');
+$routes->post('buscarUsuarioInActivo', 'UsuarioController::buscarUsuarioInActivo');
+$routes->post('buscarProductoActivo', 'ProductoController::buscarProductoActivo');
+$routes->post('buscarProductoInActivo', 'ProductoController::buscarProductoInActivo');
+$routes->post('buscarCategoriasActivas', 'CategoriaController::buscarCategoriasActivas');
+$routes->post('buscarCategoriasInActivas', 'CategoriaController::buscarCategoriasInActivas');
 
 
 
@@ -113,9 +121,6 @@ $routes->group('',['filter'=>'VerificarAdmin'], function($routes)
     $routes->get('editarCategoria(:num)', 'CategoriaController::editarCategoria/$1');
     //Actualizar Categoria
     $routes->post('actualizarCategoria', 'CategoriaController::actualizarCategoria');
-
-    
-
 });
 
 

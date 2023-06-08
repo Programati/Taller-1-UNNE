@@ -153,8 +153,6 @@ class ProductoController extends BaseController
                 return redirect()->to(route_to('productosOff'))->with('success', 'Producto creado correctamente! Se ecuentra INACTIVO');
 
             }
-        
-            // return redirect()->to(route_to('productosOn'))->with('success', 'Producto cargado correctamente!');
         }else
         {
 
@@ -517,6 +515,31 @@ class ProductoController extends BaseController
         session()->set(array_merge(session()->get(),$asociar));
         
         return redirect()->to(route_to('catalogo'))->with('success', 'Gracias por su compra!');
+    }
+
+    public function buscarProductoActivo()
+    {
+        $productos = new ProductoModel();
+        $nombre = $this->request->getPost('nombre');
+        //$encontrado = $producto->where('nombre_producto', $nombre)->findAll();
+        $encontrado = $productos->where('activo', 1)->like('nombre_producto', $nombre)->findAll();
+
+        $data = [
+            'productos' => $encontrado,
+            ];
+        return view('productos/productosActivos', $data);
+    }
+    public function buscarProductoInActivo()
+    {
+        $productos = new ProductoModel();
+        $nombre = $this->request->getPost('nombre');
+        //$encontrado = $producto->where('nombre_producto', $nombre)->findAll();
+        $encontrado = $productos->where('activo', 0)->like('nombre_producto', $nombre)->findAll();
+
+        $data = [
+            'productos' => $encontrado,
+            ];
+        return view('productos/productosInactivos', $data);
     }
 
 }
