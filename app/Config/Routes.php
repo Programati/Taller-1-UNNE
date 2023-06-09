@@ -143,7 +143,7 @@ $routes->group('',['filter'=>'VerificarAutenticacion'], function($routes)
     //Lista de compras realizadas
     $routes->get('carritoCompras', 'ProductoController::indexCompras');
     //Agregar
-    $routes->get('carrito(:num)', 'ProductoController::carrito/$1');
+    $routes->get('carrito/(:num)/(:num)', 'ProductoController::carrito/$1/$2');
     //Vaciar
     $routes->get('vaciarCarrito(:num)', 'ProductoController::vaciarCarrito/$1');
     //Vaciar Carrito Completo

@@ -18,7 +18,7 @@ Catalogo
         <!-- Filtro de categorias -->
         <div class="row my-3 d-flex flex-wrap flex-sm-row-reverse">
             <div class="col-12 col-sm-6 mb-3 mb-md-0">
-                <form class="d-flex" role="search" action="<?=base_url(route_to('buscarProducto')) ?>" method="POST">
+                <form class="d-flex" role="search" action="<?=base_url(route_to('buscarProducto')) ?>" method="post">
                     <input name="nombre" class="form-control me-2" type="search" placeholder="Buscar producto" aria-label="Search">
                     <button class="btn btn-custom" type="submit">Buscar</button>
                 </form>
@@ -38,7 +38,6 @@ Catalogo
                                             
                                                 <?=$key['nombre_categoria']?>
                                                 
-                                                <?php break ?>
                                             <?php endif?>
                                         <?php endforeach ?>
                                     <?php endif?>
@@ -51,7 +50,7 @@ Catalogo
                                     </li>
                                     <?php foreach ($categorias as $key ) : ?>
                                         <li>
-                                            <a class="dropdown-item" href="<?=base_url('filtrado'.$key['id_categoria']) ?>">
+                                            <a class="dropdown-item" href="<?=base_url('filtrado'.$a=$key['id_categoria']) ?>">
                                             <?=$key['nombre_categoria']?>
                                             </a>
                                         </li>
@@ -75,6 +74,7 @@ Catalogo
 
         <?php if($productos):?>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 my-3">
+            
             <!-- Iterador de imagenes -->
             <?php foreach($productos as $key){?>
 
@@ -122,10 +122,10 @@ Catalogo
                                     <?php if(session()->has('loggedUser')):?>
                                     
                                         <div class="col">
-                                            <a href="<?=base_url('carrito'.$key['id_producto']) ?>" class="btn btn-sm btn-comprar fw-bold d-block d-sm-none py-2 px-0 m-0" type="button">
+                                            <a href="<?=base_url('carrito/'.$key['id_producto'].'/'.$numFiltro) ?>" class="btn btn-sm btn-comprar fw-bold d-block d-sm-none py-2 px-0 m-0" type="button">
                                                 <i class="bi bi-bag-check-fill display-6"></i>
                                             </a>
-                                            <a href="<?=base_url('carrito'.$key['id_producto']) ?>" class="btn btn-sm btn-comprar fw-bold d-none d-sm-block py-2 px-0 m-0" type="button">
+                                            <a href="<?=base_url('carrito/'.$key['id_producto'].'/'.$numFiltro) ?>" class="btn btn-sm btn-comprar fw-bold d-none d-sm-block py-2 px-0 m-0" type="button">
                                                 COMPRAR AHORA
                                             </a>
                                             

@@ -184,7 +184,7 @@ Comercializacion
           <p class="m-0">No encontraste lo que necesitabas?</p>
         </div>
         <div class="col-md-4 mt-2 mt-md-0">
-          <a class="btn btn-primary" href="<?= base_url(route_to('contacto'))?>" role="button">CONTACTANOS</a>
+          <a class="btn btn-custom" href="<?= base_url(route_to('contacto'))?>" role="button">CONTACTANOS</a>
         </div>
 
       </div>

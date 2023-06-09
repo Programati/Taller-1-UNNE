@@ -64,7 +64,7 @@ Inicio | Magic Shop
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="container">
-                        <img src="assets/img/magicshopctes/staff/mujer_1.png" alt="Diseñadora Chimmy" class="equipo-imagen rounded-circle">
+                        <img src="assets/img/magicshopctes/staff/mujer_1.jpg" alt="Diseñadora Chimmy" class="equipo-imagen rounded-circle">
                         <p class="equipo-texto">
                             Hola a todos los usuarios de la página, soy la encargada de diseñarte todos tus pedidos, me encanta lo que hago y qué mejor que trabar de ello. Creemos juntos artículos espectaculares!
                         </p>
@@ -76,7 +76,7 @@ Inicio | Magic Shop
                 </div>
                 <div class="carousel-item">
                     <div class="container">
-                        <img src="assets/img/magicshopctes/staff/mujer_2.png" alt="CM Redes Sociales" class="equipo-imagen rounded-circle">
+                        <img src="assets/img/magicshopctes/staff/mujer_2.jpg" alt="CM Redes Sociales" class="equipo-imagen rounded-circle">
                         <p class="equipo-texto">
                             Hola a todos los usuarios de la página, soy la CM de todas las redes sociales de MagichShop, estoy al tanto de todos sus like, comentarios e interactuo con todos nuestros seguidores. No olvides de etiquetarnos y seguirnos.
                         </p>
@@ -88,7 +88,7 @@ Inicio | Magic Shop
                 </div>
                 <div class="carousel-item">
                     <div class="container">
-                        <img src="assets/img/magicshopctes/staff/hombre_1.png" alt="Diseñadora Chimmy" class="equipo-imagen rounded-circle">
+                        <img src="assets/img/magicshopctes/staff/hombre_1.jpg" alt="Diseñadora Chimmy" class="equipo-imagen rounded-circle">
                         <p class="equipo-texto">
                             Hola a todos los usuarios de la página, soy el creador y administrador de la página web de MagicShop, constantemente estoy actualizando y optimizandola para que disfrutes de la navegación en todos tus dispositivos.
                         </p>

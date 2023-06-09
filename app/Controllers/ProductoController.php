@@ -317,9 +317,11 @@ class ProductoController extends BaseController
 
     }
 
-    public function carrito($id=null)
+    public function carrito($id=null,$numFiltro=null)
     {
+        
         $producto = new ProductoModel();
+        
         $elegido = $producto->where('id_producto', $id)->first();
 
         if(session()->get('productos') == null)
@@ -385,8 +387,9 @@ class ProductoController extends BaseController
         ];
         //Creamos y Actualizamos un arreglo nuevo con los productos ordenados
         session()->set(array_merge(session()->get(),$asociar));
-
-        return redirect()->to(route_to('catalogo'))->with('success', 'Agregado al carrito');
+        
+        //Redireccionamos a la función FILTRADO para volver a ver los mismos productos filtrados
+        return redirect()->to('filtrado'.$numFiltro)->with('success', 'Agregado al carrito');
     }
 
     public function vaciarCarrito($id=null)

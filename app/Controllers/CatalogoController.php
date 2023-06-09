@@ -24,7 +24,7 @@ class CatalogoController extends BaseController
 
         $data = [
             'productos' => $DatosProductos,
-            'categorias' => $categorias->findAll(),
+            'categorias' => $categorias->where('activo', 1)->findAll(),
             'numFiltro' => $numFiltro,
         ];
 
@@ -44,7 +44,7 @@ class CatalogoController extends BaseController
 
             $data = [
             'productos' => $DatosProductos,
-            'categorias' => $categorias->findAll(),
+            'categorias' => $categorias->where('activo', 1)->findAll(),
             'numFiltro' => $numFiltro,
             ];
         }else
@@ -55,9 +55,10 @@ class CatalogoController extends BaseController
     
             $data = [
                 'productos' => $DatosProductos,
-                'categorias' => $categorias->findAll(),
+                'categorias' => $categorias->where('activo', 1)->findAll(),
                 'numFiltro' => $numFiltro,
             ];
+            
         }
 
         
@@ -67,6 +68,7 @@ class CatalogoController extends BaseController
     
     public function buscarProducto()
     {
+        //dd($p_nombre);
         $productos = new ProductoModel();
         $categorias = new CategoriasModel();
 
@@ -76,11 +78,14 @@ class CatalogoController extends BaseController
         $encontrado = $productos->orderBy('id_producto', 'DESC')
                             ->where('activo', 1)->like('nombre_producto', $nombre)
                             ->findAll();
+                                
+
 
         $data = [
             'productos' => $encontrado,
-            'categorias' => $categorias->findAll(),
+            'categorias' => $categorias->where('activo', 1)->findAll(),
             'numFiltro' => 0,
+            'letraFiltro' => $nombre,
             ];
         return view('productos/catalogo', $data);
     }
