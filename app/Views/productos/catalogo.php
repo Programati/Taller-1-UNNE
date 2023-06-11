@@ -73,18 +73,18 @@ Catalogo
         <?php endif; ?>
 
         <?php if($productos):?>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 my-3">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 my-3 d-flex justify-content-center">
             
             <!-- Iterador de imagenes -->
             <?php foreach($productos as $key){?>
 
-                <div class="container col text-center p-5 p-sm-1 mb-sm-2 m-0 d-flex align-content-stretch">
+                <div class="col text-center p-2 p-sm-1 mb-sm-2 m-0 d-flex align-content-stretch contenedor-card">
                     
                     <div class="row">
 
                         <div class="col d-flex align-items-stretch">
 
-                            <div class="card">
+                            <div class="card card-productos">
         
                                 <img    
                                     class="img-fluid border rounded"
@@ -105,14 +105,12 @@ Catalogo
                                             <small class="card-descripcion-producto"><?=$key['descripcion_producto']?></small>
                                         </div>
                                     </div>
-
-                                    
                                     
                                 </div>
                                 <!-- STOCK PRECIO y BOTON -->
                                 <div class="row d-block">
 
-                                    <div class="col mb-1 d-flex justify-content-between align-items-center">
+                                    <div class="col mb-1 d-flex justify-content-between align-items-center flex-wrap">
                                         <span class="stock-badge badge rounded-pill text-bg-warning">
                                             <small>STOCK <?=$key['cantidad']?></small>
                                         </span>

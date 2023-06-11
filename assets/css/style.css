@@ -87,10 +87,9 @@ body {
 .navbar-nav a {
     font-size: 0.87em;
     color: #fff;
-    font-weight: 700;
 }
 
-.navbar-nav .nav-item a:hover {
+#navGeneral .navbar-nav .nav-item a:hover {
     color: #ffba00;
 }
 
@@ -225,7 +224,13 @@ body {
 
 
 /* -------------------- PIE DE PAGINA -------------------- */
-footer {
+.footer-admin {
+    min-height: 5em;
+    background-color: #210440;
+    padding: 1em;
+    color: #fff;
+}
+.footer-usuario {
     min-height: 25em;
     background-color: #210440;
     padding: 1em;
@@ -291,6 +296,13 @@ footer {
 }
 
 /*CATALOGO DE PRODUCTOS*/
+.card-productos{
+    transition: all 0.3s;
+}
+.card-productos:hover{
+    transform: scale(1.09);
+    z-index: 1;
+}
 .card-title {
     font-size: 1.3rem;
 }
@@ -357,6 +369,9 @@ footer {
     body {
         font-size: 14px;
     }
+    .nav-item a {
+        font-size: 1rem;
+    }
 }
 
 /* Large device (desktops, 992px and up) */
@@ -374,7 +389,7 @@ footer {
     }
 
     .nav-item a {
-        font-size: .7rem;
+        font-size: .8rem;
     }
 }
 
@@ -461,6 +476,14 @@ footer {
 
     .nav-categoria a {
         font-size: .9rem;
+    }
+    .contenedor-card{
+        max-width: 15rem;
+        display: flex;
+        justify-content: center;
+    }
+    .card-productos img{
+        padding: 1rem;
     }
 
 }
