@@ -524,7 +524,6 @@ class ProductoController extends BaseController
     {
         $productos = new ProductoModel();
         $nombre = $this->request->getPost('nombre');
-        //$encontrado = $producto->where('nombre_producto', $nombre)->findAll();
         $encontrado = $productos->where('activo', 1)->like('nombre_producto', $nombre)->findAll();
 
         $data = [

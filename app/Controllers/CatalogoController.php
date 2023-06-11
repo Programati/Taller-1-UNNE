@@ -68,19 +68,13 @@ class CatalogoController extends BaseController
     
     public function buscarProducto()
     {
-        //dd($p_nombre);
         $productos = new ProductoModel();
         $categorias = new CategoriasModel();
-
         $nombre = $this->request->getPost('nombre');
-
-        //$encontrado = $producto->where('nombre_producto', $nombre)->findAll();
         $encontrado = $productos->orderBy('id_producto', 'DESC')
-                            ->where('activo', 1)->like('nombre_producto', $nombre)
+                            ->where('activo', 1)->where('cantidad >', 0)->like('nombre_producto', $nombre)
                             ->findAll();
                                 
-
-
         $data = [
             'productos' => $encontrado,
             'categorias' => $categorias->where('activo', 1)->findAll(),
