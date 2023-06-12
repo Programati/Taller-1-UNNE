@@ -74,17 +74,19 @@ class ProductoController extends BaseController
                     ]
                 ],
             'precio' => [
-                'rules' => 'required|max_length[12]',
+                'rules' => 'required|max_length[12]|decimal',
                 'errors' => [
                     'required' => 'Tienes que ingresar un precio al producto',
-                    'max_length' => 'El precio del producto es muy largo'
+                    'max_length' => 'El precio del producto es muy largo',
+                    'decimal' => 'Formato inválido'
                     ]
                 ],
             'cantidad' => [
-                'rules' => 'required|max_length[11]',
+                'rules' => 'required|max_length[11]|is_natural',
                 'errors' => [
                     'required' => 'Tienes que ingresar una cantidad al producto',
-                    'max_length' => 'La cantidad del producto es muy largo'
+                    'max_length' => 'La cantidad del producto es muy largo',
+                    'is_natural' => 'Sólo números enteros'
                     ]
                 ],
             'categoria' => [
@@ -226,17 +228,19 @@ class ProductoController extends BaseController
                     ]
                 ],
             'precio' => [
-                'rules' => 'required|max_length[12]',
+                'rules' => 'required|max_length[12]|decimal',
                 'errors' => [
                     'required' => 'Tienes que ingresar un precio al producto',
-                    'max_length' => 'El precio del producto es muy largo'
+                    'max_length' => 'El precio del producto es muy largo',
+                    'decimal' => 'Formato inválido'
                     ]
                 ],
             'cantidad' => [
-                'rules' => 'required|max_length[11]',
+                'rules' => 'required|max_length[11]|is_natural',
                 'errors' => [
                     'required' => 'Tienes que ingresar una cantidad al producto',
-                    'max_length' => 'La cantidad del producto es muy largo'
+                    'max_length' => 'La cantidad del producto es muy largo',
+                    'is_natural' => 'Sólo números enteros'
                     ]
                 ],
             'categoria' => [
