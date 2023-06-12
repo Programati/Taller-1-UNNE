@@ -11,7 +11,7 @@
     <!-- Titulo de cada pestaña -->
     <title><?=$this->renderSection('title')?></title>
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/magicshopctes/logo/logo.png">
+    <link rel="icon" type="image/x-icon" href="assets/img/magicshopctes/logo/logo.svg">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.css"> -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">

@@ -2,7 +2,7 @@
 
 
 <?=$this->section('title')?>
-Crar categoria
+Crear categoria
 <?=$this->endSection()?>
 
 <?=$this->section('content')?>

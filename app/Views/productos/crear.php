@@ -2,7 +2,7 @@
 
 
 <?=$this->section('title')?>
-Crar producto
+Crear producto
 <?=$this->endSection()?>
 
 <?=$this->section('content')?>

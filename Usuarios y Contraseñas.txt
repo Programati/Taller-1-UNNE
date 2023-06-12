@@ -1,0 +1,15 @@
+____________________________________________________
+ADMINISTRADOR		|	PASSWORD
+________________________|___________________________
+admin@gmail.com		|	123
+
+
+
+
+_________________________________________________
+USUARIOS		|	PASSWORD
+________________________|________________________
+usuario@gmail.com	|	123
+belen@gmail.com		|	123
+mauro@gmail.com		|	123
+off@gmail.com		|	123   ---> (Cuenta que está dada de baja)

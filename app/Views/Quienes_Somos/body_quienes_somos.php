@@ -2,7 +2,7 @@
 
 
 <?=$this->section('title')?>
-Inicio | Magic Shop
+Quienes somos
 <?=$this->endSection()?>
 
 <?=$this->section('content')?>
