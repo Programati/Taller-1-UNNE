@@ -189,10 +189,15 @@ class AuthController extends BaseController
             //Creamos el objeo de la clase que tiene la estructura de la tabla domicilios
             $tablaDomiciliosModelo = new DomicilioModel();
             //Guardamos los datos en dicho objeto y con "SAVE" lo metemos en la BD
+
             $tablaDomiciliosModelo->save($datosDomicilio);
+
             //---------------------------------------------------------------------------------------------
             //Ponemos en una variable el ultimo registro de la tabla DOMICILIOS
-            $ultimoID = $tablaDomiciliosModelo->orderBy('id_domicilio', 'DESC')->first();
+            // $ultimoID = $tablaDomiciliosModelo->orderBy('id_domicilio', 'DESC')->first();
+
+            $ultimoID = $tablaDomiciliosModelo->insertID();
+
 
             //Capturamos su Ultimo ID DOMICILIO insertado
             //dd($ultimoID['id_domicilio']);
@@ -201,6 +206,7 @@ class AuthController extends BaseController
             //---------------------------------------------------------------------------------------------
             //Valores de la tabla USUARIOS | Varaibles creadas con el POST recibido
             //ARRAY DATOS PERSONA
+
             $datosPersona = [
                 'dni' => $dni,
                 'nombre' => $nombre,
@@ -208,7 +214,7 @@ class AuthController extends BaseController
                 'telefono' => $telefono,
                 'email' => $email,
                 //Ultimo ID DOMICILIO insertado
-                'id_domicilio' => $ultimoID['id_domicilio'],
+               'id_domicilio' => $ultimoID,
                 //Usando la Funcion creada, hasheamos el password
                 'password' => Hash::make($password),
             ];
@@ -217,7 +223,9 @@ class AuthController extends BaseController
             //Creamos el objeo de la clase que tiene la estructura de la tabla personas
             $tablaPersonasModelo = new PersonaModel();
             //Guardamos los datos en dicho objeto y con "SAVE" lo metemos en la BD
+
             $tablaPersonasModelo->save($datosPersona);
+
             //---------------------------------------------------------------------------------------------
             $ultimo_id = $tablaPersonasModelo->insertID();
             //---------------------------------------------------------------------------------------------
@@ -249,7 +257,7 @@ class AuthController extends BaseController
 
             } else //De lo contrario que muetre un mensaje EXITOSO
             {
-                //Insertamos el ID del usuario registrado y lo seteamos en la sesion
+                // Insertamos el ID del usuario registrado y lo seteamos en la sesion
                 session()->set('loggedUser', $ultimo_id);
                 return redirect()->to(route_to('/'))->with('success', 'Formulario cargado correctamente! Ahora te encuentras registrado');
             }
