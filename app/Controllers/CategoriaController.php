@@ -227,7 +227,7 @@ class CategoriaController extends BaseController
             'categorias' => $encontrado,
         ];
 
-        return view('Categorias/categoriasActivas', $data);
+        return view('Categorias/categoriasInActivas', $data);
     }
 
 }
