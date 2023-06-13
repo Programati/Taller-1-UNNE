@@ -52,10 +52,11 @@ class CategoriaController extends BaseController
     {
         $validacion = $this->validate([
             'nombre' => [
-                'rules' => 'required|max_length[50]',
+                'rules' => 'required|max_length[50]|is_unique[categorias.nombre_categoria]',
                 'errors' => [
                     'required' => 'Tienes que ingresar un nombre de categoria',
-                    'max_length' => 'El nombre de la categoria es muy largo'
+                    'max_length' => 'El nombre de la categoria es muy largo',
+                    'is_unique' => 'Nombre de categoria repetido'
                     ]
                 ],
             'descripcion' => [
