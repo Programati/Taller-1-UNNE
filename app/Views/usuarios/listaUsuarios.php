@@ -7,7 +7,7 @@
 
 <?=$this->section('content')?>
 <?php //dd($infoPersona);?>
-
+<?php if($infoUsuario):?>
     <div class="container mt-2">
 
         <div class="row">
@@ -143,5 +143,19 @@
         <?php endif?>
 
     </div>
+<?php else: ?>
+    <div class="container my-5" style="height:40vh">
+        <div class="row">
+            <div class="col-2">
+                <p class="display-3">
+                    <i class="bi bi-search"></i>
+                </p>
+            </div>
+            <div class="col-10">
+                <p class="fs-2 fw-bolder">No hay usuarios para vizualizar en esta sección</p>
+            </div>
+        </div>
+    </div>
+<?php endif?>
 
 <?=$this->endSection()?>
